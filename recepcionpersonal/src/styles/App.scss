@@ -1,0 +1,29 @@
+@import "./variables";
+@import "./buttons";
+
+body {
+    margin: 0;
+    font-family: $main_font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    // background-color: $main_color;
+    background-color: $second_color;
+
+    * {
+        font-weight: 300;
+    }
+
+    .container-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        
+        @media (max-width: 256px) {
+            flex-direction: column;
+        }
+    }
+
+}
