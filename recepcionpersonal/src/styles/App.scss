@@ -1,18 +1,28 @@
 @import "./variables";
 @import "./buttons";
+@import "./paqueteria";
+@import "./repartidor";
 
 body {
     margin: 0;
     font-family: $main_font;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    // background-color: $main_color;
+    display: grid;
+    min-height: 100vh;    
     background-color: $second_color;
 
     * {
-        font-weight: 300;
+        font-weight: 400;
+    }
+
+    *::before,
+    *::after{
+        box-sizing: border-box;
+    }
+
+    #root{
+        width: 95vw;
+        max-width: 1600px;
+        margin: auto;
     }
 
     .container-box {

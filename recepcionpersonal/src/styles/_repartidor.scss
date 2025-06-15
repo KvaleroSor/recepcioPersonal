@@ -1,0 +1,39 @@
+@import "./variables";
+
+ul {
+    padding: 0; /* Remove default browser padding */
+    margin: 0; /* Remove default browser margin */
+    list-style: none; /* Already in _repartidor.scss for li, but good for ul too */
+    display: flex; /* To center the li/img within the grid cell */
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; 
+}
+
+img {
+    width: 18rem;
+    height: 18rem;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+
+    /* Tablet */
+    @media (max-width: 1295px) {
+        height: 15rem;
+        width: 15rem;
+        font-size: 1.4rem;
+    }
+
+    /* Mobil */
+    @media (max-width: 480px) {
+        height: 7rem;
+        width: 7rem;
+    }
+}
