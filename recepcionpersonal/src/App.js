@@ -1,8 +1,8 @@
 import "./styles/App.scss";
 import ButtonPaqueteria from "./components/ButtonPaqueteria";
-import ButtonPersonalImasd from "./components/ButtonPersonalImasd";
+import ButtonComerciales from "./components/ButtonComerciales";
 import Paqueteria from "./components/Paqueteria";
-import PersonalImasd from "./components/PersonalImasd";
+import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         return (
             <div className="container-box">
                 <ButtonPaqueteria />
-                <ButtonPersonalImasd />
+                <ButtonComerciales />
             </div>
         );
     };
@@ -20,7 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/paqueteria" element={<Paqueteria />} />
-                <Route path="/personalImasd" element={<PersonalImasd />} />
+                <Route path="/personalImasd" element={<Comerciales />} />
             </Routes>
         </div>
     );

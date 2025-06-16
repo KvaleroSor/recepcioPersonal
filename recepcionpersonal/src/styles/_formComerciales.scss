@@ -1,0 +1,42 @@
+@import "./variables";
+@import "./forms";
+
+.container-form_comerciales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: grid;
+    border: 1px solid $second_color;
+    font-size: 1.5rem;
+
+    label,
+    input {
+        @include label-input;
+    }
+
+    input {
+        border-radius: 8px;
+    }
+
+    label {
+        margin-top: 1rem;
+    }
+
+    button {
+        width: auto;
+        height: 2.5rem;
+        margin: 0.3rem;
+        font-size: 1.5rem;
+        background-color: $main_color;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}

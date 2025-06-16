@@ -25,7 +25,7 @@ const Repartidor = ({ repartidor }) => {
             <ul>
                 <li>
                     <img id={id} src={src} alt={nombre} onClick={handleClick} />
-                    {/* { isOpenPopup && <Popup repartidor={repartidor} /> }                    */}
+                    {/* { isOpenPopup && <Popup repartidor={repartidor} /> }*/}
                 </li>
             </ul>
         </>

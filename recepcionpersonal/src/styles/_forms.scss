@@ -1,0 +1,51 @@
+@import "./variables";
+
+// Placeholder para estilos base de etiquetas
+// %base-label {
+//     display: block;
+//     margin-bottom: 0.5rem;
+//     font-weight: 600;
+//     color: #333;
+//     font-size: 1rem; // Un tamaño más estándar y legible
+// }
+
+// // Placeholder para estilos base de campos de entrada (inputs)
+// %base-input {
+//     width: 100%;
+//     padding: 10px 12px;
+//     border: 1px solid #ccc;
+//     border-radius: 8px;
+//     font-size: 1rem;
+//     margin-bottom: 1.5rem; // Espacio entre campos
+//     transition: all 0.2s ease-in-out;
+//     box-sizing: border-box; // Asegura que el padding no afecte el ancho total
+
+//     &:focus {
+//         border-color: $main_color; // Usando tu variable
+//         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); // Un resplandor suave al enfocar
+//     }
+// }
+
+// // Placeholder para botones de formulario
+// %base-form-button {
+//     width: 100%;
+//     padding: 0.75rem 1rem;
+//     font-size: 1.1rem;
+//     font-weight: bold;
+//     color: white;
+//     background-color: $main_color; // Usando tu variable
+//     border: none;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     transition: background-color 0.2s ease;
+
+//     &:hover {
+//         background-color: darken($main_color, 10%);
+//     }
+// }
+
+@mixin label-input {
+    width: 30rem;
+    height: 2rem;
+    margin: 0.3rem;
+}
