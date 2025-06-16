@@ -23,6 +23,18 @@ img {
     padding: 0.5rem;
     border-radius: 1.5rem;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    &.selected { 
+        transform: scale(1.05); 
+        border: 3px solid $img_selected_color;         
+        box-shadow: 0 0 15px $img_selected_color;
+        outline: 2px solid $img_selected_color;
+    }
 
     /* Tablet */
     @media (max-width: 1295px) {

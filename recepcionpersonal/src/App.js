@@ -1,8 +1,8 @@
 import "./styles/App.scss";
 import ButtonPaqueteria from "./components/ButtonPaqueteria";
 import ButtonPersonalImasd from "./components/ButtonPersonalImasd";
-import Paqueteria from "./components/paqueteria";
-import PersonalImasd from "./components/personalImasd";
+import Paqueteria from "./components/Paqueteria";
+import PersonalImasd from "./components/PersonalImasd";
 import { Route, Routes } from "react-router-dom";
 
 function App() {

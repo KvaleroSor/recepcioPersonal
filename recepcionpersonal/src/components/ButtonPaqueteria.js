@@ -7,10 +7,9 @@ const ButtonPaqueteria = () => {
 
     const handleClick = () => {
         navigate("/paqueteria");
-        
     };
 
-    return <button onClick={handleClick} className="btn">PAQUETERÍA</button>;
+    return <button onClick={handleClick} className="btn">PAQUETERÍA 🚚📦</button>;
 };
 
 export default ButtonPaqueteria;

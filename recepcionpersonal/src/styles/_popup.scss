@@ -1,0 +1,32 @@
+@import './variables';
+
+.container-popup{
+    background-color: $background_popup;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    width: 40rem;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow:  0 4px 15px rgba(0, 0, 0, 0.2);
+
+    // Posicionamiento y apilamiento
+    position: fixed; // Posición fija respecto al viewport
+    top: 50%;        // Centrado vertical
+    left: 50%;       // Centrado horizontal
+    transform: translate(-50%, -50%); // Ajuste fino para centrado perfecto
+    z-index: 1000;  
+    opacity: 90%;
+
+    h4 {
+        margin-top: 0; // Quitar margen superior del h4 si es necesario
+        margin-bottom: 15px;
+    }
+
+    img {
+        max-width: 80%; // Asegurar que la imagen no desborde el popup
+        max-height: 70%;
+        object-fit: contain;
+    }
+}

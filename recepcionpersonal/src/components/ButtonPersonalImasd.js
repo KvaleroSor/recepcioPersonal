@@ -9,7 +9,7 @@ const ButtonPersonalImasd = () => {
         navigate("/personalImasd");
     };
 
-    return <button onClick={handleClick} className="btn">PERSONAL IMASD</button>;
+    return <button onClick={handleClick} className="btn">COMERCIALS 👩🏽‍💼👨🏽‍💼</button>;
 };
 
 export default ButtonPersonalImasd;
