@@ -309,6 +309,13 @@
       "empresa": "Frios Jordà",
       "personaImasd": "Sergi",
       "fecha": "17 de junio de 2025, 21:39:59"
+    },
+    {
+      "id": 14,
+      "nombre": "Airpods pro",
+      "empresa": "Prueba 1 empresa",
+      "personaImasd": "Jordi",
+      "fecha": "17 de junio de 2025, 21:46:05"
     }
   ]
 }

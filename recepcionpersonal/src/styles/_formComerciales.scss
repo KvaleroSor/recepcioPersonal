@@ -9,7 +9,7 @@
 
 form {
     display: grid;
-    border: 1px solid $second_color;
+    // border: 1px solid $second_color;
     font-size: 1.5rem;
 
     label,
@@ -23,14 +23,16 @@ form {
 
     label {
         margin-top: 1rem;
+        color: $second_color;
     }
 
     button {
         width: auto;
-        height: 2.5rem;
+        height: 3rem;
         margin: 0.3rem;
+        margin-top: 2rem;
         font-size: 1.5rem;
-        background-color: $main_color;
+        background-color: $second_color;
         border-radius: 8px;
         transition: transform 0.3s ease;
         cursor: pointer;
