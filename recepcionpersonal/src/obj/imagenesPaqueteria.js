@@ -9,6 +9,7 @@ const imagenesPaqueteria = [
     { id: 8, nombre: 'Ctt Express', src: '/assets/ctt-express.jpg'},
     { id: 9, nombre: 'Correos', src: '/assets/correos.jpg'},
     { id: 10, nombre: 'Correos Express', src: '/assets/correos-express.jpeg'},
+    { id: 10, nombre: 'Fedex', src: '/assets/fedex.jpg'},
 
 ];
 
