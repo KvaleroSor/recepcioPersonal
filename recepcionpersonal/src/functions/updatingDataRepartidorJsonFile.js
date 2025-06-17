@@ -1,4 +1,4 @@
-const updatingDataPlayerJsonFile = async (repartidor) => {
+const updatingDataRepartidorJsonFile = async (repartidor) => {
     const  fechaRegistrada = new Date();
 
     const obj_repartidor = {
@@ -33,4 +33,4 @@ const updatingDataPlayerJsonFile = async (repartidor) => {
         .catch((error) => console.error(`Error --> ${error}`));
 };
 
-export default updatingDataPlayerJsonFile;
+export default updatingDataRepartidorJsonFile;

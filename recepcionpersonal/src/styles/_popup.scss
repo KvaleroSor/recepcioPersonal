@@ -38,11 +38,11 @@
 
 // La ventana del popup
 .popup {
-  background-color: $background_popup; // Usando tu variable de color
+  background-color: $main_color; // Usando tu variable de color
   padding: 1.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-  width: 90%;
+  width: 50rem;
   max-width: 500px; // Un ancho máximo para pantallas grandes
   position: relative; // Cambiado de fixed para que se centre dentro del overlay
   z-index: 1000;
@@ -58,9 +58,9 @@
     padding-bottom: 1rem;
     margin-bottom: 1rem;
 
-    h4 {
+    h1 {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 3rem;
       color: #333;
     }
   }
@@ -73,6 +73,7 @@
       margin-bottom: 1.5rem;
       color: #555;
       line-height: 1.6;
+      font-size: 2.5rem;
     }
 
     img {

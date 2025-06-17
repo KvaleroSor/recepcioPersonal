@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import PopupFromLibrary from "reactjs-popup"; 
-import Popup from "./Popup"; 
+import PopupFromLibrary from "reactjs-popup";
+import Popup from "./Popup";
+import udatingDataComercialJsonFile from "../functions/udatingDataComercialJsonfile";
+import getDataFromDbJson from "../functions/getDataFromDbJson";
+import { idState } from "../obj/idState";
 
 const Comerciales = () => {
     const getInitialState = () => {
@@ -17,11 +20,11 @@ const Comerciales = () => {
         };
     };
 
-    const [ values, setValues ] = useState(getInitialState());
+    const [values, setValues] = useState(getInitialState());
     const [showPopup, setShowPopup] = useState(false);
     const [submittedData, setSubmittedData] = useState(null);
 
-    function handleSubmit(evt) {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
 
         // Aquí puedes usar values para enviar la información
@@ -32,6 +35,9 @@ const Comerciales = () => {
 
         setSubmittedData(values);
         setShowPopup(true);
+        const comercialsSizeArray = await getDataFromDbJson();
+        idState.idComercial = comercialsSizeArray.length;        
+        await udatingDataComercialJsonFile(values);
     }
 
     function handleChange(evt) {
@@ -45,10 +51,10 @@ const Comerciales = () => {
         setValues(newValues);
     }
 
-    function handleClosePopup() {
+    const handleClosePopup = () => {
         setShowPopup(false);
-        setValues(getInitialState()); 
-        setSubmittedData(null); 
+        setValues(getInitialState());
+        setSubmittedData(null);
     }
 
     return (
@@ -82,18 +88,18 @@ const Comerciales = () => {
                 />
                 <button type="submit">Registrar</button>
             </form>
-            
-            <PopupFromLibrary 
-                open={showPopup} 
-                onClose={handleClosePopup} 
-                modal 
+
+            <PopupFromLibrary
+                open={showPopup}
+                onClose={handleClosePopup}
+                modal
                 nested
             >
-                {close => ( 
-                    <Popup 
+                {(close) => (
+                    <Popup
                         data={submittedData}
-                        tipo="comercial" 
-                        onCloseRequest={close} 
+                        tipo="comercial"
+                        onCloseRequest={close}
                     />
                 )}
             </PopupFromLibrary>

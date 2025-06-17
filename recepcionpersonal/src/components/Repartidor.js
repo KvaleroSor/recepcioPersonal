@@ -1,5 +1,5 @@
 import React from "react";
-import updatingDataPlayerJsonFile from "../functions/updatingDataPlayerJsonFile";
+import updatingDataRepartidorJsonFile from "../functions/updatingDataRepartidorJsonFile";
 // import { useState } from "react";
 // import Popup from "./Popup";
 
@@ -8,7 +8,7 @@ const Repartidor = ({ repartidor }) => {
     const { id, nombre, src } = repartidor;
 
     const handleClick = (e) => {
-        updatingDataPlayerJsonFile(repartidor);
+        updatingDataRepartidorJsonFile(repartidor);
 
         const imgClicked = e.target;
         imgClicked.classList.add("selected");

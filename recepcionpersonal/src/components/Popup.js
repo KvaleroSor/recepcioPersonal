@@ -13,12 +13,13 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
   if (!data) {
     contentRender = <p>No hay datos para mostrar.</p>;
   } else if (tipo === 'comercial') {
-    title = data.nombre ? `Comercial: ${data.nombre}` : "Registro de Comercial";
+    // title = data.nombre ? `Comercial: ${data.nombre}` : "Registro de Comercial";
     contentRender = (
       <>
-        <p><strong>Nombre:</strong> {data.nombre || 'N/A'}</p>
-        <p><strong>Empresa:</strong> {data.empresa || 'N/A'}</p>
-        <p><strong>Busca a:</strong> {data.personaImasd || 'N/A'}</p>
+        <p><strong>Nom del comercial:</strong> {data.nombre || 'N/A'}</p>
+        <p><strong>Ve de l´Empresa:</strong> {data.empresa || 'N/A'}</p>
+        <p><strong>I està buscant a:</strong> {data.personaImasd || 'N/A'}</p>
+        <p><strong>Cridar al número:</strong> {'2001'|| 'N/A'}</p>
         {data.fecha && <p><small>Fecha de registro: {data.fecha}</small></p>}
       </>
     );
@@ -54,9 +55,9 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
           &times; {/* Símbolo de la 'X' */}
         </button>
       )}
-      <div className="popup__header">
-        <h4>{title}</h4>
-      </div>
+      {/* <div className="popup__header">
+        <h1>{title}</h1>
+      </div> */}
       <div className="popup__content">
         {contentRender}
       </div>
