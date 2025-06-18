@@ -5,12 +5,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 form {
     display: grid;
-    // border: 1px solid $second_color;
     font-size: 1.5rem;
+    width: 60%;
+    max-width: 480px;
+    margin: 0 auto;
 
     label,
     input {
@@ -18,12 +22,25 @@ form {
     }
 
     input {
-        border-radius: 8px;
+        all: unset;
+        border-bottom: 1px solid $prueba_1_text;
+        width: 100%;
+        position: relative;
+        margin: auto;
+        border-radius: 3px;
+        overflow: hidden;
+        background-color: $prueba_1_fondo;
+        outline: none;
+        margin-bottom: 2rem;
     }
 
     label {
         margin-top: 1rem;
-        color: $second_color;
+        color: $prueba_1_text;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
     }
 
     button {
@@ -32,13 +49,42 @@ form {
         margin: 0.3rem;
         margin-top: 2rem;
         font-size: 1.5rem;
-        background-color: $second_color;
+        background-color: $prueba_1_buttons;
         border-radius: 8px;
         transition: transform 0.3s ease;
         cursor: pointer;
+        color: $prueba_1_text;
+        box-shadow: -1px 2px 21px 14px rgba(207, 210, 205, 0.94);
 
         &:hover {
             transform: scale(1.05);
         }
+    }
+
+    .iconsForm {
+        width: 1.5rem;
+        height: 1.5rem;
+        justify-content: center;
+    }
+
+    .button-registro {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// Estilos para escritorios
+@media (max-width: 1285px) {
+    form {
+        width: 75%;        
+    }
+}
+
+// Estilos para tablets
+@media (max-width: 480px) {
+    form {
+        width: 95%;
     }
 }

@@ -4,6 +4,10 @@ import Popup from "./Popup";
 import udatingDataComercialJsonFile from "../functions/udatingDataComercialJsonfile";
 import getDataFromDbJson from "../functions/getDataFromDbJson";
 import { idState } from "../obj/idState";
+import iconPersona from "./../icons/iconPersona.svg";
+import iconEmpresa from "./../icons/iconEmpresa.svg";
+import iconRegistrar from "./../icons/iconRegistrar.svg";
+import iconTrabajador from "./../icons/iconTrabajador.svg";
 
 const Comerciales = () => {
     const getInitialState = () => {
@@ -36,9 +40,9 @@ const Comerciales = () => {
         setSubmittedData(values);
         setShowPopup(true);
         const comercialsSizeArray = await getDataFromDbJson();
-        idState.idComercial = comercialsSizeArray.length;        
+        idState.idComercial = comercialsSizeArray.length;
         await udatingDataComercialJsonFile(values);
-    }
+    };
 
     function handleChange(evt) {
         const { target } = evt;
@@ -55,12 +59,15 @@ const Comerciales = () => {
         setShowPopup(false);
         setValues(getInitialState());
         setSubmittedData(null);
-    }
+    };
 
     return (
         <div className="container-form_comerciales">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="nombre">NOMBRE</label>
+                <label htmlFor="nombre">
+                    <img src={iconPersona} className="iconsForm" />
+                    <p>NOMBRE</p>
+                </label>
                 <input
                     id="nombre"
                     name="nombre"
@@ -68,7 +75,10 @@ const Comerciales = () => {
                     value={values.nombre}
                     onChange={handleChange}
                 />
-                <label htmlFor="empresa">EMPRESA</label>
+                <label htmlFor="empresa">
+                    <img src={iconEmpresa} className="iconsForm" />
+                    <p>EMPRESA</p>
+                </label>
                 <input
                     id="empresa"
                     name="empresa"
@@ -77,7 +87,8 @@ const Comerciales = () => {
                     onChange={handleChange}
                 />
                 <label htmlFor="personaImasd">
-                    PERSONA IMASD A LA QUE BUSCA
+                    <img src={iconTrabajador} className="iconsForm" />
+                    <p>PERSONA IMASD A LA QUE BUSCA</p>
                 </label>
                 <input
                     id="personaImasd"
@@ -86,7 +97,13 @@ const Comerciales = () => {
                     value={values.personaImasd}
                     onChange={handleChange}
                 />
-                <button type="submit">Registrar</button>
+                <button type="submit" className="button-registro">
+                    <img
+                        src={iconRegistrar}
+                        className="iconsForm"
+                    />
+                    <p>REGISTRAR</p>{" "}
+                </button>
             </form>
 
             <PopupFromLibrary

@@ -11,10 +11,10 @@
 
 body {
     margin: 0;
-    font-family: $prueba_1_fondo;
+    font-family: $main_font;
     display: grid;
     min-height: 100vh;    
-    background-color: $third_color;
+    background-color: $prueba_1_fondo;
 
     * {
         font-weight: 400;

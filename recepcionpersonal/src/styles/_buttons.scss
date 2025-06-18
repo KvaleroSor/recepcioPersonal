@@ -1,7 +1,7 @@
 @import "./variables";
 
 .btn {
-    background-color: $second_color;
+    background-color: $prueba_1_buttons;
     color: #333;
     font-family: $main_font;
     font-size: 2rem;
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    box-shadow: -1px 2px 21px 14px rgba(207,210,205,0.94);
     
 
     &:hover {
