@@ -20,7 +20,7 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
         <p><strong>Ve de l´Empresa:</strong> {data.empresa || 'N/A'}</p>
         <p><strong>I està buscant a:</strong> {data.personaImasd || 'N/A'}</p>
         <p><strong>Cridar al número:</strong> {'2001'|| 'N/A'}</p>
-        {data.fecha && <p><small>Fecha de registro: {data.fecha}</small></p>}
+        {/* {data.fecha && <p><small>Fecha de registro: {data.fecha}</small></p>} */}
       </>
     );
   } else if (tipo === 'repartidor') {
