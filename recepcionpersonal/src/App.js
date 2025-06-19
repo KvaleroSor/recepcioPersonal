@@ -6,6 +6,14 @@ import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
+    /**
+     * Modificacions
+     * 
+     * 1- Afegir sistema de backend firebase ❌
+     * 1- Modificar les consultes ❌
+     * 
+     * @returns 
+     */
     const Home = () => {
         return (
             <div className="container-box">
