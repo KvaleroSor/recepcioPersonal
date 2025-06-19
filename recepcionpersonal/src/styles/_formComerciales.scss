@@ -32,6 +32,11 @@ form {
         background-color: $prueba_1_fondo;
         outline: none;
         margin-bottom: 2rem;
+        transition: margin 2s;
+
+        &:focus{
+            margin-top: 1.5rem;
+        }
     }
 
     label {
@@ -55,7 +60,8 @@ form {
         cursor: pointer;
         color: $prueba_1_text;
         box-shadow: -1px 2px 21px 14px rgba(207, 210, 205, 0.94);
-
+        border: none;
+        
         &:hover {
             transform: scale(1.05);
         }
