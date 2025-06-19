@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; // Justo debajo del popup
+  z-index: 999; 
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -54,7 +54,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e0e0e0; // Separador sutil
+    border-bottom: 1px solid #e0e0e0; 
     padding-bottom: 1rem;
     margin-bottom: 1rem;
 
