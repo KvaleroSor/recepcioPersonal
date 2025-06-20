@@ -8,6 +8,7 @@ import iconPersona from "./../icons/iconPersona.svg";
 import iconEmpresa from "./../icons/iconEmpresa.svg";
 import iconRegistrar from "./../icons/iconRegistrar.svg";
 import iconTrabajador from "./../icons/iconTrabajador.svg";
+import setDataBBDD from "../db/setDataBBDD";
 
 const Comerciales = () => {
     const getInitialState = () => {
@@ -42,6 +43,7 @@ const Comerciales = () => {
         const comercialsSizeArray = await getDataFromDbJson();
         idState.idComercial = comercialsSizeArray.length;
         await udatingDataComercialJsonFile(values);
+        setDataBBDD(values);
     };
 
     function handleChange(evt) {
