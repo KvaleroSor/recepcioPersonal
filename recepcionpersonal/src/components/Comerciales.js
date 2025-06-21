@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
 import PopupFromLibrary from "reactjs-popup";
 import Popup from "./Popup";
-import udatingDataComercialJsonFile from "../functions/udatingDataComercialJsonfile";
 import getDataFromDbJson from "../functions/getDataFromDbJson";
 import { idState } from "../obj/idState";
 import iconPersona from "./../icons/iconPersona.svg";
 import iconEmpresa from "./../icons/iconEmpresa.svg";
 import iconRegistrar from "./../icons/iconRegistrar.svg";
 import iconTrabajador from "./../icons/iconTrabajador.svg";
-import setDataBBDD from "../db/setDataBBDD";
+import setDataBBDDComercial from "../db/setDataBBDDComercial";
+import { useNavigate } from "react-router-dom";
 
 const Comerciales = () => {
+    const navigate = useNavigate();
+
     const getInitialState = () => {
         const date = new Date();
-        return {
+        return {           
             nombre: "",
             empresa: "",
             personaImasd: "",
@@ -37,13 +39,13 @@ const Comerciales = () => {
             alert("Por favor, rellena todos los campos");
             return;
         }
-
+    
         setSubmittedData(values);
         setShowPopup(true);
-        const comercialsSizeArray = await getDataFromDbJson();
-        idState.idComercial = comercialsSizeArray.length;
-        await udatingDataComercialJsonFile(values);
-        setDataBBDD(values);
+        // const comercialsSizeArray = await getDataFromDbJson();
+        // idState.idComercial = comercialsSizeArray.length;
+        // await udatingDataComercialJsonFile(values);
+        setDataBBDDComercial(values);
     };
 
     function handleChange(evt) {
@@ -61,6 +63,7 @@ const Comerciales = () => {
         setShowPopup(false);
         setValues(getInitialState());
         setSubmittedData(null);
+        navigate("/");
     };
 
     return (
@@ -74,6 +77,7 @@ const Comerciales = () => {
                     id="nombre"
                     name="nombre"
                     type="text"
+                    placeholder="El vostre nom"
                     value={values.nombre}
                     onChange={handleChange}
                 />
@@ -85,6 +89,7 @@ const Comerciales = () => {
                     id="empresa"
                     name="empresa"
                     type="text"
+                    placeholder="Nom de l´empresa"
                     value={values.empresa}
                     onChange={handleChange}
                 />
@@ -94,6 +99,7 @@ const Comerciales = () => {
                 </label>
                 <input
                     id="personaImasd"
+                    placeholder="Nom i apellido"
                     name="personaImasd"
                     type="text"
                     value={values.personaImasd}

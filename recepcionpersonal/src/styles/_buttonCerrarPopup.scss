@@ -1,0 +1,18 @@
+button {
+    width: 20rem;
+    height: 3rem;
+    margin: 0.3rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    background-color: $prueba_1_buttons;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    color: $prueba_1_text;
+    box-shadow: -1px 2px 21px 14px rgba(207, 210, 205, 0.94);
+    border: none;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

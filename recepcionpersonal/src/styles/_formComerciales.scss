@@ -32,10 +32,18 @@ form {
         background-color: $prueba_1_fondo;
         outline: none;
         margin-bottom: 2rem;
-        transition: margin 2s;
+        margin-top: 1rem;
+        transition: margin 0.4s;   
+        color: $prueba_1_text;
+        
 
         &:focus{
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        &::placeholder{
+            font-weight: lighter;
+            text-align: start;    
         }
     }
 

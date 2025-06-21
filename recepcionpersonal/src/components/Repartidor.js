@@ -1,23 +1,21 @@
 import React from "react";
-import updatingDataRepartidorJsonFile from "../functions/updatingDataRepartidorJsonFile";
-// import { useState } from "react";
-// import Popup from "./Popup";
+import setDataBBDDRepartidores from "../db/setDataBBDDRepartidores";
+import { useNavigate } from "react-router-dom";
 
 const Repartidor = ({ repartidor }) => {
-    // const [isOpenPopup, setOpenPopup] = useState(false);
+    const navigate = useNavigate();
     const { id, nombre, src } = repartidor;
 
     const handleClick = (e) => {
-        updatingDataRepartidorJsonFile(repartidor);
-
         const imgClicked = e.target;
         imgClicked.classList.add("selected");
-        // setOpenPopup(true);
 
         setTimeout(() => {
             imgClicked.classList.remove("selected");
-            // setOpenPopup(false);
+            navigate("/")
         }, 3000);
+
+        setDataBBDDRepartidores({ nombre });
     };
 
     return (

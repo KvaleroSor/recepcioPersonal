@@ -38,17 +38,33 @@
 
 // La ventana del popup
 .popup {
-  background-color: $second_color; // Usando tu variable de color
+  background-color: $prueba_1_fondo; // Usando tu variable de color
   padding: 1.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
   width: 50rem;
-  max-width: 500px; // Un ancho máximo para pantallas grandes
+  max-width: 600px; // Un ancho máximo para pantallas grandes
   position: relative; // Cambiado de fixed para que se centre dentro del overlay
   z-index: 1000;
   animation: scaleIn 0.3s ease-out;
   display: flex;
   flex-direction: column;
+  color: $prueba_1_text;
+  text-align: start;
+
+  &__text-popup{
+    font-weight: lighter;
+  }
+
+  &__span-text{
+    font-weight: 300;
+    color: $prueba_1_text_popup-span;
+  }
+
+  &__button_close{
+    display: flex;
+    justify-content: center;
+  }
 
   &__header {
     display: flex;
@@ -66,7 +82,7 @@
   }
 
   &__content {
-    text-align: center;
+    text-align: start;
 
     p {
       margin-top: 0;
