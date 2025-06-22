@@ -4,7 +4,7 @@ import ButtonComerciales from "./components/ButtonComerciales";
 import Paqueteria from "./components/Paqueteria";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
-import logoImasd from './logo/logoImasd.jpeg';
+// import logoImasd from './logo/logoImasd.jpeg';
 
 function App() {
     /**
