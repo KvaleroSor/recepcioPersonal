@@ -17,7 +17,25 @@
     justify-content: center;
     align-items: center;
     box-shadow: -1px 2px 21px 14px rgba(207,210,205,0.94);
+
+    .container-elements_buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    p{
+        padding: 0;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
     
+    .iconsForm {
+        width: 4rem;
+        height: 4rem;
+        justify-content: center;
+    }
 
     &:hover {
         transform: scale(1.1);

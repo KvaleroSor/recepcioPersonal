@@ -2,7 +2,7 @@ import React from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
-    let title = "Información";
+    let title = "Acciones a realizar!";
     let contentRender = null;
 
     if (!data) {
@@ -10,8 +10,12 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
     } else if (tipo === "comercial") {
         // El Popup ya no hace cálculos. Solo recibe y muestra el objeto resuelto.
         const personaImasd = data.personaImasdData;
-        const nombrePersonaImasd = personaImasd ? personaImasd.nombre : "No encontrado";
-        const tlfPersonaImasd = personaImasd ? personaImasd.telefono : "No encontrado";
+        const nombrePersonaImasd = personaImasd
+            ? personaImasd.nombre
+            : "No encontrado";
+        const tlfPersonaImasd = personaImasd
+            ? personaImasd.telefono
+            : "No encontrado";
 
         console.log("Datos finales recibidos en el Popup:", personaImasd);
 
@@ -47,9 +51,14 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
 
     return (
         <div className="popup">
+            <div className="popup__header"> 
+                <h1 className="popup__header">{title}</h1>
+            </div>
             <div className="popup__content">{contentRender}</div>
             <div className="popup__button_close">
-                {onCloseRequest && <ButtonCerrarPopup onCloseRequest={onCloseRequest} />}
+                {onCloseRequest && (
+                    <ButtonCerrarPopup onCloseRequest={onCloseRequest} />
+                )}
             </div>
         </div>
     );
