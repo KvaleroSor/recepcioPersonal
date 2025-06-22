@@ -1,31 +1,25 @@
-import React, { useState, useId } from "react";
+import React, { useState } from "react";
 import PopupFromLibrary from "reactjs-popup";
 import Popup from "./Popup";
-import getDataFromDbJson from "../functions/getDataFromDbJson";
-import { idState } from "../obj/idState";
 import iconPersona from "./../icons/iconPersona.svg";
 import iconEmpresa from "./../icons/iconEmpresa.svg";
 import iconRegistrar from "./../icons/iconRegistrar.svg";
 import iconTrabajador from "./../icons/iconTrabajador.svg";
 import setDataBBDDComercial from "../db/setDataBBDDComercial";
 import { useNavigate } from "react-router-dom";
+import { getDataBBDDPersonalImasd } from "../db/getDataBBDDPersonalImasd";
+import stringSimilarity from "string-similarity";
+// import { HugeiconsIcon } from '@hugeicons/react';
+// import { AddTeamIcon } from '@hugeicons-pro/core-stroke-rounded';
 
 const Comerciales = () => {
     const navigate = useNavigate();
 
-    const getInitialState = () => {
-        const date = new Date();
-        return {           
-            nombre: "",
-            empresa: "",
-            personaImasd: "",
-            fecha: date.toLocaleTimeString(undefined, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            }),
-        };
-    };
+    const getInitialState = () => ({
+        nombre: "",
+        empresa: "",
+        personaImasd: "",
+    });
 
     const [values, setValues] = useState(getInitialState());
     const [showPopup, setShowPopup] = useState(false);
@@ -34,35 +28,50 @@ const Comerciales = () => {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
 
-        // Aquí puedes usar values para enviar la información
         if (!values.nombre || !values.empresa || !values.personaImasd) {
             alert("Por favor, rellena todos los campos");
             return;
         }
-    
-        setSubmittedData(values);
-        setShowPopup(true);
-        // const comercialsSizeArray = await getDataFromDbJson();
-        // idState.idComercial = comercialsSizeArray.length;
-        // await udatingDataComercialJsonFile(values);
-        setDataBBDDComercial(values);
+
+        try {
+            const personalImasdBBDD = await getDataBBDDPersonalImasd();
+            if (!personalImasdBBDD || personalImasdBBDD.length === 0) {
+                alert("Error al cargar los datos del personal de I+D.");
+                return;
+            }
+
+            const nombresEnLista = personalImasdBBDD.map((p) => (p && p.nombre ? p.nombre.toLowerCase().trim() : ''));
+            const matches = stringSimilarity.findBestMatch(values.personaImasd.toLowerCase().trim(), nombresEnLista);
+            const personaImasdEncontrada = personalImasdBBDD[matches.bestMatchIndex];
+
+            if (!personaImasdEncontrada || matches.bestMatch.rating < 0.4) { 
+                alert("No se ha encontrado a la persona especificada. Por favor, revisa el nombre.");
+                return;
+            }
+
+            const dataParaPopup = {
+                ...values,
+                personaImasdData: personaImasdEncontrada,
+            };
+            
+            await setDataBBDDComercial(values); 
+            setSubmittedData(dataParaPopup);
+            setShowPopup(true);
+
+        } catch (error) {
+            console.error("Error en el proceso de registro:", error);
+            alert("Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.");
+        }
     };
 
-    function handleChange(evt) {
-        const { target } = evt;
-        const { name, value } = target;
-        const newValues = {
-            ...values,
-            [name]: value,
-        };
-
-        setValues(newValues);
+    const handleChange = (evt) => {
+        const { name, value } = evt.target;
+        setValues({ ...values, [name]: value });
     }
 
     const handleClosePopup = () => {
         setShowPopup(false);
         setValues(getInitialState());
-        setSubmittedData(null);
         navigate("/");
     };
 
@@ -71,16 +80,18 @@ const Comerciales = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nombre">
                     <img src={iconPersona} className="iconsForm" />
+                    {/* <HugeiconsIcon icon={AddTeamIcon} /> */}
                     <p>NOMBRE</p>
                 </label>
                 <input
                     id="nombre"
                     name="nombre"
                     type="text"
-                    placeholder="El vostre nom"
+                    placeholder="Tu nombre"
                     value={values.nombre}
                     onChange={handleChange}
                 />
+
                 <label htmlFor="empresa">
                     <img src={iconEmpresa} className="iconsForm" />
                     <p>EMPRESA</p>
@@ -89,36 +100,39 @@ const Comerciales = () => {
                     id="empresa"
                     name="empresa"
                     type="text"
-                    placeholder="Nom de l´empresa"
+                    placeholder="Nombre de la empresa"
                     value={values.empresa}
                     onChange={handleChange}
                 />
+
                 <label htmlFor="personaImasd">
                     <img src={iconTrabajador} className="iconsForm" />
                     <p>PERSONA IMASD A LA QUE BUSCA</p>
                 </label>
                 <input
                     id="personaImasd"
-                    placeholder="Nom i apellido"
                     name="personaImasd"
                     type="text"
+                    placeholder="Nombre y apellido"
                     value={values.personaImasd}
                     onChange={handleChange}
                 />
+
                 <button type="submit" className="button-registro">
                     <img
                         src={iconRegistrar}
                         className="iconsForm"
                     />
-                    <p>REGISTRAR</p>{" "}
+                    <p>REGISTRAR</p>
                 </button>
             </form>
 
             <PopupFromLibrary
                 open={showPopup}
-                onClose={handleClosePopup}
                 modal
                 nested
+                closeOnDocumentClick={false}
+                onClose={handleClosePopup}
             >
                 {(close) => (
                     <Popup
