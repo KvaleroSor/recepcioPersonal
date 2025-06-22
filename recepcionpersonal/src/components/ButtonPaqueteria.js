@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./../styles/App.scss";
-import iconCamion from "./../icons/iconCamion.svg";
-import iconRepartidor from "./../icons/iconRepartidor.svg";
+import { ReactComponent as IconCamion } from "./../icons/iconCamion.svg";
+import { ReactComponent as IconRepartidor } from "./../icons/iconRepartidor.svg";
 
 const ButtonPaqueteria = () => {
     const navigate = useNavigate();
@@ -16,8 +16,10 @@ const ButtonPaqueteria = () => {
             <div className="container-elements_buttons">
                 <p>REPARTIDORES</p>
                 <div className="container-elements_img">
-                    <img src={iconCamion} className="iconsForm" />
-                    <img src={iconRepartidor} className="iconsForm" />
+                    {/* <img src={iconCamion} className="iconsForm iconsForm_buttons" />                    
+                    <img src={iconRepartidor} className="iconsForm iconsForm_buttons" /> */}
+                    <IconCamion className="iconsForm iconsForm_buttons" />
+                    <IconRepartidor className="iconsForm iconsForm_buttons" />
                 </div>
             </div>
         </button>

@@ -1,10 +1,10 @@
 @import "./variables";
 
 ul {
-    padding: 0; /* Remove default browser padding */
-    margin: 0; /* Remove default browser margin */
-    list-style: none; /* Already in _repartidor.scss for li, but good for ul too */
-    display: flex; /* To center the li/img within the grid cell */
+    padding: 0; 
+    margin: 0;
+    list-style: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -17,14 +17,13 @@ li {
     gap: 0.5rem; 
 }
 
-img {
+.img_repartidores {
     width: 18rem;
     height: 18rem;
     padding: 0.5rem;
     border-radius: 1.5rem;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    // box-shadow: -1px 2px 21px 14px rgba(207,210,205,0.94);
 
     &:hover{
         transform: scale(1.1);
@@ -32,9 +31,9 @@ img {
 
     &.selected { 
         transform: scale(1.05); 
-        border: 3px solid $img_selected_color;         
-        box-shadow: 0 0 15px $img_selected_color;
-        outline: 2px solid $img_selected_color;
+        border: 8px solid $prueba_1_text;         
+        box-shadow: 0 0 15px $prueba_1_text;
+        outline: 2px solid $prueba_1_text;
     }
 
     /* Tablet */

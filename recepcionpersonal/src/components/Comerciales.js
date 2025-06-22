@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PopupFromLibrary from "reactjs-popup";
 import Popup from "./Popup";
-import iconPersona from "./../icons/iconPersona.svg";
-import iconEmpresa from "./../icons/iconEmpresa.svg";
-import iconRegistrar from "./../icons/iconRegistrar.svg";
-import iconTrabajador from "./../icons/iconTrabajador.svg";
+import { ReactComponent as IconPersona } from "./../icons/iconPersona.svg";
+import { ReactComponent as IconEmpresa } from "./../icons/iconEmpresa.svg";
+import { ReactComponent as IconRegistrar } from "./../icons/iconRegistrar.svg";
+import { ReactComponent as IconTrabajador } from "./../icons/iconTrabajador.svg";
 import setDataBBDDComercial from "../db/setDataBBDDComercial";
 import { useNavigate } from "react-router-dom";
 import { getDataBBDDPersonalImasd } from "../db/getDataBBDDPersonalImasd";
@@ -40,12 +40,20 @@ const Comerciales = () => {
                 return;
             }
 
-            const nombresEnLista = personalImasdBBDD.map((p) => (p && p.nombre ? p.nombre.toLowerCase().trim() : ''));
-            const matches = stringSimilarity.findBestMatch(values.personaImasd.toLowerCase().trim(), nombresEnLista);
-            const personaImasdEncontrada = personalImasdBBDD[matches.bestMatchIndex];
+            const nombresEnLista = personalImasdBBDD.map((p) =>
+                p && p.nombre ? p.nombre.toLowerCase().trim() : ""
+            );
+            const matches = stringSimilarity.findBestMatch(
+                values.personaImasd.toLowerCase().trim(),
+                nombresEnLista
+            );
+            const personaImasdEncontrada =
+                personalImasdBBDD[matches.bestMatchIndex];
 
-            if (!personaImasdEncontrada || matches.bestMatch.rating < 0.4) { 
-                alert("No se ha encontrado a la persona especificada. Por favor, revisa el nombre.");
+            if (!personaImasdEncontrada || matches.bestMatch.rating < 0.4) {
+                alert(
+                    "No se ha encontrado a la persona especificada. Por favor, revisa el nombre."
+                );
                 return;
             }
 
@@ -53,21 +61,22 @@ const Comerciales = () => {
                 ...values,
                 personaImasdData: personaImasdEncontrada,
             };
-            
-            await setDataBBDDComercial(values); 
+
+            await setDataBBDDComercial(values);
             setSubmittedData(dataParaPopup);
             setShowPopup(true);
-
         } catch (error) {
             console.error("Error en el proceso de registro:", error);
-            alert("Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.");
+            alert(
+                "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
+            );
         }
     };
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;
         setValues({ ...values, [name]: value });
-    }
+    };
 
     const handleClosePopup = () => {
         setShowPopup(false);
@@ -79,7 +88,8 @@ const Comerciales = () => {
         <div className="container-form_comerciales">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nombre">
-                    <img src={iconPersona} className="iconsForm" />
+                    {/* <img src={iconPersona} className="iconsForm" /> */}
+                    <IconPersona className="iconsForm" />
                     {/* <HugeiconsIcon icon={AddTeamIcon} /> */}
                     <p>NOMBRE</p>
                 </label>
@@ -93,7 +103,7 @@ const Comerciales = () => {
                 />
 
                 <label htmlFor="empresa">
-                    <img src={iconEmpresa} className="iconsForm" />
+                    <IconEmpresa className="iconsForm" />
                     <p>EMPRESA</p>
                 </label>
                 <input
@@ -106,7 +116,7 @@ const Comerciales = () => {
                 />
 
                 <label htmlFor="personaImasd">
-                    <img src={iconTrabajador} className="iconsForm" />
+                    <IconTrabajador className="iconsForm" />
                     <p>PERSONA IMASD A LA QUE BUSCA</p>
                 </label>
                 <input
@@ -119,10 +129,7 @@ const Comerciales = () => {
                 />
 
                 <button type="submit" className="button-registro">
-                    <img
-                        src={iconRegistrar}
-                        className="iconsForm"
-                    />
+                    <IconRegistrar className="iconsForm" />
                     <p>REGISTRAR</p>
                 </button>
             </form>

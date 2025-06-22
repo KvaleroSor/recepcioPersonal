@@ -20,7 +20,7 @@ body {
     margin: 0;
     font-family: $main_font;
     display: grid;
-    min-height: 100vh;    
+    min-height: 100vh;
     background-color: $prueba_1_fondo;
 
     * {
@@ -28,11 +28,11 @@ body {
     }
 
     *::before,
-    *::after{
+    *::after {
         box-sizing: border-box;
     }
 
-    #root{
+    #root {
         width: 95vw;
         max-width: 1600px;
         margin: auto;
@@ -43,10 +43,24 @@ body {
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        
+
         @media (max-width: 256px) {
             flex-direction: column;
         }
     }
 
+    .container-logo{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem 0;
+        
+        
+    }
+
+    .logo-imasd {
+        width: 30rem;
+        height: 10rem;
+        max-width: 90%;
+    }
 }

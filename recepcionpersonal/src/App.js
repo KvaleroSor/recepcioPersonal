@@ -4,22 +4,28 @@ import ButtonComerciales from "./components/ButtonComerciales";
 import Paqueteria from "./components/Paqueteria";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
+import logoImasd from './logo/logoImasd.jpeg';
 
 function App() {
     /**
      * Modificacions
-     * 
+     *
      * 1- Afegir sistema de backend firebase ❌
      * 1- Modificar les consultes ❌
-     * 
-     * @returns 
+     *
+     * @returns
      */
     const Home = () => {
         return (
-            <div className="container-box">
-                <ButtonPaqueteria />
-                <ButtonComerciales />
-            </div>
+            <>
+                {/* <div className="container-logo">
+                    <img src={logoImasd} className="logo-imasd" />
+                </div> */}
+                <div className="container-box">
+                    <ButtonPaqueteria />
+                    <ButtonComerciales />
+                </div>
+            </>
         );
     };
 
