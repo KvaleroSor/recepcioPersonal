@@ -10,6 +10,15 @@ const imagenesPaqueteria = [
     { id: 9, nombre: 'Correos', src: '/assets/correos.jpg'},
     { id: 10, nombre: 'Correos Express', src: '/assets/correos-express.jpeg'},
     { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    { id: 12, nombre: 'Celeritas', src: '/assets/celeritas.jpg'},
+    { id: 13, nombre: 'Paco Sanchis', src: '/assets/paco-sanchis.jpg'},
+    { id: 14, nombre: 'El Clariano', src: '/assets/el clariano.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
 
 ];
 
