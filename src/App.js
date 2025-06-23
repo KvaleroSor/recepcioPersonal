@@ -10,8 +10,8 @@ function App() {
     /**
      * Modificacions
      *
-     * 1- Afegir sistema de backend firebase ❌
-     * 1- Modificar les consultes ❌
+     * 1- Afegir sistema de backend firebase ✅
+     * 1- Modificar les consultes ✅
      *
      * @returns
      */
