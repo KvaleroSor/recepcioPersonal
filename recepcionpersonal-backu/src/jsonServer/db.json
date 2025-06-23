@@ -1,0 +1,347 @@
+{
+  "repartidores": [
+    {
+      "id": "1",
+      "nombre": "Nacex",
+      "fecha": "2025-06-15T09:08:57.733Z"
+    },
+    {
+      "id": "2",
+      "nombre": "Gls",
+      "fecha": "2025-06-15T09:09:08.077Z"
+    },
+    {
+      "id": "1",
+      "nombre": "Nacex",
+      "fecha": "Fecha: 15/6/2025 | Hora: 15 de junio de 2025, 11:16:32"
+    },
+    {
+      "id": "3",
+      "nombre": "Mrw",
+      "fecha": "15 de junio de 2025, 11:16:55"
+    },
+    {
+      "id": "9",
+      "nombre": "Correos",
+      "fecha": "15 de junio de 2025, 11:17:17"
+    },
+    {
+      "id": "10",
+      "nombre": "Correos Express",
+      "fecha": "15 de junio de 2025, 11:17:22"
+    },
+    {
+      "id": "1",
+      "nombre": "Nacex",
+      "fecha": "15 de junio de 2025, 19:28:02"
+    },
+    {
+      "id": "1",
+      "nombre": "Nacex",
+      "fecha": "15 de junio de 2025, 19:49:09"
+    },
+    {
+      "id": "2",
+      "nombre": "Gls",
+      "fecha": "15 de junio de 2025, 19:49:12"
+    },
+    {
+      "id": "3",
+      "nombre": "Mrw",
+      "fecha": "15 de junio de 2025, 19:49:13"
+    },
+    {
+      "id": "4",
+      "nombre": "Ups",
+      "fecha": "15 de junio de 2025, 19:49:14"
+    },
+    {
+      "id": "1",
+      "nombre": "Nacex",
+      "fecha": "15 de junio de 2025, 19:52:52"
+    },
+    {
+      "id": "2",
+      "nombre": "Gls",
+      "fecha": "15 de junio de 2025, 19:55:15"
+    },
+    {
+      "id": "3",
+      "nombre": "Mrw",
+      "fecha": "15 de junio de 2025, 19:55:19"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 19:55:47"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 19:55:57"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 19:56:10"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 19:57:21"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 19:57:31"
+    },
+    {
+      "id": "4",
+      "nombre": "Ups",
+      "fecha": "15 de junio de 2025, 20:31:48"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 20:47:55"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 20:48:22"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 20:48:56"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 20:49:30"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 20:54:28"
+    },
+    {
+      "id": "10",
+      "nombre": "Correos Express",
+      "fecha": "15 de junio de 2025, 20:55:45"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 20:56:39"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 20:57:38"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:00:31"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 21:00:43"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:03:28"
+    },
+    {
+      "id": "5",
+      "nombre": "Seur",
+      "fecha": "15 de junio de 2025, 21:03:34"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:03:59"
+    },
+    {
+      "id": "8",
+      "nombre": "Ctt Express",
+      "fecha": "15 de junio de 2025, 21:04:03"
+    },
+    {
+      "id": "5",
+      "nombre": "Seur",
+      "fecha": "15 de junio de 2025, 21:06:25"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:07:26"
+    },
+    {
+      "id": "7",
+      "nombre": "Envialia",
+      "fecha": "15 de junio de 2025, 21:07:33"
+    },
+    {
+      "id": "8",
+      "nombre": "Ctt Express",
+      "fecha": "15 de junio de 2025, 21:07:42"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:07:51"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "15 de junio de 2025, 21:08:29"
+    },
+    {
+      "id": "6",
+      "nombre": "Zeleris",
+      "fecha": "16 de junio de 2025, 15:24:56"
+    },
+    {
+      "id": "4",
+      "nombre": "Ups",
+      "fecha": "17 de junio de 2025, 21:21:08"
+    },
+    {
+      "id": 1,
+      "nombre": "Nacex",
+      "fecha": "19 de junio de 2025, 10:01:01"
+    }
+  ],
+  "comerciales": [
+    {
+      "id": "0",
+      "nombre": "Prueba 1",
+      "empresa": "Prueba 1 empresa",
+      "personaImasd": "Prueba 1 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:16:53"
+    },
+    {
+      "id": "1",
+      "nombre": "Prueba 2",
+      "empresa": "Prueba 2 empresa",
+      "personaImasd": "Prueba 2 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:17:08"
+    },
+    {
+      "id": "2",
+      "nombre": "Prueba 3",
+      "empresa": "Prueba 3 empresa",
+      "personaImasd": "Prueba 3 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:17:24"
+    },
+    {
+      "id": "3",
+      "nombre": "Prueba 4",
+      "empresa": "Prueba 4 empresa",
+      "personaImasd": "Prueba 4 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:18:00"
+    },
+    {
+      "id": "4",
+      "nombre": "Airpods pro",
+      "empresa": "ImasdSL",
+      "personaImasd": "Prueba 2 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:21:21"
+    },
+    {
+      "id": "5",
+      "nombre": "Kike",
+      "empresa": "ImasdSl",
+      "personaImasd": "Natxo",
+      "fecha": "17 de junio de 2025, 21:23:58"
+    },
+    {
+      "id": "6",
+      "nombre": "asdfasd",
+      "empresa": "Prueba 2 empresa",
+      "personaImasd": "Jordi",
+      "fecha": "17 de junio de 2025, 21:25:08"
+    },
+    {
+      "id": "7",
+      "nombre": "Prueba 1",
+      "empresa": "Prueba 1 empresa",
+      "personaImasd": "Jordi",
+      "fecha": "17 de junio de 2025, 21:25:47"
+    },
+    {
+      "id": "8",
+      "nombre": "Prueba 5",
+      "empresa": "nextJs",
+      "personaImasd": "Prueba 5 empresa imasd",
+      "fecha": "17 de junio de 2025, 21:26:18"
+    },
+    {
+      "id": "9",
+      "nombre": "Kike",
+      "empresa": "Frios Jordà",
+      "personaImasd": "Sergi",
+      "fecha": "17 de junio de 2025, 21:38:39"
+    },
+    {
+      "id": "10",
+      "nombre": "Kike",
+      "empresa": "Frios Jordà",
+      "personaImasd": "Sergi",
+      "fecha": "17 de junio de 2025, 21:39:58"
+    },
+    {
+      "id": "11",
+      "nombre": "Kike",
+      "empresa": "Frios Jordà",
+      "personaImasd": "Sergi",
+      "fecha": "17 de junio de 2025, 21:39:59"
+    },
+    {
+      "id": "12",
+      "nombre": "Kike",
+      "empresa": "Frios Jordà",
+      "personaImasd": "Sergi",
+      "fecha": "17 de junio de 2025, 21:39:59"
+    },
+    {
+      "id": "13",
+      "nombre": "Kike",
+      "empresa": "Frios Jordà",
+      "personaImasd": "Sergi",
+      "fecha": "17 de junio de 2025, 21:39:59"
+    },
+    {
+      "id": "14",
+      "nombre": "Airpods pro",
+      "empresa": "Prueba 1 empresa",
+      "personaImasd": "Jordi",
+      "fecha": "17 de junio de 2025, 21:46:05"
+    },
+    {
+      "id": "15",
+      "nombre": "ewfasdf",
+      "empresa": "adsfasd",
+      "personaImasd": "adsfasdf",
+      "fecha": "18 de junio de 2025, 6:57:00"
+    },
+    {
+      "id": "16",
+      "nombre": "ewfasdf",
+      "empresa": "adsfasd",
+      "personaImasd": "adsfasdf",
+      "fecha": "18 de junio de 2025, 6:57:46"
+    },
+    {
+      "id": 17,
+      "nombre": "ewfasdf",
+      "empresa": "adsfasd",
+      "personaImasd": "adsfasdf",
+      "fecha": "19 de junio de 2025, 10:00:23"
+    }
+  ]
+}

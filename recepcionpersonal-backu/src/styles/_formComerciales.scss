@@ -1,0 +1,111 @@
+@import "./variables";
+@import "./forms";
+
+.container-form_comerciales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+form {
+    display: grid;
+    font-size: 1.5rem;
+    width: 60%;
+    max-width: 480px;
+    margin: 0 auto;
+
+    label,
+    input {
+        @include label-input;
+    }
+
+    input {
+        all: unset;
+        border-bottom: 1px solid $prueba_1_text;
+        width: 100%;
+        position: relative;
+        margin: auto;
+        border-radius: 3px;
+        overflow: hidden;
+        background-color: $prueba_1_fondo;
+        outline: none;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        transition: margin 0.4s;           
+        color: $prueba_1_text;
+        
+        &:focus{
+            margin-top: 2rem;
+            
+        }
+
+        &::placeholder{
+            font-weight: lighter;
+            text-align: start;
+            transition: text-align 1s;
+        }
+
+        &:focus::placeholder{
+            text-align: center;
+        }
+    }
+
+    label {
+        margin-top: 1rem;
+        color: $prueba_1_text;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    button {
+        width: auto;
+        height: 3rem;
+        margin: 0.3rem;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        background-color: $prueba_1_buttons;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        color: $prueba_1_text;
+        box-shadow: -1px 2px 21px 14px rgba(207, 210, 205, 0.94);
+        border: none;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    .iconsForm {
+        width: 1.5rem;
+        height: 1.5rem;
+        justify-content: center;
+        padding-right: 0.5rem;
+        fill: $prueba_1_text;
+    }
+
+    .button-registro {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// Estilos para escritorios
+@media (max-width: 1285px) {
+    form {
+        width: 75%;        
+    }
+}
+
+// Estilos para tablets
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+    }
+}

@@ -1,0 +1,51 @@
+@import "./variables";
+
+ul {
+    padding: 0; 
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; 
+}
+
+.img_repartidores {
+    width: 18rem;
+    height: 18rem;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    &.selected { 
+        transform: scale(1.05); 
+        border: 8px solid $prueba_1_text;         
+        box-shadow: 0 0 15px $prueba_1_text;
+        outline: 2px solid $prueba_1_text;
+    }
+
+    /* Tablet */
+    @media (max-width: 1295px) {
+        height: 15rem;
+        width: 15rem;
+        font-size: 1.4rem;
+    }
+
+    /* Mobil */
+    @media (max-width: 480px) {
+        height: 7rem;
+        width: 7rem;
+    }
+}

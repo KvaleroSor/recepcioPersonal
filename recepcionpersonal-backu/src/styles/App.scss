@@ -1,0 +1,66 @@
+@import "./variables";
+@import "./buttons";
+@import "./paqueteria";
+@import "./repartidor";
+@import "./popup";
+@import "./formComerciales";
+@import "./buttonCerrarPopup";
+
+/*
+* Probar el fondo de blau, a petició de Jordi.
+*
+* Ajustar responsive settings per a mv ❌
+*   
+*   1- El formulari no es redueix quan entrem desde mv ❌
+*   2- Les images dels repartidors es superposen quan el mv està vertical ❌
+*   3- Afegir svg´s per als botóns principals ❌
+*/
+
+body {
+    margin: 0;
+    font-family: $main_font;
+    display: grid;
+    min-height: 100vh;
+    background-color: $prueba_1_fondo;
+
+    * {
+        font-weight: 400;
+    }
+
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    #root {
+        width: 95vw;
+        max-width: 1600px;
+        margin: auto;
+    }
+
+    .container-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+
+        @media (max-width: 256px) {
+            flex-direction: column;
+        }
+    }
+
+    .container-logo{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem 0;
+        
+        
+    }
+
+    .logo-imasd {
+        width: 30rem;
+        height: 10rem;
+        max-width: 90%;
+    }
+}
