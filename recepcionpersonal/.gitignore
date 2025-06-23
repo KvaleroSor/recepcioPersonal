@@ -24,3 +24,4 @@ yarn-error.log*
 
 /src/db/firebaseConfig.js
 .vercel
+.DS_Store
