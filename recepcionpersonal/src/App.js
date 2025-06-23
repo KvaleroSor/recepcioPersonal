@@ -1,7 +1,7 @@
 import "./styles/App.scss";
 import ButtonPaqueteria from "./components/ButtonPaqueteria";
 import ButtonComerciales from "./components/ButtonComerciales";
-import Paqueteria from "./components/Paqueteria";
+import Paqueteria from "./components/Paqueteria.js";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
 // import logoImasd from './logo/logoImasd.jpeg';
