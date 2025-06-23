@@ -20,7 +20,7 @@ const imagenesPaqueteria = [
     { id: 19, nombre: 'Sumidin', src: '/assets/sumidin.jpg'},
     { id: 20, nombre: 'Aceros IMS', src: '/assets/aceros IMS.png'},
     { id: 21, nombre: 'Metalco', src: '/assets/metalco.png'},
-    { id: 21, nombre: 'Miguel Beltran', src: '/assets/miguel-beltran.png'},
+    { id: 22, nombre: 'Miguel Beltran', src: '/assets/miguel-beltran.png'},
 
 ];
 

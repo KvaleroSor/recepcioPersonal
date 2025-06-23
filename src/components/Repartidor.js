@@ -1,6 +1,7 @@
 import React from "react";
 import setDataBBDDRepartidores from "../db/setDataBBDDRepartidores";
 import { useNavigate } from "react-router-dom";
+import imagenesPaqueteria from "../obj/imagenesPaqueteria";
 
 const Repartidor = ({ repartidor }) => {
     const navigate = useNavigate();
@@ -8,11 +9,22 @@ const Repartidor = ({ repartidor }) => {
 
     const handleClick = (e) => {
         const imgClicked = e.target;
-        imgClicked.classList.add("selected");
+
+        if (e.target) {
+            imgClicked.classList.add("selected");
+            e.target = null;
+        }
+
+        if (e.target === null) return navigate("/");
+
+        // imagenesPaqueteria.forEach((repartidor) => {
+        //     if(repartidor.id === imgClicked.id && contador === 0){
+        //     }
+        // })
 
         setTimeout(() => {
             imgClicked.classList.remove("selected");
-            navigate("/")
+            navigate("/");
         }, 3000);
 
         setDataBBDDRepartidores({ nombre });
@@ -22,7 +34,13 @@ const Repartidor = ({ repartidor }) => {
         <>
             <ul>
                 <li>
-                    <img id={id} src={src} className="img_repartidores" alt={nombre} onClick={handleClick} />
+                    <img
+                        id={id}
+                        src={src}
+                        className="img_repartidores"
+                        alt={nombre}
+                        onClick={handleClick}
+                    />
                     {/* { isOpenPopup && <Popup repartidor={repartidor} /> }*/}
                 </li>
             </ul>
