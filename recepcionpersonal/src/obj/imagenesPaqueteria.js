@@ -13,12 +13,14 @@ const imagenesPaqueteria = [
     { id: 12, nombre: 'Celeritas', src: '/assets/celeritas.jpg'},
     { id: 13, nombre: 'Paco Sanchis', src: '/assets/paco-sanchis.jpg'},
     { id: 14, nombre: 'El Clariano', src: '/assets/el clariano.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
-    // { id: 11, nombre: 'Fedex', src: '/assets/fedex.jpg'},
+    { id: 15, nombre: 'Dhl', src: '/assets/dhl.png'},
+    { id: 16, nombre: 'Redur', src: '/assets/redur.png'},
+    { id: 17, nombre: 'Valektra', src: '/assets/valektra.jpg'},
+    { id: 18, nombre: 'Amazon', src: '/assets/amazon.png'},
+    { id: 19, nombre: 'Sumidin', src: '/assets/sumidin.jpg'},
+    { id: 20, nombre: 'Aceros IMS', src: '/assets/aceros IMS.png'},
+    { id: 21, nombre: 'Metalco', src: '/assets/metalco.png'},
+    { id: 21, nombre: 'Miguel Beltran', src: '/assets/miguel-beltran.png'},
 
 ];
 
