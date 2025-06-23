@@ -1,7 +1,7 @@
 import React from "react";
 import setDataBBDDRepartidores from "../db/setDataBBDDRepartidores";
 import { useNavigate } from "react-router-dom";
-import imagenesPaqueteria from "../obj/imagenesPaqueteria";
+// import imagenesPaqueteria from "../obj/imagenesPaqueteria";
 
 const Repartidor = ({ repartidor }) => {
     const navigate = useNavigate();
