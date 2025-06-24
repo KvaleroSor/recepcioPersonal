@@ -1,3 +1,7 @@
+/**
+ * Llevar els apellidos dels noms que no es repetixquen! ❌
+ */
+
 const personalImasd = [
     { id: 1, nombre: "Sergi Belda", telefono: 2001 },
     { id: 2, nombre: "Jose Perona", telefono: 2002 },
@@ -19,10 +23,11 @@ const personalImasd = [
     { id: 18, nombre: "Juanmi Frasquet", telefono: 2018 },
     { id: 19, nombre: "Javi Oltra", telefono: 2019 },
     { id: 20, nombre: "Andrés Revert", telefono: 2020 },
-    { id: 21, nombre: "Jordi Garcia", telefono: 2021 },
+    { id: 21, nombre: "Cristian Soler", telefono: 2021 },
     { id: 22, nombre: "Jordi Armengol", telefono: 2022 },
     { id: 23, nombre: "Javi Navarro", telefono: 2023 },
     { id: 24, nombre: "Polonia Fijo", telefono: 3001 },
 ];
+
 
 export default personalImasd;

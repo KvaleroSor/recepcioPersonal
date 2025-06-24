@@ -10,12 +10,12 @@ const Repartidor = ({ repartidor }) => {
     const handleClick = (e) => {
         const imgClicked = e.target;
 
-        if (e.target) {
-            imgClicked.classList.add("selected");
-            e.target = null;
-        }
+        imgClicked.classList.add("selected");
+        // if (e.target) {
+        //     e.target = null;
+        // }
 
-        if (e.target === null) return navigate("/");
+        // if (e.target === null) return navigate("/");
 
         // imagenesPaqueteria.forEach((repartidor) => {
         //     if(repartidor.id === imgClicked.id && contador === 0){
