@@ -1,34 +1,13 @@
 import React from "react";
-import setDataBBDDRepartidores from "../db/setDataBBDDRepartidores";
-import { useNavigate } from "react-router-dom";
-// import imagenesPaqueteria from "../obj/imagenesPaqueteria";
 
-const Repartidor = ({ repartidor }) => {
-    const navigate = useNavigate();
+const Repartidor = ({ repartidor, handleRepartidorClick, isSelectedRepartidorId }) => {
     const { id, nombre, src } = repartidor;
 
-    const handleClick = (e) => {
-        const imgClicked = e.target;
-
-        if (e.target) {
-            imgClicked.classList.add("selected");
-            e.target = null;
-        }
-
-        if (e.target === null) return navigate("/");
-
-        // imagenesPaqueteria.forEach((repartidor) => {
-        //     if(repartidor.id === imgClicked.id && contador === 0){
-        //     }
-        // })
-
-        setTimeout(() => {
-            imgClicked.classList.remove("selected");
-            navigate("/");
-        }, 3000);
-
-        setDataBBDDRepartidores({ nombre });
+    const handleClick = () => {
+        handleRepartidorClick(repartidor);
     };
+
+    const classRepartidor = `img_repartidores ${isSelectedRepartidorId ? "selected" : ""}`;
 
     return (
         <>
@@ -37,7 +16,7 @@ const Repartidor = ({ repartidor }) => {
                     <img
                         id={id}
                         src={src}
-                        className="img_repartidores"
+                        className={classRepartidor}
                         alt={nombre}
                         onClick={handleClick}
                     />
