@@ -8,6 +8,28 @@ const Repartidor = ({ repartidor, handleRepartidorClick, isSelectedRepartidorId 
     };
 
     const classRepartidor = `img_repartidores ${isSelectedRepartidorId ? "selected" : ""}`;
+    const handleClick = (e) => {
+        const imgClicked = e.target;
+
+        imgClicked.classList.add("selected");
+        // if (e.target) {
+        //     e.target = null;
+        // }
+
+        // if (e.target === null) return navigate("/");
+
+        // imagenesPaqueteria.forEach((repartidor) => {
+        //     if(repartidor.id === imgClicked.id && contador === 0){
+        //     }
+        // })
+
+        setTimeout(() => {
+            imgClicked.classList.remove("selected");
+            navigate("/");
+        }, 3000);
+
+        setDataBBDDRepartidores({ nombre });
+    };
 
     return (
         <>

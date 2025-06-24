@@ -97,6 +97,7 @@ const Comerciales = () => {
                     id="nombre"
                     name="nombre"
                     type="text"
+                    autoComplete="off"
                     placeholder="Tu nombre"
                     value={values.nombre}
                     onChange={handleChange}
@@ -110,6 +111,7 @@ const Comerciales = () => {
                     id="empresa"
                     name="empresa"
                     type="text"
+                    autoComplete="off"
                     placeholder="Nombre de la empresa"
                     value={values.empresa}
                     onChange={handleChange}
@@ -123,6 +125,7 @@ const Comerciales = () => {
                     id="personaImasd"
                     name="personaImasd"
                     type="text"
+                    autoComplete="off"
                     placeholder="Nombre y apellido"
                     value={values.personaImasd}
                     onChange={handleChange}
