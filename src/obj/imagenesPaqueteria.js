@@ -21,6 +21,7 @@ const imagenesPaqueteria = [
     { id: 20, nombre: 'Aceros IMS', src: '/assets/aceros IMS.png'},
     { id: 21, nombre: 'Metalco', src: '/assets/metalco.png'},
     { id: 22, nombre: 'Miguel Beltran', src: '/assets/miguel-beltran.png'},
+    { id: 23, nombre: 'Sercomac', src: '/assets/sercomac.jpg'},
 
 ];
 
