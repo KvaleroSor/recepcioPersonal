@@ -1,10 +1,10 @@
 import React from "react";
 
-const Repartidor = ({ repartidor, handleRepartidorClick, isSelectedRepartidorId }) => {
+const Repartidor = ({ repartidor, handleSelectedClick, isSelectedRepartidorId }) => {
     const { id, nombre, src } = repartidor;
 
     const handleClick = () => {
-        handleRepartidorClick(repartidor);
+        handleSelectedClick(repartidor);
     };
 
     const classRepartidor = `img_repartidores ${isSelectedRepartidorId ? "selected" : ""}`;

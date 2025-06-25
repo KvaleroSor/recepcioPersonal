@@ -18,9 +18,6 @@ function App() {
     const Home = () => {
         return (
             <>
-                {/* <div className="container-logo">
-                    <img src={logoImasd} className="logo-imasd" />
-                </div> */}
                 <div className="container-box">
                     <ButtonPaqueteria />
                     <ButtonComerciales />
@@ -34,7 +31,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/paqueteria" element={<Paqueteria />} />
-                <Route path="/personalImasd" element={<Comerciales />} />
+                <Route path="/personalImasd" element={<Comerciales />} />                
             </Routes>
         </div>
     );

@@ -59,7 +59,7 @@ const Comerciales = () => {
 
             const dataParaPopup = {
                 ...values,
-                personaImasdData: personaImasdEncontrada,
+                personaImasdData: personaImasdEncontrada,            
             };
 
             await setDataBBDDComercial(values);
