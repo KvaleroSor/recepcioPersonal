@@ -20,7 +20,7 @@ const Paqueteria = () => {
         setTimeout(() => {
             setSelectedRepartidorId(null);
             navigate("/");
-        }, 3000);
+        }, 1000);
     };
 
     return (
