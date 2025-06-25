@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import imagenesPaqueteria from "../obj/imagenesPaqueteria";
 import Repartidor from "./Repartidor";
 import setDataBBDDRepartidores from "../db/setDataBBDDRepartidores";
-import { useNavigate } from "react-router-dom";
 import ButtonTipoUsoEmpresa from "./ButtonTipoUsoEmpresa";
 import ButtonTipoUsoPersonal from "./ButtonTipoUsoPersonal";
 
