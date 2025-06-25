@@ -53,9 +53,9 @@ const Paqueteria = () => {
     return (
         <>
             <div className="container-paqueteria">
-                <div className="container-box_repartidor">
-                    {!isSetTimeOutFinished ? (
-                        imagenesPaqueteria.map((repartidor) => (
+                {!isSetTimeOutFinished ? (
+                    <div className="container-box_repartidor">
+                        {imagenesPaqueteria.map((repartidor) => (
                             <Repartidor
                                 key={repartidor.id}
                                 repartidor={repartidor}
@@ -64,18 +64,14 @@ const Paqueteria = () => {
                                     isSelectedRepartidorId === repartidor.id
                                 }
                             />
-                        ))
-                    ) : (
-                        <>
-                            <div className="container-box">
-                                <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
-                                <ButtonTipoUsoPersonal
-                                    setPersonal={setPersonal}
-                                />
-                            </div>
-                        </>
-                    )}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="container-box">
+                        <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
+                        <ButtonTipoUsoPersonal setPersonal={setPersonal} />
+                    </div>
+                )}
             </div>
         </>
     );
