@@ -12,7 +12,7 @@ const ButtonTipoUsoEmpresa = ({ setEmpresa }) => {
 
         setTimeout(() => {
             navigate("/");
-        }, 1000);
+        }, 500);
     };
 
     return (

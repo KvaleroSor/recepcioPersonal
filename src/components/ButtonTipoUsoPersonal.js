@@ -11,7 +11,7 @@ const ButtonTipoUsoPersonal = ({setPersonal}) => {
         setPersonal(true);
         setTimeout(() => {
             navigate("/");
-        }, 1000);
+        }, 500);
     };
 
     return (
