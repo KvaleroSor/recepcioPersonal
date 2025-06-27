@@ -8,7 +8,9 @@ const ButtonComerciales = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/personalImasd");
+        setTimeout(() => {
+            navigate("/personalImasd");            
+        }, 500);
     };
 
     return (

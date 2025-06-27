@@ -8,7 +8,9 @@ const ButtonPaqueteria = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/paqueteria");
+        setTimeout(() => {
+            navigate("/paqueteria");
+        }, 500);
     };
 
     return (
@@ -16,8 +18,6 @@ const ButtonPaqueteria = () => {
             <div className="container-elements_buttons">
                 <p>REPARTIDORES</p>
                 <div className="container-elements_img">
-                    {/* <img src={iconCamion} className="iconsForm iconsForm_buttons" />                    
-                    <img src={iconRepartidor} className="iconsForm iconsForm_buttons" /> */}
                     <IconCamion className="iconsForm iconsForm_buttons" />
                     <IconRepartidor className="iconsForm iconsForm_buttons" />
                 </div>
