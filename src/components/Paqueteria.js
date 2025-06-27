@@ -50,6 +50,11 @@ const Paqueteria = () => {
         }, 1000);
     };
 
+    /**
+     * Modificar el fondo de pantalla o el fondo dels botons de color per a que 
+     * parega diferent a la pantalla d´inici ❌
+     */
+
     return (
         <>
             <div className="container-paqueteria">
