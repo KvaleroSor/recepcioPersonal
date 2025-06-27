@@ -1,0 +1,101 @@
+@import "./variables";
+
+.doorbird-view {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    padding: 2rem;
+    font-family: sans-serif;
+    background-color: $prueba_1_fondo;
+    height: 100vh;
+    margin-top: 12rem;
+}
+
+.view-title {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.doorbird-video-container {
+    width: 100%;
+    max-width: 640px;
+    height: 40vh;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    background-color: #000;
+
+    .doorbird-video-feed {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .video-placeholder {
+        padding: 4rem 2rem;
+        text-align: center;
+        color: #999;
+    }
+}
+
+.doorbird-controls {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.control-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.doorbell-button {
+    background-color: #e0e0e0;
+    color: #555;
+    
+    // ¡La magia está aquí!
+    &.is-ringing {
+        animation: blink-animation 1s infinite;
+    }
+}
+
+// .open-door-button {
+//     background-color: #28a745;
+//     color: white;
+// }
+
+.light-button {
+    background-color: #ffc107;
+    color: #333;
+}
+
+
+// Animación de parpadeo
+@keyframes blink-animation {
+    0% { background-color: #ffc107; box-shadow: 0 0 15px #ffc107, inset 0 0 5px #fff; }
+    50% { background-color: #e0e0e0; box-shadow: none; }
+    100% { background-color: #ffc107; box-shadow: 0 0 15px #ffc107, inset 0 0 5px #fff; }
+}
+
+.error-message {
+    color: red;
+    margin-top: 1rem;
+}

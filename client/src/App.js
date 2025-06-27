@@ -4,6 +4,8 @@ import ButtonComerciales from "./components/ButtonComerciales";
 import Paqueteria from "./components/Paqueteria";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
+import DoorBirdView from "./features/doorbird/components/DoorBirdView";
+import VideoFeed from "./features/doorbird/components/VideoFeed";
 // import logoImasd from './logo/logoImasd.jpeg';
 
 function App() {
@@ -19,8 +21,14 @@ function App() {
         return (
             <>
                 <div className="container-box">
-                    <ButtonPaqueteria />
-                    <ButtonComerciales />
+                    <div className="container-box_video-feed">
+                        <VideoFeed />
+                    </div>
+                    <div className="container-box_buttons-main">
+                        <DoorBirdView />
+                        <ButtonPaqueteria />
+                        <ButtonComerciales />
+                    </div>
                 </div>
             </>
         );
@@ -31,7 +39,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/paqueteria" element={<Paqueteria />} />
-                <Route path="/personalImasd" element={<Comerciales />} />                
+                <Route path="/personalImasd" element={<Comerciales />} />
             </Routes>
         </div>
     );
