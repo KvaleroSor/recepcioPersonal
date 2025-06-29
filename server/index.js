@@ -1,15 +1,43 @@
 /**
- * 1️⃣
+ * =====================================================================================
+ *  Guía para conectar con el doorbird real (en la empresa)
+ * =====================================================================================
  *
- * Cargar variables de entorne 📋
+ * Para que este servidor deje de simular las respuestas y se conecte al DoorBird físico,
+ * sigue estos pasos:
+ *
+ * 1. Abre el archivo `.env` que se encuentra en la raíz de la carpeta `server`.
+ *
+ * 2. Modifica la variable `MODE_ENV`:
+ *    - Cambia `MODE_ENV=development` por `MODE_ENV=production`.
+ *
+ * 3. Asegúrate de que las credenciales del DoorBird son correctas:
+ *    - `IP`: La dirección IP del dispositivo DoorBird en la red de la empresa.
+ *    - `USER`: El nombre de usuario para acceder al DoorBird.
+ *    - `PASSWORD`: La contraseña del usuario.
+ *
+ * 4. Guarda los cambios en el archivo `.env`.
+ *
+ * 5. Reinicia el servidor (detén el proceso actual con `Ctrl+C` y vuelve a ejecutar `node index.js`).
+ *
+ * ¡Y listo! El servidor intentará conectarse al DoorBird real. 🚀
+ * =====================================================================================
  */
+
+/**
+ * 1️⃣
+*
+* Cargar variables de entorno 📋
+*/
 require("dotenv").config();
 
 /**
  * 2️⃣
- *
- * Importamos las dependencias ↕️
- */
+*
+* Importamos las dependencias ↕️
+*/
+const http = require('http');
+const { WebSocketServer } = require('ws');
 const express = require("express");
 const cors = require("cors");
 const DoorBird = require("doorbird");
@@ -35,7 +63,6 @@ app.use(express.json());
  *
  * Conexión con DoorBird 🐣
  */
-
 let doorbird;
 
 if (IS_MOCK_MODE) {
@@ -61,7 +88,6 @@ if (IS_MOCK_MODE) {
  *
  * Definir las rutas de la API 📚
  */
-
 app.get("/", (req, res) => {
     res.send("¡El servidor del DoorBird está vivo!");
 });
@@ -88,7 +114,6 @@ app.post("/api/open-door", async (req, res) => {
  *
  * Definir ruta para la luz 🔦
  */
-
 app.post("/api/light-on", async (req, res) => {
     try {
         await doorbird.turnLightOn();
