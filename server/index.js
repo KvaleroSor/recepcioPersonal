@@ -30,6 +30,9 @@
 * Cargar variables de entorno 📋
 */
 require("dotenv").config();
+console.log('--- DEBUGGING DOORBIRD MODULE ---');
+console.log(require('doorbird'));
+console.log('---------------------------------');
 
 /**
  * 2️⃣
@@ -40,7 +43,7 @@ const http = require('http');
 const { WebSocketServer } = require('ws');
 const express = require("express");
 const cors = require("cors");
-const DoorBird = require("doorbird");
+const { default: DoorBird, Scheme } = require("doorbird");
 
 /**
  * 3️⃣
@@ -65,30 +68,30 @@ app.use(express.json());
  */
 let doorbird;
 
-doorbird = new DoorBird({
-    scheme: DoorBird.Scheme.http, // or https
-    ip: process.env.IP,
-    username: process.env.USER,
-    password: process.env.PASSWORD,
-});
+// doorbird = new DoorBird({
+//     scheme: Scheme.http, // or https
+//     ip: process.env.IP,
+//     username: process.env.USER,
+//     password: process.env.PASSWORD,
+// });
 
-// if (IS_MOCK_MODE) {
-//     console.log("*** MODO SIMULACIÓN ACTIVADO ***");
-//     console.log("*** No se intentará conectar al DoorBird real. ***");
-//     // Objeto simulado que imita las respuestas del DoorBird
-//     doorbird = {
-//         getInfo: () => Promise.resolve({ FIRMWARE: "mock-firmware-v1.0" }),
-//         openDoor: () => Promise.resolve({ success: true }),
-//         turnLightOn: () => Promise.resolve({ success: true }),
-//     };
-// } else {
-//     doorbird = new DoorBird({
-//         scheme: DoorBird.Scheme.http, // or https
-//         ip: process.env.IP,
-//         username: process.env.USER,
-//         password: process.env.PASSWORD,
-//     });
-// }
+if (IS_MOCK_MODE) {
+    console.log("*** MODO SIMULACIÓN ACTIVADO ***");
+    console.log("*** No se intentará conectar al DoorBird real. ***");
+    // Objeto simulado que imita las respuestas del DoorBird
+    doorbird = {
+        getInfo: () => Promise.resolve({ FIRMWARE: "mock-firmware-v1.0" }),
+        openDoor: () => Promise.resolve({ success: true }),
+        turnLightOn: () => Promise.resolve({ success: true }),
+    };
+} else {
+    doorbird = new DoorBird({
+        scheme: DoorBird.Scheme.http, // or https
+        ip: process.env.IP,
+        username: process.env.USER,
+        password: process.env.PASSWORD,
+    });
+}
 
 /**
  * 5️⃣
