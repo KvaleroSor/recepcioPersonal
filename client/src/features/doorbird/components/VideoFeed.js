@@ -1,31 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
+import "./../../../styles/App.scss";
 
 const VideoFeed = () => {
-    // const { liveImageURL, error } = useDoorBird();
-    const { error } = useDoorBird();
-    const url = "http://192.168.0.166/bha-api/view.html";
+    const { liveImageURL, error: hookError } = useDoorBird();
+    const [imageLoadError, setImageLoadError] = useState(false);
+
+    // Mostramos el placeholder si no hay URL o si la imagen falló al cargar.
+    const showPlaceholder = !liveImageURL || imageLoadError;
 
     return (
-        <div className="doorbird-viedo-container">
-            {/* {liveImageURL ? (
+        <div className="doorbird-video-container">
+            {showPlaceholder ? (
+                <div className="video-placeholder">
+                    <p>
+                        {imageLoadError
+                            ? "No se puede conectar con el vídeo."
+                            : "Configurando la conexión... Hola RAFA!"}
+                    </p>
+                </div>
+            ) : (
                 <img
                     src={liveImageURL}
                     alt="Live feed from DoorBird"
                     className="doorbird-video-feed"
+                    onError={() => setImageLoadError(true)} 
                 />
-            ) : (
-                <div className="video-placeholder">
-                    <p>Configurando la conexión de vídeo...</p>
-                    <p>Cargando el video...</p>
-                </div>
-            )} */}
-            <img
-                    src={url}
-                    alt="Live feed from DoorBird"
-                    className="doorbird-video-feed"
-                />
-            {error && <p className="error-message">Error: {error}</p>}
+            )}
+            {hookError && <p className="error-message">{hookError}</p>}
         </div>
     );
 };
