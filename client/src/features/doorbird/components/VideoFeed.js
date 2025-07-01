@@ -3,10 +3,11 @@ import { useDoorBird } from "../hooks/useDoorBird";
 
 const VideoFeed = () => {
     const { liveImageURL, error } = useDoorBird();
+    const url = "http://192.168.0.166/bha-api/view.html";
 
     return (
         <div className="doorbird-viedo-container">
-            {liveImageURL ? (
+            {/* {liveImageURL ? (
                 <img
                     src={liveImageURL}
                     alt="Live feed from DoorBird"
@@ -17,7 +18,12 @@ const VideoFeed = () => {
                     <p>Configurando la conexión de vídeo...</p>
                     <p>Cargando el video...</p>
                 </div>
-            )}
+            )} */}
+            <img
+                    src={url}
+                    alt="Live feed from DoorBird"
+                    className="doorbird-video-feed"
+                />
             {error && <p className="error-message">Error: {error}</p>}
         </div>
     );

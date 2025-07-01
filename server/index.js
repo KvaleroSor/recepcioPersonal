@@ -75,6 +75,13 @@ doorbird = new DoorBird({
     password: process.env.PASSWORD,
 });
 
+// doorbird = new DoorBird({
+//     scheme: Scheme.http, // or https
+//     ip: "198.168.0.166",
+//     username: "ghbhya0001",
+//     password: "eQYhubRH7K"
+// });
+
 // if (IS_MOCK_MODE) {
 //     console.log("*** MODO SIMULACIÓN ACTIVADO ***");
 //     console.log("*** No se intentará conectar al DoorBird real. ***");
@@ -206,7 +213,7 @@ server.listen(PORT, () => {
         })
         .catch((err) => {
             console.error(
-                "Error al conectar con DoorBird. Revisa las credenciales y la IP en el archivo .env"
+                "Error al conectar con DoorBird. Revisa las credenciales y la IP en el archivo .env " + err 
             );
         });
 });
