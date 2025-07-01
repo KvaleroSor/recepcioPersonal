@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
-import { useDoorBellSocket as useDoorBellSocket } from "../hooks/useDoorBellSocket";
+import { useDoorBellSocket } from "../hooks/useDoorBellSocket";
 import { ReactComponent as IconCampana } from "./../../../icons/iconCampana.svg";
 import { ReactComponent as IconPuerta } from "./../../../icons/iconPuerta.svg";
 import "./../../../styles/App.scss"; 
