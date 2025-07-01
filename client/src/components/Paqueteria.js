@@ -72,7 +72,7 @@ const Paqueteria = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="container-box">
+                    <div className="container-paqueteria">
                         <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
                         <ButtonTipoUsoPersonal setPersonal={setPersonal} />
                     </div>

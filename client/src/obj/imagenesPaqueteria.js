@@ -24,7 +24,6 @@ const imagenesPaqueteria = [
     { id: 23, nombre: 'Sercomac', src: '/assets/sercomac.jpg'},
     { id: 24, nombre: 'Schenker', src: '/assets/schenker.webp'},
     { id: 25, nombre: 'EcoScooting', src: '/assets/ecoScooting.webp'}
-
 ];
 
 export default imagenesPaqueteria;

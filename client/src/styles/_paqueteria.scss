@@ -3,7 +3,8 @@
 .container-paqueteria{
     display: flex;
     justify-content: center;
-    align-items: flex-start;    
+    align-items: center;  
+    flex-direction: row;  
     min-height: 80vh;
     width: 100%;
     margin-top: 4rem;    
