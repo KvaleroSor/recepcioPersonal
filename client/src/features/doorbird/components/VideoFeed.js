@@ -1,8 +1,8 @@
 import React from "react";
-import { useDoorBird } from "../hooks/useDoorBird";
+// import { useDoorBird } from "../hooks/useDoorBird";
 
 const VideoFeed = () => {
-    const { liveImageURL, error } = useDoorBird();
+    // const { liveImageURL, error } = useDoorBird();
     const url = "http://192.168.0.166/bha-api/view.html";
 
     return (

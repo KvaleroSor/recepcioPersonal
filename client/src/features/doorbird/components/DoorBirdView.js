@@ -7,7 +7,9 @@ import "./../../../styles/App.scss";
 
 const DoorBirdView = () => {
     // 1. Hook para las ACCIONES (abrir, luz, vídeo)
-    const { isLoading, error, liveImageUrl, openDoor, turnLightOn } =
+    // const { isLoading, error, liveImageUrl, openDoor, turnLightOn } =
+    //     useDoorBird();
+    const { isLoading, openDoor } =
         useDoorBird();
 
     // 2. Hook para las REACCIONES (escuchar el timbre)
