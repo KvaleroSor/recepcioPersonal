@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
 import "./../../../styles/App.scss";
-import { getLiveImageURL } from '../services/doorBirdApi';
+// import { getLiveImageURL } from '../services/doorBirdApi';
 
 const VideoFeed = () => {
     // const { liveImageURL, error: hookError } = useDoorBird();
