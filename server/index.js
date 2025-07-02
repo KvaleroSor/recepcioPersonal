@@ -176,7 +176,6 @@ wss.on("connection", (ws) => {
  *
  * Escuchar eventos del DoorBird (Timbre)
  */
-
 if (IS_MOCK_MODE) {
     // En modo simulación, enviamos un evento de timbre cada 20 segundos
     console.log("Modo simulación: Se enviará un evento de timbre cada 20 segundos.");
@@ -203,7 +202,7 @@ if (IS_MOCK_MODE) {
         const eventName = msg.toString('utf8');
         console.log(`Evento UDP recibido: ${eventName}`);
 
-        // El evento real contiene el nombre de usuario. ¡Usémoslo para detectar!
+        // El evento real contiene el nombre de usuario.
         const doorbirdUser = process.env.DOORBIRD_USER;
         if (eventName.includes(doorbirdUser)) {
             console.log('¡Timbre detectado! Notificando a los clientes...');

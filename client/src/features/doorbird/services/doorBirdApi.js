@@ -1,11 +1,8 @@
-// const IP = process.env.REACT_APP_DOORBIRD_IP;
-// const USER = process.env.REACT_APP_DOORBIRD_USER;
-// const PASSWORD = process.env.REACT_APP_DOORBIRD_PASSWORD;
-const API_SERVER_URL = `http://localhost:3001/api`;
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_SERVER_URL = `${API_BASE_URL}/api`;
 
 /**
  * ============================ FUNCIONES DE LA API ================================
- *
  *
  * Devuelve la URL para obtener la imagen en vivo del DoorBird 📹🚀
  *
@@ -16,7 +13,7 @@ const API_SERVER_URL = `http://localhost:3001/api`;
 export const getLiveImageURL = () => {
     // ✅ SOLUCIÓN DEFINITIVA: Apuntamos a nuestro propio servidor, que actúa como proxy.
     // Esto soluciona el error 401 y es mucho más seguro.
-    return 'http://localhost:3001/api/video';
+    return `${API_BASE_URL}/api/video`;
 };
 
 /**
