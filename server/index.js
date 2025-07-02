@@ -40,7 +40,7 @@ console.log('---------------------------------');
 * Importamos las dependencias ↕️
 */
 const http = require('http');
-const { WebSocketServer } = require('ws');
+const { WebSocketServer, CLOSING } = require('ws');
 const express = require("express");
 const cors = require("cors");
 const { default: DoorBird, Scheme } = require("doorbird");
@@ -105,9 +105,10 @@ doorbird = new DoorBird({
  *
  * Definir las rutas de la API 📚
  */
-// app.get(`${doorbird.ip}/bha-api/view.html`, (req, res) => {
-app.get("/", (req, res) => {
+app.get(`${doorbird.ip}/bha-api/view.html`, (req, res) => {
+// app.get("/", (req, res) => {
     res.send("¡El servidor del DoorBird está vivo!");
+    console.log(req);
 });
 
 app.post("/api/open-door", async (req, res) => {
