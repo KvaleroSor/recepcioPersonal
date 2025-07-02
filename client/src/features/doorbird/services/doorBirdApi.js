@@ -1,6 +1,6 @@
-const IP = process.env.REACT_APP_DOORBIRD_IP;
-const USER = process.env.REACT_APP_DOORBIRD_USER;
-const PASSWORD = process.env.REACT_APP_DOORBIRD_PASSWORD;
+// const IP = process.env.REACT_APP_DOORBIRD_IP;
+// const USER = process.env.REACT_APP_DOORBIRD_USER;
+// const PASSWORD = process.env.REACT_APP_DOORBIRD_PASSWORD;
 const API_SERVER_URL = `http://localhost:3001/api`;
 
 /**
@@ -14,17 +14,9 @@ const API_SERVER_URL = `http://localhost:3001/api`;
  */
 
 export const getLiveImageURL = () => {
-    if (!IP || !USER || !PASSWORD) {
-        console.log(
-            `Problemas con las variables de entorno definidas en el cliente ❌`
-        );
-        return null;
-    }
-
-    const API_BASE_URL = `http://${IP}/bha-api`;
-    return `${API_BASE_URL}/video.cgi?user=${encodeURIComponent(
-        USER
-    )}&password=${encodeURIComponent(PASSWORD)}`;
+    // ✅ SOLUCIÓN DEFINITIVA: Apuntamos a nuestro propio servidor, que actúa como proxy.
+    // Esto soluciona el error 401 y es mucho más seguro.
+    return 'http://localhost:3001/api/video';
 };
 
 /**

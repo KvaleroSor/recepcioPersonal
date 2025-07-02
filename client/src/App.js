@@ -8,32 +8,38 @@ import DoorBirdView from "./features/doorbird/components/DoorBirdView";
 import VideoFeed from "./features/doorbird/components/VideoFeed";
 // import logoImasd from './logo/logoImasd.jpeg';
 
+console.log("[DEBUG] App.js: Fichero cargado.");
+
+// --- COMPONENTE HOME ---
+// Se mueve aquí fuera para seguir las buenas prácticas de React y evitar problemas de renderizado.
+const Home = () => {
+    console.log("[DEBUG] App.js: Renderizando componente <Home />");
+    return (
+        <>
+            <div className="container-box">
+                <div className="container-box_video-feed">
+                    <VideoFeed />
+                </div>
+                <div className="container-box_buttons-main">
+                    <DoorBirdView />
+                    <ButtonPaqueteria />
+                    <ButtonComerciales />
+                </div>
+            </div>
+        </>
+    );
+};
+
 function App() {
+    console.log("[DEBUG] App.js: Renderizando componente <App />");
     /**
      * Modificacions
      *
-     * 1- Afegir sistema de backend firebase ✅
-     * 1- Modificar les consultes ✅
+     * 1- Afegir sistema de backend firebase 
+     * 1- Modificar les consultes 
      *
      * @returns
      */
-    const Home = () => {
-        return (
-            <>
-                <div className="container-box">
-                    <div className="container-box_video-feed">
-                        <VideoFeed />
-                    </div>
-                    <div className="container-box_buttons-main">
-                        <DoorBirdView />
-                        <ButtonPaqueteria />
-                        <ButtonComerciales />
-                    </div>
-                </div>
-            </>
-        );
-    };
-
     return (
         <div className="App">
             <Routes>

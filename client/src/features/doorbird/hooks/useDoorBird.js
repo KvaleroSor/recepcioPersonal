@@ -16,6 +16,7 @@ export const useDoorBird = () => {
 
     // Obtenemos la URL del vídeo directamente. No necesita estado.
     const liveImageUrl = getLiveImageURL();
+    console.log(liveImageUrl);
 
     // Una función genérica para manejar cualquier llamada a la API.
     const handleApiCall = useCallback(async (apiFunction) => {
@@ -44,7 +45,7 @@ export const useDoorBird = () => {
     return {
         isLoading,
         error,
-        liveImageUrl,
+        liveImageURL: liveImageUrl,
         openDoor: handleOpenDoor,
         turnLightOn: handleTurnLightOn,
     };
