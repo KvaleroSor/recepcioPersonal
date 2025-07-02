@@ -1,0 +1,133 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="Página-1" id="bNcyQ8J00NkvWiIZzxPH">
+    <mxGraphModel dx="2623" dy="1055" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-47" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="50" width="1150" height="740" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-46" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="80" width="510" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-45" value="" style="rounded=1;&#xa;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="80" width="510" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-1" target="gBNJ0JPVm8y-aPci1ap5-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-1" value="Usuario (tablet)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="270" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-2" value="FrontEnd (Render)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="270" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-3" value="Firebase/Firestore&lt;div&gt;(Google Cloud)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="420" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-4" value="CloudFlare Tunnel&lt;div&gt;(Router Imasd)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1087" y="410" width="103" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-5" value="BackEnd/Proxy&lt;div&gt;(Servidor Imasd)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1087" y="540" width="103" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-6" value="DoorBird" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="670" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-7" value="&lt;div&gt;======================================================&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;FLUJO A | PETICIÓN DE DATOS 📊&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;======================================================&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="120" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-9" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;br&gt;&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="180" width="480" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-13" value="El usuario abre la app y está necesita cargar la lista de repartidores" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="125" y="230" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-14" target="gBNJ0JPVm8y-aPci1ap5-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-14" value="FrontEnd (Render)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="420" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-16" value="El frontend se conecta directamente a Firebase para leer/escribir datos.&amp;nbsp;&lt;div&gt;Esta conexión es segura&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;y gestionada por el SDK de Google.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="380" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-17" value="ANOTACIÓN 📝 | Este flujo nunca toca el servidor de Imasd. Es una comunicación puramente entre servicios en la nube (Render, Google Cloud)&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="510" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-19" value="&lt;div&gt;======================================================&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;FLUJO B | PETICIÓN DE VIDEO 📽️&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;======================================================&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-21" value="FrontEnd (Render)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1087" y="270" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-22" target="gBNJ0JPVm8y-aPci1ap5-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-22" value="Usuario (tablet)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="827" y="270" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-30" value="El usuario quiere ver el video en directo" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="640" y="230" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-31" target="gBNJ0JPVm8y-aPci1ap5-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-31" value="FrontEnd (Render)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="827" y="410" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-33" value="El FrontEnd pide el video a la URL del BackEnd (IP_PUBLICA:PUERTO)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="370" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-34" target="gBNJ0JPVm8y-aPci1ap5-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-34" value="CloudFlare Tunnel&lt;div&gt;(Router Imasd)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="827" y="540" width="103" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-36" value="La petición llega al servidor de la oficina a través del puente." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="690" y="500" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gBNJ0JPVm8y-aPci1ap5-37" target="gBNJ0JPVm8y-aPci1ap5-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-37" value="BackEnd/Proxy&lt;div&gt;(Servidor Imasd)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="825.5" y="670" width="103" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-39" value="El proxy pide el video al DoorBird usando su IP Local" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="630" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-40" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="330" as="sourcePoint" />
+            <mxPoint x="640" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-41" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="480" as="sourcePoint" />
+            <mxPoint x="640" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-42" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="825" y="330" as="sourcePoint" />
+            <mxPoint x="1225" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-43" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="825" y="469" as="sourcePoint" />
+            <mxPoint x="1225" y="469" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gBNJ0JPVm8y-aPci1ap5-44" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="825" y="600" as="sourcePoint" />
+            <mxPoint x="1225" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
