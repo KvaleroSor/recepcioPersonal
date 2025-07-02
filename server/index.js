@@ -1,40 +1,13 @@
-/**
- * =====================================================================================
- *  Guía para conectar con el doorbird real (en la empresa)
- * =====================================================================================
- *
- * Para que este servidor deje de simular las respuestas y se conecte al DoorBird físico,
- * sigue estos pasos:
- *
- * 1. Abre el archivo `.env` que se encuentra en la raíz de la carpeta `server`.
- *
- * 2. Modifica la variable `MODE_ENV`:
- *    - Cambia `MODE_ENV=development` por `MODE_ENV=production`.
- *
- * 3. Asegúrate de que las credenciales del DoorBird son correctas:
- *    - `IP`: La dirección IP del dispositivo DoorBird en la red de la empresa.
- *    - `USER`: El nombre de usuario para acceder al DoorBird.
- *    - `PASSWORD`: La contraseña del usuario.
- *
- * 4. Guarda los cambios en el archivo `.env`.
- *
- * 5. Reinicia el servidor (detén el proceso actual con `Ctrl+C` y vuelve a ejecutar `node index.js`).
- *
- * ¡Y listo! El servidor intentará conectarse al DoorBird real. 🚀
- * =====================================================================================
- */
+// ===================================================================================
+// IMPORTACIONES Y CONFIGURACIÓN INICIAL
+// ===================================================================================
 
 /**
  * 1️⃣
  *
- * Cargar variables de entorno 📋
+ * Cargamos las variables de entorno desde el archivo .env
  */
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, ".env") });
-
-console.log("--- DEBUGGING DOORBIRD MODULE ---");
-console.log(require("doorbird"));
-console.log("---------------------------------");
+require("dotenv").config();
 
 /**
  * 2️⃣
@@ -46,31 +19,28 @@ const { WebSocketServer } = require("ws");
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
-const dgram = require("dgram");
+const dgram = require('dgram'); // Para escuchar eventos UDP
 
 /**
  * 3️⃣
  *
- * Configuración inicial 🎬
+ * Creamos la aplicación Express y configuramos los middlewares
  */
 const app = express();
-const PORT = process.env.PORT;
-const IS_MOCK_MODE = process.env.MODE_ENV !== "production";
-
-/**
- * Middlewares
- */
-
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // Habilitamos CORS para todas las rutas
+app.use(express.json()); // Para parsear bodies de peticiones como JSON
 
 /**
  * 4️⃣
  *
- * Conexión con DoorBird 🐣
+ * Definimos constantes y variables globales
  */
-// Ya no usamos la librería 'doorbird', la comunicación será manual.
+const PORT = process.env.PORT || 3001;
+const IS_MOCK_MODE = process.env.NODE_ENV === "development"; // Modo simulación
 
+// Imprimimos las variables de entorno para depuración
+console.log("MODO DE EJECUCIÓN:", IS_MOCK_MODE ? "Simulación (Development)" : "Producción");
+console.log("=================================");
 console.log("VARIABLES DE ENTORNO");
 console.log("=================================");
 console.log(`IP --> ${process.env.DOORBIRD_IP}`);
@@ -112,7 +82,7 @@ app.post("/api/open-door", async (req, res) => {
     try {
         await axios.get(getApiUrl("open-door.cgi?r=1"), { headers: getAuth() });
         res.json({ success: true, message: "Petición para abrir la puerta enviada." });
-    } catch (error) { 
+    } catch (error) {
         console.error("Error al abrir la puerta:", error.message);
         res.status(500).json({ success: false, message: "Error del servidor al abrir puerta." });
     }
@@ -203,66 +173,53 @@ wss.on("connection", (ws) => {
 
 /**
  * 8️⃣
- * 
- * Inicialización del servidor 🚀
+ *
+ * Escuchar eventos del DoorBird (Timbre)
  */
 
+if (IS_MOCK_MODE) {
+    // En modo simulación, enviamos un evento de timbre cada 20 segundos
+    console.log("Modo simulación: Se enviará un evento de timbre cada 20 segundos.");
+    setInterval(() => {
+        console.log("Simulando evento de timbre...");
+        broadcast({ type: "doorbell" });
+    }, 20000);
+} else {
+    // En modo producción, escuchamos los eventos UDP reales del DoorBird
+    const udpServer = dgram.createSocket('udp4');
+
+    udpServer.on('error', (err) => {
+        console.error(`Error en el servidor UDP:\n${err.stack}`);
+        udpServer.close();
+    });
+
+    udpServer.on('listening', () => {
+        const address = udpServer.address();
+        console.log(`Servidor UDP escuchando en ${address.address}:${address.port} 📡`);
+    });
+
+    udpServer.on('message', (msg) => {
+        // El DoorBird envía el nombre del evento que se ha activado
+        const eventName = msg.toString('utf8');
+        console.log(`Evento UDP recibido: ${eventName}`);
+
+        // El evento real contiene el nombre de usuario. ¡Usémoslo para detectar!
+        const doorbirdUser = process.env.DOORBIRD_USER;
+        if (eventName.includes(doorbirdUser)) {
+            console.log('¡Timbre detectado! Notificando a los clientes...');
+            broadcast({ type: 'doorbell' });
+        }
+    });
+
+    // El DoorBird envía eventos al puerto 6524 por defecto
+    udpServer.bind(6524);
+}
+
+/**
+ * 9️⃣
+ *
+ * Iniciar el servidor
+ */
 server.listen(PORT, () => {
-    console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
-
-    // MODO SIMULACIÓN
-    if (IS_MOCK_MODE) {
-        // MODO SIMULACIÓN: Iniciar el envío de eventos falsos
-        console.log("Activando simulador de timbre cada 15 segundos...");
-        setInterval(() => {
-            broadcast({ type: "doorbell" });
-        }, 15000);
-    } else {
-        // MODO PRODUCCIÓN: Conectar y escuchar eventos reales
-        console.log("Verificando conexión con DoorBird...");
-
-        axios.get(getApiUrl("info.cgi"), { headers: getAuth() })
-            .then(response => {
-                const firmware = response.data?.BHA?.VERSION?.[0]?.FIRMWARE || "desconocido";
-                console.log(`✅ Conexión con DoorBird exitosa (Firmware: ${firmware}).`);
-
-                // Ahora, iniciamos el escuchador de eventos UDP
-                const udpServer = dgram.createSocket('udp4');
-                const DOORBIRD_UDP_PORT = 6524;
-
-                udpServer.on('error', (err) => {
-                    console.error(`Error en el escuchador UDP: ${err.stack}`);
-                    udpServer.close();
-                });
-
-                udpServer.on('message', (msg) => {
-                    // El DoorBird envía el nombre del evento que se ha activado
-                    const eventName = msg.toString('utf8');
-                    console.log(`Evento UDP recibido: ${eventName}`);
-                    
-                    // El evento real contiene el nombre de usuario. ¡Usémoslo para detectar!
-                    const doorbirdUser = process.env.DOORBIRD_USER;
-                    if (eventName.includes(doorbirdUser)) { 
-                        console.log('¡Timbre detectado! Notificando a los clientes...');
-                        broadcast({ type: 'doorbell' });
-                    }
-                });
-
-                udpServer.on('listening', () => {
-                    const address = udpServer.address();
-                    console.log(`✅ Escuchador de eventos UDP listo en el puerto ${address.port}.`);
-                });
-
-                udpServer.bind(DOORBIRD_UDP_PORT);
-
-            })
-            .catch(err => {
-                console.error("❌ FALLO LA CONEXIÓN INICIAL CON DOORBIRD.");
-                if (err.response) {
-                    console.error(`El DoorBird respondió con un error: ${err.response.status} ${err.response.statusText}`);
-                } else {
-                    console.error("No se pudo conectar. Revisa la IP, la red y las credenciales en .env. Error:", err.message);
-                }
-            });
-    }
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
