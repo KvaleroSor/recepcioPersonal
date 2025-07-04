@@ -51,7 +51,7 @@ const Paqueteria = () => {
     };
 
     /**
-     * Modificar el fondo de pantalla o el fondo dels botons de color per a que 
+     * Modificar el fondo de pantalla o el fondo dels botons de color per a que
      * parega diferent a la pantalla d´inici ❌
      */
 
@@ -72,9 +72,20 @@ const Paqueteria = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="container-paqueteria">
-                        <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
-                        <ButtonTipoUsoPersonal setPersonal={setPersonal} />
+                    <div className="container-main_paqueteria">
+                        <div className="container-text_paqueteria">
+                            <div className="container-text_paqueteria--h1">
+                                <h1>¿Para quién es el paquete?</h1>
+                            </div>
+                            <div className="container-text_paqueteria--p">
+                                <p>Para IMASD | PULSAR BOTÓN IMASD!</p>
+                                <p>Para USO PERSONAL | PULSAR BOTÓN PERSONAL!</p>
+                            </div>
+                        </div>
+                        <div className="container-paqueteria">
+                            <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
+                            <ButtonTipoUsoPersonal setPersonal={setPersonal} />
+                        </div>
                     </div>
                 )}
             </div>

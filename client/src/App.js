@@ -17,6 +17,9 @@ const Home = () => {
     return (
         <>
             <div className="container-box">
+            <div className="container-box_buttons--data">
+                    <p>hola</p>
+                </div>
                 <div className="container-box_video-feed">
                     <VideoFeed />
                 </div>
@@ -25,6 +28,7 @@ const Home = () => {
                     <ButtonPaqueteria />
                     <ButtonComerciales />
                 </div>
+                
             </div>
         </>
     );
