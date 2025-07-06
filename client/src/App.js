@@ -23,7 +23,7 @@ const Home = () => {
                     <VideoFeed />
                 </div>
                 <div className="container-box_buttons-main">
-                    {/* <DoorBirdView /> */}
+                    <DoorBirdView />
                     <ButtonPaqueteria />
                     <ButtonComerciales />
                 </div>
