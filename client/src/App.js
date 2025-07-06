@@ -1,11 +1,13 @@
 import "./styles/App.scss";
 import ButtonPaqueteria from "./components/ButtonPaqueteria";
 import ButtonComerciales from "./components/ButtonComerciales";
+import ComercialData from "./features/dataComercial/components/ComerciaData";
 import Paqueteria from "./components/Paqueteria";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
 import DoorBirdView from "./features/doorbird/components/DoorBirdView";
 import VideoFeed from "./features/doorbird/components/VideoFeed";
+import ButtonComercialData from "./features/dataComercial/components/ButtonComercialData";
 // import logoImasd from './logo/logoImasd.jpeg';
 
 // --- COMPONENTE HOME ---
@@ -15,13 +17,13 @@ const Home = () => {
         <>
             <div className="container-box">
                 <div className="container-box_buttons--data">
-                    <p>hola</p>
+                    <ButtonComercialData />
                 </div>
                 <div className="container-box_video-feed">
                     <VideoFeed />
                 </div>
                 <div className="container-box_buttons-main">
-                    <DoorBirdView />
+                    {/* <DoorBirdView /> */}
                     <ButtonPaqueteria />
                     <ButtonComerciales />
                 </div>
@@ -45,6 +47,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/paqueteria" element={<Paqueteria />} />
                 <Route path="/personalImasd" element={<Comerciales />} />
+                <Route path="/dataComerciales" element={<ComercialData />} />
             </Routes>
         </div>
     );

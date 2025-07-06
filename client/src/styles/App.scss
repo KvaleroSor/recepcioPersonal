@@ -6,6 +6,8 @@
 @import "./formComerciales";
 @import "./buttonCerrarPopup";
 @import "./doorBirdView";
+@import "./buttonComercialData";
+@import "./comercialData";
 
 /*
 * Probar el fondo de blau, a petició de Jordi.
@@ -51,14 +53,11 @@ body {
         // }
 
         .container-box_video-feed {
-            width: 70%;
-            height: 30rem;
-            // max-width: 60rem;
-            // max-height: 30rem;
+            width: 55%;
+            height: 30rem;            
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            // margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);            
             margin-top: 2rem;
             background-color: #000;
         }
@@ -78,23 +77,10 @@ body {
             justify-content: center;
         }
 
-        .container-box_buttons--data {
-            width: 100%;
+        .container-box_buttons--data {        
             position: absolute;
             top: 10px;
-            left: 95%;
-
-            @media (max-width: 768px) {
-                position: absolute;
-                top: 40px;
-                left: 95%;
-            }
-
-            @media (max-width: 480px) {
-                position: absolute;
-                top: 3px;
-                left: 95%;
-            }
+            right: 10px;            
         }
 
         .container-logo {
