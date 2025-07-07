@@ -75,6 +75,12 @@ const DealerData = () => {
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
             )}
+            {/* 
+                ANOTACIÓN 📝
+                
+                - Modificar el color de los iconos o cambiarlos 
+                por iconos que se puedan modificar su color.
+            */}
             <div className="controles-pagination">
                 <button
                     className="button-pagination"

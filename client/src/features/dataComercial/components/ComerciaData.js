@@ -4,6 +4,12 @@ import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
 
 const ComercialData = () => {
+    /**
+     * ANOTACIÓN 📝
+     * 
+     * Implementar la paginación como la hemos implementado en 
+     * el archivo de "DealearData".
+     */
     const [isData, setIsData] = useState([]);
     const [isDataSetted, setIsDataSetted] = useState(false);
 
