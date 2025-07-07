@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Comercial from "./Comercial";
-import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
-import "./../../../styles/App.scss";
+import { getDataBBDDRepartidores } from "../../../db/getDataBBDDRepartidores";
+import Dealer from "./Dealer";
 
-const ComercialData = () => {
+const DealerData = () => {
     const [isData, setIsData] = useState([]);
     const [isDataSetted, setIsDataSetted] = useState(false);
 
     const handleData = async () => {
         try {
-            const data = await getDataBBDDComerciales();
+            const data = await getDataBBDDRepartidores();
             setIsData(data || []);
             setIsDataSetted(true);
             console.log(data);
@@ -17,7 +16,6 @@ const ComercialData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-        
     };
 
     useEffect(() => {
@@ -31,19 +29,19 @@ const ComercialData = () => {
                     <thead>
                         <tr>
                             {/* <th>ID</th> */}
-                            <th>Nombre del Comercial</th>
-                            <th>Nombre de la Empresa</th>
+                            <th>Empresa Reparto</th>                            
                             <th>Fecha</th>
-                            <th>Persona de Imasd que busca</th>
+                            <th>Uso Imasd</th>
+                            <th>Uso Personal</th>
                         </tr>
                     </thead>
                     <tbody>
                         {isData.length > 0 ? (
                             <>
                                 {isData.map((element) => (
-                                    <Comercial
+                                    <Dealer
                                         key={element.id}
-                                        comercial={element}
+                                        dealer={element}
                                     />
                                 ))}
                             </>
@@ -74,4 +72,4 @@ const ComercialData = () => {
     );
 };
 
-export default ComercialData;
+export default DealerData;
