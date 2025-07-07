@@ -47,7 +47,7 @@ const Paqueteria = () => {
         setTimeout(() => {
             setInitialsValues();
             setTimeOutFinished(true);
-        }, 1000);
+        }, 50);
     };
 
     /**
