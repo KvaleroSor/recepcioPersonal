@@ -1,0 +1,13 @@
+@import "./variables";
+
+.controles-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.dealer-td{
+    text-align: right;
+    padding-right: 1rem;
+}

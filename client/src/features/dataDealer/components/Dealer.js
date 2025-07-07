@@ -1,4 +1,5 @@
 import React from "react";
+import "./../../../styles/App.scss";
 
 const Dealer = ({ dealer }) => {
     const { nombre, fecha, tipoUsoEmpresa, tipoUsoPersonal } = dealer;
@@ -6,12 +7,12 @@ const Dealer = ({ dealer }) => {
     return (
         <tr>
             {/* <td>{id}</td> */}
-            <td>{nombre}</td>                        
+            <td>{nombre}</td>
             <td className="container-fecha">
                 {fecha ? fecha.toDate().toLocaleDateString("es-ES") : "N/A"}
             </td>
-            <td>{tipoUsoEmpresa ? "x" : "-"}</td>
-            <td>{tipoUsoPersonal ? "x" : "-"}</td>
+            <td className="dealer-td">{tipoUsoEmpresa ? "x" : "-"}</td>
+            <td className="dealer-td">{tipoUsoPersonal ? "x" : "-"}</td>
         </tr>
     );
 };

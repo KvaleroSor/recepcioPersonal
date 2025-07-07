@@ -1,10 +1,11 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from './firebaseConfig';
 
 const getDataBBDDRepartidores = async () => {
     const collectionRepartidores = collection(db, "repartidores");
     try {
-        const querySnapshot = await getDocs(collectionRepartidores);
+        const q = query(collectionRepartidores, orderBy("fecha", "desc"));
+        const querySnapshot = await getDocs(q);
         const repartidorList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));        
         return repartidorList; // Devolvemos la lista de personal
     } catch (error) {
