@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from './firebaseConfig';
 
 const getDataBBDDComerciales = async () => {
