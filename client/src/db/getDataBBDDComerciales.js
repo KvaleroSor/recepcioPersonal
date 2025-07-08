@@ -1,10 +1,11 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy } from "firebase/firestore";
 import { db } from './firebaseConfig';
 
 const getDataBBDDComerciales = async () => {
     const collectionComerciales = collection(db, "comerciales");
     try {
-        const querySnapshot = await getDocs(collectionComerciales);
+        const q = query(collectionComerciales, orderBy("fecha", "desc"));
+        const querySnapshot = await getDocs(q);
         const comercialList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));        
         return comercialList; // Devolvemos la lista de personal
     } catch (error) {

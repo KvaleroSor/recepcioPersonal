@@ -2,7 +2,7 @@ import React from 'react';
 import "./../../../styles/App.scss";
 
 const Comercial = ({ comercial }) => { 
-    const { id, nombre, empresa, fecha, personaImasd  } = comercial;    
+    const { nombre, empresa, fecha, personaImasd } = comercial;    
 
     return ( 
         <tr>
@@ -11,7 +11,7 @@ const Comercial = ({ comercial }) => {
             <td className='container-empresa'>{empresa}</td>
             {/* Se convierte el objeto Timestamp a un string de fecha legible */}
             <td className='container-fecha'>{fecha ? fecha.toDate().toLocaleDateString('es-ES') : 'N/A'}</td>
-            <td>{personaImasd}</td>
+            <td className='container-personalImasd'>{personaImasd}</td>
         </tr>      
      );
 }

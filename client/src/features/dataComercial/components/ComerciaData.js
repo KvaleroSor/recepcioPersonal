@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Comercial from "./Comercial";
 import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
+import { ReactComponent as IconoArrowLeft} from "./../../../icons/iconArrowLeft.svg";
+import { ReactComponent as IconoArrowRight} from "./../../../icons/iconArrowRight.svg";
 
 const ComercialData = () => {
     /**
@@ -12,6 +14,8 @@ const ComercialData = () => {
      */
     const [isData, setIsData] = useState([]);
     const [isDataSetted, setIsDataSetted] = useState(false);
+    const [numPage, setNumPage] = useState(1);
+    const numElemPage = 5;
 
     const handleData = async () => {
         try {
@@ -23,12 +27,17 @@ const ComercialData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-        
+
     };
 
     useEffect(() => {
         handleData();
     }, []);
+
+    const lastDealerShow = numPage * numElemPage;
+    const firstDealerShow = lastDealerShow - numElemPage;
+    const currentDealers = isData.slice(firstDealerShow, lastDealerShow);
+    const totalPages = Math.ceil(isData.length / numElemPage);
 
     return (
         <div className="container-box">
@@ -44,13 +53,10 @@ const ComercialData = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {isData.length > 0 ? (
+                        {currentDealers.length > 0 ? (
                             <>
-                                {isData.map((element) => (
-                                    <Comercial
-                                        key={element.id}
-                                        comercial={element}
-                                    />
+                                {currentDealers.map((element) => (
+                                    <Comercial key={element.id} comercial={element} />
                                 ))}
                             </>
                         ) : (
@@ -58,6 +64,7 @@ const ComercialData = () => {
                                 <td>CARGANDO ...!</td>
                             </tr>
                         )}
+
                         {/* Código que recorra la data e imprima por cada por cada comercial que encontremos
                     en la BBDD una fila con las respectivas columnas, imprimiendo la información del 
                     comercial. 
@@ -76,6 +83,35 @@ const ComercialData = () => {
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
             )}
+            {/* 
+                            ANOTACIÓN 📝
+                            
+                            - Modificar el color de los iconos o cambiarlos 
+                            por iconos que se puedan modificar su color.
+                        */}
+            <div className="controles-pagination">
+                <button
+                    className="button-pagination"
+                    onClick={() => {
+                        setNumPage(numPage - 1);
+                    }}
+                    disabled={numPage <= 1}
+                >
+                    <IconoArrowLeft className="icons-buttons--pagination" />
+                </button>
+                <span className="text-pagination">
+                    Página {numPage} de {totalPages}
+                </span>
+                <button
+                    className="button-pagination"
+                    onClick={() => {
+                        setNumPage(numPage + 1);
+                    }}
+                    disabled={numPage >= totalPages}
+                >
+                    <IconoArrowRight className="icons-buttons--pagination" />
+                </button>
+            </div>
         </div>
     );
 };
