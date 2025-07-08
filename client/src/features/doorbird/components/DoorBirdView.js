@@ -3,7 +3,7 @@ import { useDoorBird } from "../hooks/useDoorBird";
 import { useDoorBellSocket } from "../hooks/useDoorBellSocket";
 import { ReactComponent as IconCampana } from "./../../../icons/iconCampana.svg";
 import { ReactComponent as IconPuerta } from "./../../../icons/iconPuerta.svg";
-import "./../../../styles/App.scss"; 
+import "./../../../styles/App.scss";
 
 const DoorBirdView = () => {
     // 1. Hook para las ACCIONES (abrir, luz, vídeo)
@@ -11,6 +11,7 @@ const DoorBirdView = () => {
     //     useDoorBird();
     const { isLoading, openDoor } =
         useDoorBird();
+    const releayNumber = 1;
 
     // 2. Hook para las REACCIONES (escuchar el timbre)
     const { isRinging, setIsRinging } = useDoorBellSocket();
@@ -19,7 +20,7 @@ const DoorBirdView = () => {
     useEffect(() => {
         if (isRinging) {
             // Si el timbre suena, esperamos 8 segundos y lo apagamos.
-            
+
             /**
              * ANOTACIÓN DE FUNCIONAMIENTO 📝
              * 
@@ -27,7 +28,7 @@ const DoorBirdView = () => {
              * ficticia, descomentar el timer, y el return que ejecuta
              * la función de tipo flecha y limpia el timer.
              */
-            
+
             const timer = setTimeout(() => {
                 setIsRinging(false);
             }, 500); // El efecto durará 18 segundos
@@ -41,9 +42,9 @@ const DoorBirdView = () => {
     return (
         <button
             className={`btn  ${isRinging ? "is-ringing" : ""}`}
-            onClick={openDoor}
+            onClick={openDoor(releayNumber)}
             disabled={isLoading}
-        >   
+        >
             {/* <div className="container-elements_buttons doorbell-button"> */}
             <div className="container-elements_buttons">
                 <p>ABRIR PUERTA</p>
@@ -53,6 +54,7 @@ const DoorBirdView = () => {
                 </div>
             </div>
         </button>
+
     );
 };
 

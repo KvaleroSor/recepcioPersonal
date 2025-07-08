@@ -20,9 +20,9 @@ export const getLiveImageURL = () => {
  * Envía la petición a NUESTRO SERVIDOR para activar el relé y abrir la puerta 🚪
  */
 
-export const openDoor = async () => {
+export const openDoor = async (releayNumber) => {
     try {
-        const response = await fetch(`${API_SERVER_URL}/open-door`, {
+        const response = await fetch(`${API_SERVER_URL}/open-door/${releayNumber}`, {
             method: "POST",
         });
         if (!response.ok) {
