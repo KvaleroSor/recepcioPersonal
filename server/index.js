@@ -74,13 +74,14 @@ app.get("/", (req, res) => {
 });
 
 // Ruta para abrir la puerta
-app.post("/api/open-door", async (req, res) => {
+app.post("/api/open-door/:releNumber", async (req, res) => {
     if (IS_MOCK_MODE) {
         console.log("Simulando apertura de puerta.");
         return res.json({ success: true, message: "Puerta abierta (simulado)." });
     }
     try {
-        await axios.get(getApiUrl("open-door.cgi?r=1"), { headers: getAuth() });
+        const { releNumber } = req.params;
+        await axios.get(getApiUrl(`open-door.cgi?r=${releNumber}`), { headers: getAuth() });
         res.json({ success: true, message: "Petición para abrir la puerta enviada." });
     } catch (error) {
         console.error("Error al abrir la puerta:", error.message);

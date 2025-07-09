@@ -34,8 +34,8 @@ export const useDoorBird = () => {
     }, []);
 
     // Creamos funciones específicas para cada acción.
-    const handleOpenDoor = useCallback(() => {
-        return handleApiCall(openDoor);
+    const handleOpenDoor = useCallback((releayNumber) => {
+        return handleApiCall(() => openDoor(releayNumber));
     }, [handleApiCall]);
 
     const handleTurnLightOn = useCallback(() => {

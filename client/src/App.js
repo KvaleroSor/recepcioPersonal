@@ -5,11 +5,12 @@ import ComercialData from "./features/dataComercial/components/ComerciaData";
 import Paqueteria from "./components/Paqueteria";
 import Comerciales from "./components/Comerciales";
 import { Route, Routes } from "react-router-dom";
-import DoorBirdView from "./features/doorbird/components/DoorBirdView";
+import DoorBirdOutDoor from "./features/doorbird/components/DoorBirdOutDoor";
 import VideoFeed from "./features/doorbird/components/VideoFeed";
 import ButtonComercialData from "./features/dataComercial/components/ButtonComercialData";
 import DealerData from "./features/dataDealer/components/DealerData";
 import ButtonDealerData from "./features/dataDealer/components/ButtonDealerData";
+import DoorBirdInDoor from "./features/doorbird/components/DoorBirdInDoor";
 // import logoImasd from './logo/logoImasd.jpeg';
 
 // --- COMPONENTE HOME ---
@@ -26,7 +27,8 @@ const Home = () => {
                     <VideoFeed />
                 </div>
                 <div className="container-box_buttons-main">
-                    <DoorBirdView />
+                    <DoorBirdOutDoor />
+                    <DoorBirdInDoor />
                     <ButtonPaqueteria />
                     <ButtonComerciales />
                 </div>
