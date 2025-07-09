@@ -1,0 +1,41 @@
+services:
+  # Servicio del Backend (API)
+  api:
+    build: ./server
+    container_name: recepcion-api
+    restart: unless-stopped
+    env_file:
+      - ./server/.env # Carga las variables de entorno desde este archivo
+    networks:
+      - recepcion-net
+
+  # Servicio del Frontend (React App)
+  client:
+    build: ./client
+    container_name: recepcion-client
+    restart: unless-stopped
+    networks:
+      - recepcion-net
+
+  # Servicio de Proxy Inverso con Nginx
+  # Este es el único servicio expuesto al mundo exterior.
+  nginx:
+    image: nginx:stable-alpine
+    container_name: recepcion-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"   # Puerto HTTP
+      - "443:443" # Puerto HTTPS (necesitarás certificados SSL)
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Monta la configuración del proxy
+      # Si tienes certificados SSL, los montarías aquí también
+      # - ./certs:/etc/nginx/certs 
+    depends_on:
+      - api
+      - client
+    networks:
+      - recepcion-net
+
+networks:
+  recepcion-net:
+    driver: bridge
