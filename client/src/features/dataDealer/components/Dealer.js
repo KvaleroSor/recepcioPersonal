@@ -9,7 +9,7 @@ const Dealer = ({ dealer }) => {
             {/* <td>{id}</td> */}
             <td>{nombre}</td>
             <td className="container-fecha">
-                {fecha ? fecha.toDate().toLocaleDateString("es-ES") : "N/A"}
+                {fecha ? `${fecha.toDate().toLocaleDateString("es-ES")} | ${fecha.toDate().toLocaleTimeString()}`  : "No Registrada!"}
             </td>
             <td className="dealer-td-th">{tipoUsoEmpresa ? "x" : "-"}</td>
             <td className="dealer-td-th">{tipoUsoPersonal ? "x" : "-"}</td>
