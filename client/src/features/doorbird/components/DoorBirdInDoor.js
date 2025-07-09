@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
 import { useDoorBellSocket } from "../hooks/useDoorBellSocket";
-// import { ReactComponent as IconCampana } from "./../../../icons/iconCampana.svg";
 import { ReactComponent as IconPuerta } from "./../../../icons/iconPuerta.svg";
 import "./../../../styles/App.scss";
 
@@ -48,8 +47,7 @@ const DoorBirdInDoor = () => {
             {/* <div className="container-elements_buttons doorbell-button"> */}
             <div className="container-elements_buttons">
                 <p>ABRIR PUERTA INTERIOR</p>
-                <div className="container-elements_img">
-                    {/* <IconCampana className="iconsForm iconsForm_buttons" /> */}
+                <div className="container-elements_img">                    
                     <IconPuerta className="iconsForm iconsForm_buttons" />
                 </div>
             </div>

@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
 import { useDoorBellSocket } from "../hooks/useDoorBellSocket";
-// import { ReactComponent as IconCampana } from "./../../../icons/iconCampana.svg";
 import { ReactComponent as IconPuertaExt } from "./../../../icons/iconPuertaExt.svg";
-// import { ReactComponent as IconPuerta } from "./../../../icons/iconPuerta.svg";
 import "./../../../styles/App.scss";
 
 const DoorBirdOutDoor = () => {
@@ -50,7 +48,6 @@ const DoorBirdOutDoor = () => {
             <div className="container-elements_buttons">
                 <p>ABRIR PUERTA EXTERIOR</p>
                 <div className="container-elements_img">
-                    {/* <IconCampana className="iconsForm iconsForm_buttons" /> */}
                     <IconPuertaExt className="iconsForm iconsForm_buttons" />
                 </div>
             </div>
