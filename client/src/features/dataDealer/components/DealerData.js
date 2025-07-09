@@ -3,6 +3,7 @@ import { getDataBBDDRepartidores } from "../../../db/getDataBBDDRepartidores";
 import Dealer from "./Dealer";
 import { ReactComponent as IconoArrowLeft} from "./../../../icons/iconArrowLeft.svg";
 import { ReactComponent as IconoArrowRight} from "./../../../icons/iconArrowRight.svg";
+import ButtonCloseData from "../../../components/ButtonCloseData";
 import "./../../../styles/App.scss";
 
 const DealerData = () => {
@@ -40,9 +41,9 @@ const DealerData = () => {
                         <tr>
                             {/* <th>ID</th> */}
                             <th>Empresa Reparto</th>
-                            <th>Fecha</th>
-                            <th>Uso Imasd</th>
-                            <th>Uso Personal</th>
+                            <th className="dealer-td-th">Fecha</th>
+                            <th className="dealer-td-th">Uso Imasd</th>
+                            <th className="dealer-td-th">Uso Personal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,6 +105,7 @@ const DealerData = () => {
                     <IconoArrowRight className="icons-buttons--pagination" />
                 </button>
             </div>
+            <ButtonCloseData />
         </div>
     );
 };

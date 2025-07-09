@@ -1,5 +1,9 @@
 @import "./variables";
 
+table{
+    width: 56%;
+}
+
 .controles-pagination {
     display: flex;
     justify-content: center;
@@ -7,7 +11,7 @@
     flex-direction: row;
 }
 
-.dealer-td{
+.dealer-td-th{
     text-align: right;
     padding-right: 1rem;
     

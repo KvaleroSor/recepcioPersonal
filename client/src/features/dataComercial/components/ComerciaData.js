@@ -4,6 +4,7 @@ import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
 import { ReactComponent as IconoArrowLeft} from "./../../../icons/iconArrowLeft.svg";
 import { ReactComponent as IconoArrowRight} from "./../../../icons/iconArrowRight.svg";
+import ButtonCloseData from "../../../components/ButtonCloseData";
 
 const ComercialData = () => {
     /**
@@ -42,14 +43,14 @@ const ComercialData = () => {
     return (
         <div className="container-box">
             {isDataSetted ? (
-                <table>
+                <table className="width-table_comercials">
                     <thead>
                         <tr>
                             {/* <th>ID</th> */}
                             <th>Nombre del Comercial</th>
                             <th>Nombre de la Empresa</th>
-                            <th>Fecha</th>
-                            <th>Persona de Imasd que busca</th>
+                            <th className="dealer-td-th">Fecha</th>
+                            <th className="dealer-td-th">Persona de Imasd que busca</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +58,7 @@ const ComercialData = () => {
                             <>
                                 {currentDealers.map((element) => (
                                     <Comercial key={element.id} comercial={element} />
-                                ))}
+                                ))}                                
                             </>
                         ) : (
                             <tr>
@@ -112,6 +113,7 @@ const ComercialData = () => {
                     <IconoArrowRight className="icons-buttons--pagination" />
                 </button>
             </div>
+            <ButtonCloseData customClassName="btn-width_setteable--comercialData"/>
         </div>
     );
 };

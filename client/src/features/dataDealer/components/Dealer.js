@@ -11,8 +11,8 @@ const Dealer = ({ dealer }) => {
             <td className="container-fecha">
                 {fecha ? fecha.toDate().toLocaleDateString("es-ES") : "N/A"}
             </td>
-            <td className="dealer-td">{tipoUsoEmpresa ? "x" : "-"}</td>
-            <td className="dealer-td">{tipoUsoPersonal ? "x" : "-"}</td>
+            <td className="dealer-td-th">{tipoUsoEmpresa ? "x" : "-"}</td>
+            <td className="dealer-td-th">{tipoUsoPersonal ? "x" : "-"}</td>
         </tr>
     );
 };

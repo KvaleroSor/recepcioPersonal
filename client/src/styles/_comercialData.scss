@@ -2,7 +2,7 @@
 
 table {
     border-collapse: separate; // Necesario para que funcione el border-radius en las celdas
-    border-spacing: 0 0.5rem; // Espacio vertical entre filas
+    border-spacing: 0 0.5rem; // Espacio vertical entre filas    
 }
 
 tbody tr {
@@ -39,12 +39,6 @@ td {
     font-size: 1rem;    
 }
 
-// .container-empresa{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
 .container-fecha{
     display: flex;
     justify-content: flex-end;
@@ -54,4 +48,18 @@ td {
 .container-personalImasd{
     text-align: end;
     padding-right: 1rem;
+}
+
+.width-table_comercials{
+    width: 80%;
+}
+
+.comercial-td-th{
+    text-align: right;
+    padding-right: 1rem;
+    
+}
+
+.btn-width_setteable--comercialData{
+    width: 80% !important;
 }
