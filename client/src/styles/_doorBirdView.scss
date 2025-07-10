@@ -87,7 +87,7 @@
 // Animación de parpadeo
 @keyframes blink-animation {
     0% { background-color: #ffc107; box-shadow: 0 0 15px #ffc107, inset 0 0 5px #fff; }
-    50% { background-color: #e0e0e0; box-shadow: none; }
+    50% { background-color: $prueba_1_buttons; box-shadow: none; }
     100% { background-color: #ffc107; box-shadow: 0 0 15px #ffc107, inset 0 0 5px #fff; }
 }
 

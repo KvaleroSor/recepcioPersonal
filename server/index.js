@@ -15,7 +15,7 @@ require("dotenv").config();
  * Importamos las dependencias ↕️
  */
 const http = require("http");
-const { WebSocketServer } = require("ws");
+const { WebSocketServer, CLOSING } = require("ws");
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -37,6 +37,8 @@ app.use(express.json()); // Para parsear bodies de peticiones como JSON
  */
 const PORT = process.env.PORT || 3001;
 const IS_MOCK_MODE = process.env.NODE_ENV === "development"; // Modo simulación
+let lastDoorbellEvent = 0; // Para controlar el enfriamiento de eventos del timbre
+const DOORBELL_COOLDOWN_MS = 5000; // 5 segundos de enfriamiento
 
 // Imprimimos las variables de entorno para depuración
 console.log("MODO DE EJECUCIÓN:", IS_MOCK_MODE ? "Simulación (Development)" : "Producción");
@@ -199,15 +201,23 @@ if (IS_MOCK_MODE) {
     });
 
     udpServer.on('message', (msg) => {
+        console.log(`Mensaje UDP RAW (Hex): ${msg.toString('hex')}`);
+        console.log(`Mensaje UDP RAW (UTF8): ${msg.toString('utf8')}`);
         // El DoorBird envía el nombre del evento que se ha activado
-        const eventName = msg.toString('utf8');
+        const eventName = msg.toString('utf8').trim();
         console.log(`Evento UDP recibido: ${eventName}`);
 
         // El evento real contiene el nombre de usuario.
-        const doorbirdUser = process.env.DOORBIRD_USER;
+        const doorbirdUser = process.env.DOORBIRD_EVENT_USER;        
         if (eventName.includes(doorbirdUser)) {
-            console.log('¡Timbre detectado! Notificando a los clientes...');
-            broadcast({ type: 'doorbell' });
+            const now = Date.now();
+            if (now - lastDoorbellEvent > DOORBELL_COOLDOWN_MS) {
+                console.log('¡Timbre detectado! Notificando a los clientes...');
+                broadcast({ type: 'doorbell' });
+                lastDoorbellEvent = now;
+            } else {
+                console.log('Evento de timbre ignorado debido al enfriamiento.');
+            }
         }
     });
 
