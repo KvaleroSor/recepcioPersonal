@@ -19,7 +19,8 @@ const { WebSocketServer, CLOSING } = require("ws");
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
-const dgram = require('dgram'); // Para escuchar eventos UDP
+const dgram = require("dgram"); // Para escuchar eventos UDP
+const { type } = require("os");
 
 /**
  * 3️⃣
@@ -41,7 +42,10 @@ let lastDoorbellEvent = 0; // Para controlar el enfriamiento de eventos del timb
 const DOORBELL_COOLDOWN_MS = 5000; // 5 segundos de enfriamiento
 
 // Imprimimos las variables de entorno para depuración
-console.log("MODO DE EJECUCIÓN:", IS_MOCK_MODE ? "Simulación (Development)" : "Producción");
+console.log(
+    "MODO DE EJECUCIÓN:",
+    IS_MOCK_MODE ? "Simulación (Development)" : "Producción"
+);
 console.log("=================================");
 console.log("VARIABLES DE ENTORNO");
 console.log("=================================");
@@ -79,15 +83,26 @@ app.get("/", (req, res) => {
 app.post("/api/open-door/:releNumber", async (req, res) => {
     if (IS_MOCK_MODE) {
         console.log("Simulando apertura de puerta.");
-        return res.json({ success: true, message: "Puerta abierta (simulado)." });
+        return res.json({
+            success: true,
+            message: "Puerta abierta (simulado).",
+        });
     }
     try {
         const { releNumber } = req.params;
-        await axios.get(getApiUrl(`open-door.cgi?r=${releNumber}`), { headers: getAuth() });
-        res.json({ success: true, message: "Petición para abrir la puerta enviada." });
+        await axios.get(getApiUrl(`open-door.cgi?r=${releNumber}`), {
+            headers: getAuth(),
+        });
+        res.json({
+            success: true,
+            message: "Petición para abrir la puerta enviada.",
+        });
     } catch (error) {
         console.error("Error al abrir la puerta:", error.message);
-        res.status(500).json({ success: false, message: "Error del servidor al abrir puerta." });
+        res.status(500).json({
+            success: false,
+            message: "Error del servidor al abrir puerta.",
+        });
     }
 });
 
@@ -95,49 +110,64 @@ app.post("/api/open-door/:releNumber", async (req, res) => {
 app.post("/api/light-on", async (req, res) => {
     if (IS_MOCK_MODE) {
         console.log("Simulando encendido de luz.");
-        return res.json({ success: true, message: "Luz encendida (simulado)." });
+        return res.json({
+            success: true,
+            message: "Luz encendida (simulado).",
+        });
     }
     try {
         await axios.get(getApiUrl("light-on.cgi"), { headers: getAuth() });
-        res.json({ success: true, message: "Petición para encender la luz enviada." });
+        res.json({
+            success: true,
+            message: "Petición para encender la luz enviada.",
+        });
     } catch (error) {
         console.error("Error al encender la luz:", error.message);
-        res.status(500).json({ success: false, message: "Error del servidor al encender la luz." });
+        res.status(500).json({
+            success: false,
+            message: "Error del servidor al encender la luz.",
+        });
     }
 });
 
 // ===================================================================================
 // RUTA PARA HACER PROXY DEL VÍDEO Y EVITAR PROBLEMAS DE CORS/AUTH
 // ===================================================================================
-app.get('/api/video', async (req, res) => {
+app.get("/api/video", async (req, res) => {
     // ✅ URL limpia, sin credenciales. La autenticación va en los headers.
     const videoUrl = `http://${process.env.DOORBIRD_IP}/bha-api/video.cgi`;
 
     try {
         console.log(`[Proxy de Vídeo] Pidiendo vídeo desde: ${videoUrl}`);
 
-        // Hacemos la petición al DoorBird usando el header de autenticación
         const response = await axios({
-            method: 'get',
+            method: "get",
             url: videoUrl,
-            responseType: 'stream',
-            headers: getAuth() // Autenticación profesional
+            responseType: "stream",
+            headers: getAuth(),
         });
 
-        // Pasamos las cabeceras originales (importante para el content-type de la imagen)
-        res.setHeader('Content-Type', response.headers['content-type']);
+        res.setHeader("Content-Type", response.headers["content-type"]);
 
-        // Hacemos "pipe" del stream de vídeo del DoorBird directamente a la respuesta del cliente.
-        // Esto es muy eficiente y no carga el vídeo en la memoria del servidor.
         response.data.pipe(res);
-
     } catch (error) {
-        console.error('[Proxy de Vídeo] Error al obtener el stream del DoorBird:', error.message);
+        console.error(
+            "[Proxy de Vídeo] Error al obtener el stream del DoorBird:",
+            error.message
+        );
         if (error.response) {
-            console.error('Respuesta de DoorBird:', error.response.status, error.response.statusText);
+            console.error(
+                "Respuesta de DoorBird:",
+                error.response.status,
+                error.response.statusText
+            );
             res.status(error.response.status).send(error.response.statusText);
         } else {
-            res.status(500).json({ success: false, message: 'No se pudo conectar con el stream de vídeo del DoorBird.' });
+            res.status(500).json({
+                success: false,
+                message:
+                    "No se pudo conectar con el stream de vídeo del DoorBird.",
+            });
         }
     }
 });
@@ -179,52 +209,75 @@ wss.on("connection", (ws) => {
  *
  * Escuchar eventos del DoorBird (Timbre)
  */
-if (IS_MOCK_MODE) {
-    // En modo simulación, enviamos un evento de timbre cada 20 segundos
-    console.log("Modo simulación: Se enviará un evento de timbre cada 20 segundos.");
-    setInterval(() => {
-        console.log("Simulando evento de timbre...");
-        broadcast({ type: "doorbell" });
-    }, 20000);
-} else {
-    // En modo producción, escuchamos los eventos UDP reales del DoorBird
-    const udpServer = dgram.createSocket('udp4');
+// if (IS_MOCK_MODE) {
+//     // En modo simulación, enviamos un evento de timbre cada 20 segundos
+//     console.log(
+//         "Modo simulación: Se enviará un evento de timbre cada 20 segundos."
+//     );
+//     setInterval(() => {
+//         console.log("Simulando evento de timbre...");
+//         broadcast({ type: "doorbell" });
+//     }, 20000);
+// } else {
+//     // En modo producción, escuchamos los eventos UDP reales del DoorBird
+//     const udpServer = dgram.createSocket("udp4");
 
-    udpServer.on('error', (err) => {
-        console.error(`Error en el servidor UDP:\n${err.stack}`);
-        udpServer.close();
-    });
+//     udpServer.on("error", (err) => {
+//         console.error(`Error en el servidor UDP:\n${err.stack}`);
+//         udpServer.close();
+//     });
 
-    udpServer.on('listening', () => {
-        const address = udpServer.address();
-        console.log(`Servidor UDP escuchando en ${address.address}:${address.port} 📡`);
-    });
+//     udpServer.on("listening", () => {
+//         const address = udpServer.address();
+//         console.log(
+//             `Servidor UDP escuchando en ${address.address}:${address.port} 📡`
+//         );
+//     });
 
-    udpServer.on('message', (msg) => {
-        console.log(`Mensaje UDP RAW (Hex): ${msg.toString('hex')}`);
-        console.log(`Mensaje UDP RAW (UTF8): ${msg.toString('utf8')}`);
-        // El DoorBird envía el nombre del evento que se ha activado
-        const eventName = msg.toString('utf8').trim();
-        console.log(`Evento UDP recibido: ${eventName}`);
+//     udpServer.on("message", (msg) => {
+//         console.log(`Mensaje UDP RAW (Hex): ${msg.toString("hex")}`);
+//         console.log(`Mensaje UDP RAW (UTF8): ${msg.toString("utf8")}`);
+//         // El DoorBird envía el nombre del evento que se ha activado
+//         const eventName = msg.toString("utf8").trim();
+//         console.log(`Evento UDP recibido: ${eventName}`);
 
-        // El evento real contiene el nombre de usuario.
-        // const doorbirdUser = process.env.DOORBIRD_EVENT_USER;        
-        const doorbirdUser = null;
-        if (eventName.includes(doorbirdUser)) {
-            const now = Date.now();
-            if (now - lastDoorbellEvent > DOORBELL_COOLDOWN_MS) {
-                console.log('¡Timbre detectado! Notificando a los clientes...');
-                broadcast({ type: 'doorbell' });
-                lastDoorbellEvent = now;
-            } else {
-                console.log('Evento de timbre ignorado debido al enfriamiento.');
-            }
-        }
-    });
+//         // El evento real contiene el nombre de usuario.
 
-    // El DoorBird envía eventos al puerto 6524 por defecto
-    udpServer.bind(6524);
-}
+//         //Descomentar la línea de abajo caundo se esté en producción.
+//         // const doorbirdUser = process.env.DOORBIRD_EVENT_USER;
+//         const doorbirdUser = null;
+//         if (eventName.includes(doorbirdUser)) {
+//             broadcast({ type: "doorbell" });
+//         }
+//     });
+
+//     // El DoorBird envía eventos al puerto 6524 por defecto
+//     udpServer.bind(6524);
+// }
+
+// ===================================================================================
+// RUTA PARA PARA ESCUCHAR LAS LLAMADAS DEL TIMBRE
+// ===================================================================================
+
+/**
+ * Nueva configuración para la gestión de la llamada al timbre 🔔🚀
+ * 
+ * 1️⃣ - Acceder a la página ("https://www.doorbird.com") ✅
+ * 2️⃣ - Administración ✅
+ * 3️⃣ - App Settings ✅
+ * 4️⃣ - HTTP Calls ✅
+ * 5️⃣ - Añade una nueva entrada:
+ *     🔵 - Name: App Quique
+ *     🔵 - URL: http://TU_IP_LOCAL:3000/doorbell
+ *     🔵 - Method: GET
+ *     🔵 - Triggered by: Doorbell button
+ */
+
+app.get("/api/doorbellPushed", (req, res) => {
+    console.log(`Alguien ha pulsado el timbre!🔔`);
+    res.status(200).send("ok");
+    broadcast({ type: "doorbell" });
+});
 
 /**
  * 9️⃣
