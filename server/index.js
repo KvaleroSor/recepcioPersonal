@@ -38,8 +38,8 @@ app.use(express.json()); // Para parsear bodies de peticiones como JSON
  */
 const PORT = process.env.PORT || 3001;
 const IS_MOCK_MODE = process.env.NODE_ENV === "development"; // Modo simulación
-let lastDoorbellEvent = 0; // Para controlar el enfriamiento de eventos del timbre
-const DOORBELL_COOLDOWN_MS = 5000; // 5 segundos de enfriamiento
+// let lastDoorbellEvent = 0; // Para controlar el enfriamiento de eventos del timbre
+// const DOORBELL_COOLDOWN_MS = 5000; // 5 segundos de enfriamiento
 
 // Imprimimos las variables de entorno para depuración
 console.log(

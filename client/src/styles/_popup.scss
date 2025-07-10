@@ -68,7 +68,7 @@
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 1px solid #e0e0e0; 
     padding-bottom: 1rem;
@@ -101,22 +101,22 @@
     }
   }
 
-  &__close-btn {
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    color: #888;
-    padding: 0.5rem;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    transition: color 0.2s ease, transform 0.2s ease;
+  // &__close-btn {
+  //   background: transparent;
+  //   border: none;
+  //   font-size: 2rem;
+  //   line-height: 1;
+  //   cursor: pointer;
+  //   color: #888;
+  //   padding: 0.5rem;
+  //   position: absolute;
+  //   top: 10px;
+  //   right: 15px;
+  //   transition: color 0.2s ease, transform 0.2s ease;
 
-    &:hover {
-      color: #000;
-      transform: rotate(90deg);
-    }
-  }
+  //   &:hover {
+  //     color: #000;
+  //     transform: rotate(90deg);
+  //   }
+  // }
 }

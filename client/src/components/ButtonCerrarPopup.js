@@ -3,7 +3,8 @@ import "./../styles/App.scss";
 
 const ButtonCerrarPopup = ({onCloseRequest}) => {
     return ( 
-        <button onClick={onCloseRequest}>CERRAR</button>
+        <button onClick={onCloseRequest}
+        className='button-cerrar_popup'>CERRAR</button>
      );
 }
  

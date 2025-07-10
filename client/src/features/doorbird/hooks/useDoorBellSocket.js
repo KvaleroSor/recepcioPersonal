@@ -32,9 +32,7 @@ export const useDoorBellSocket = () => {
                 );
             }
         };
-
         
-
         ws.onerror = (error) => {
             console.log(`ERROR - En el websocket | ERROR - ${error}`);
         };

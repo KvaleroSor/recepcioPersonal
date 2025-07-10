@@ -2,7 +2,7 @@ import React from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
-    let title = "Acciones a realizar!";
+    let title = "ACCIONES A REALIZAR!";
     let contentRender = null;
 
     if (!data) {
