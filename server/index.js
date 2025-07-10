@@ -208,7 +208,8 @@ if (IS_MOCK_MODE) {
         console.log(`Evento UDP recibido: ${eventName}`);
 
         // El evento real contiene el nombre de usuario.
-        const doorbirdUser = process.env.DOORBIRD_EVENT_USER;        
+        // const doorbirdUser = process.env.DOORBIRD_EVENT_USER;        
+        const doorbirdUser = null;
         if (eventName.includes(doorbirdUser)) {
             const now = Date.now();
             if (now - lastDoorbellEvent > DOORBELL_COOLDOWN_MS) {
