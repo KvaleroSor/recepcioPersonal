@@ -220,39 +220,39 @@ wss.on("connection", (ws) => {
 //     }, 20000);
 // } else {
 //     // En modo producción, escuchamos los eventos UDP reales del DoorBird
-//     const udpServer = dgram.createSocket("udp4");
+    const udpServer = dgram.createSocket("udp4");
 
-//     udpServer.on("error", (err) => {
-//         console.error(`Error en el servidor UDP:\n${err.stack}`);
-//         udpServer.close();
-//     });
+    udpServer.on("error", (err) => {
+        console.error(`Error en el servidor UDP:\n${err.stack}`);
+        udpServer.close();
+    });
 
-//     udpServer.on("listening", () => {
-//         const address = udpServer.address();
-//         console.log(
-//             `Servidor UDP escuchando en ${address.address}:${address.port} 📡`
-//         );
-//     });
+    udpServer.on("listening", () => {
+        const address = udpServer.address();
+        console.log(
+            `Servidor UDP escuchando en ${address.address}:${address.port} 📡`
+        );
+    });
 
-//     udpServer.on("message", (msg) => {
-//         console.log(`Mensaje UDP RAW (Hex): ${msg.toString("hex")}`);
-//         console.log(`Mensaje UDP RAW (UTF8): ${msg.toString("utf8")}`);
-//         // El DoorBird envía el nombre del evento que se ha activado
-//         const eventName = msg.toString("utf8").trim();
-//         console.log(`Evento UDP recibido: ${eventName}`);
+    udpServer.on("message", (msg) => {
+        console.log(`Mensaje UDP RAW (Hex): ${msg.toString("hex")}`);
+        console.log(`Mensaje UDP RAW (UTF8): ${msg.toString("utf8")}`);
+        // El DoorBird envía el nombre del evento que se ha activado
+        const eventName = msg.toString("utf8").trim();
+        console.log(`Evento UDP recibido: ${eventName}`);
 
-//         // El evento real contiene el nombre de usuario.
+        // El evento real contiene el nombre de usuario.
 
-//         //Descomentar la línea de abajo caundo se esté en producción.
-//         // const doorbirdUser = process.env.DOORBIRD_EVENT_USER;
-//         const doorbirdUser = null;
-//         if (eventName.includes(doorbirdUser)) {
-//             broadcast({ type: "doorbell" });
-//         }
-//     });
+        //Descomentar la línea de abajo caundo se esté en producción.
+        // const doorbirdUser = process.env.DOORBIRD_EVENT_USER;
+        const doorbirdUser = null;
+        if (eventName.includes(doorbirdUser)) {
+            broadcast({ type: "doorbell" });
+        }
+    });
 
 //     // El DoorBird envía eventos al puerto 6524 por defecto
-//     udpServer.bind(6524);
+    // udpServer.bind(6524);
 // }
 
 // ===================================================================================
@@ -268,7 +268,12 @@ wss.on("connection", (ws) => {
  * 4️⃣ - HTTP Calls ✅
  * 5️⃣ - Añade una nueva entrada:
  *     🔵 - Name: App Quique
- *     🔵 - URL: http://TU_IP_LOCAL:3000/doorbell
+ *     🔵 - URL: http://TU_IP_LOCAL:3001/doorbellPushed
+ *          🔴 - Esta URL será la que tendremos que configurar 
+ *               cuando despleguemos en el servidor.
+ *     🔵 - URL: http://localhost:3001/doorbellPushed
+ *          🔴 - Esta URL será la que tendremos que configurar 
+ *               cuando despleguemos en local.
  *     🔵 - Method: GET
  *     🔵 - Triggered by: Doorbell button
  */
