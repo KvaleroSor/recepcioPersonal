@@ -1,6 +1,6 @@
 @import "./variables";
 
-table{
+table {
     width: 56%;
 }
 
@@ -11,14 +11,38 @@ table{
     flex-direction: row;
 }
 
-.dealer-td-th{
+.dealer-td-th {
     text-align: right;
     padding-right: 1rem;
-    
+
 }
 
-// td{
-//     border-bottom: 1px solid $prueba_1_buttons;
-    
+.container_input-buscador {
+    width: 56%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+}
 
-// }
+.input-buscador {
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    background-color: $prueba_1_buttons;
+    border: none;
+    text-align: center;
+    caret-color: $prueba_1_text;
+
+    &::placeholder {
+        text-align: center;
+        color: $prueba_1_text;
+        font-size: 1rem;
+    }
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+
+}
