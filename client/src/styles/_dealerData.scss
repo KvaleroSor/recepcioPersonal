@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./generalStylesMixins";
 
 table {
     width: 56%;
@@ -25,24 +26,30 @@ table {
     padding-bottom: 3rem;
 }
 
-.input-buscador {
-    width: 100%;
-    height: 3rem;
-    border-radius: 1rem;
-    background-color: $prueba_1_buttons;
-    border: none;
-    text-align: center;
-    caret-color: $prueba_1_text;
+.input-buscador {    
+    @include styles_input;
+    font-size: 2rem;
+    font-weight: normal;
+}
 
-    &::placeholder {
-        text-align: center;
-        color: $prueba_1_text;
-        font-size: 1rem;
+.iconEnterInput{
+    width: 2rem;
+    height: 2rem;
+    fill: $prueba_1_text;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1);
     }
 
-    &:focus {
-        border: none;
-        outline: none;
+    &:active {
+        transform: scale(0.9);
     }
 
+    &:active::after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
 }

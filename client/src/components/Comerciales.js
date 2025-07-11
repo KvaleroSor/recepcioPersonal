@@ -94,7 +94,7 @@ const Comerciales = () => {
                     <p>NOMBRE</p>
                 </label>
                 <input
-                    id="nombre"
+                    id="nombre"                    
                     name="nombre"
                     type="text"
                     autoComplete="off"
@@ -108,7 +108,7 @@ const Comerciales = () => {
                     <p>EMPRESA</p>
                 </label>
                 <input
-                    id="empresa"
+                    id="empresa"                    
                     name="empresa"
                     type="text"
                     autoComplete="off"
@@ -122,7 +122,7 @@ const Comerciales = () => {
                     <p>PERSONA IMASD A LA QUE BUSCA</p>
                 </label>
                 <input
-                    id="personaImasd"
+                    id="personaImasd"                    
                     name="personaImasd"
                     type="text"
                     autoComplete="off"

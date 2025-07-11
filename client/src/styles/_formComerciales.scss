@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./forms";
+@import "./generalStylesMixins";
 
 .container-form_comerciales {
     display: flex;
@@ -21,35 +22,8 @@ form {
         @include label-input;
     }
 
-    input {
-        all: unset;
-        border-bottom: 1px solid $prueba_1_text;
-        width: 100%;
-        position: relative;
-        margin: auto;
-        border-radius: 3px;
-        overflow: hidden;
-        background-color: $prueba_1_fondo;
-        outline: none;
-        margin-bottom: 2rem;
-        margin-top: 1rem;
-        transition: margin 0.4s;           
-        color: $prueba_1_text;
-        
-        &:focus{
-            margin-top: 2rem;
-            
-        }
-
-        &::placeholder{
-            font-weight: lighter;
-            text-align: start;
-            transition: text-align 1s;
-        }
-
-        &:focus::placeholder{
-            text-align: center;
-        }
+    input {        
+        @include styles_input;
     }
 
     label {

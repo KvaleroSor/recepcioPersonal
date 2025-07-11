@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { getDataBBDDRepartidores } from "../../../db/getDataBBDDRepartidores";
-import { getDataBBDDComercialsByName } from "../../../db/getDataBBDDComercialsByName";
 import Dealer from "./Dealer";
-import { ReactComponent as IconoArrowLeft} from "./../../../icons/iconArrowLeft.svg";
-import { ReactComponent as IconoArrowRight} from "./../../../icons/iconArrowRight.svg";
+import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft.svg";
+import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRight.svg";
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import "./../../../styles/App.scss";
-import { CLOSING } from "ws";
 import InputBuscador from "../../../components/InputBuscador";
 
 const DealerData = () => {
+    /**
+     * ANOTACIONES 📝
+     * 
+     * 1 - Revisar alguna función de la clase String para poner la primera letra en mayúscula.  
+     */
     const [isData, setIsData] = useState([]);
     const [isDataSetted, setIsDataSetted] = useState(false);
-    const [isDealerSearched, setIsDealerSearched] = useState([]);
     const [numPage, setNumPage] = useState(1);
     const numElemPage = 5;
 
     const handleData = async () => {
         try {
-            const data = await getDataBBDDRepartidores();
-            const dataByName = await getDataBBDDComercialsByName(isDealerSearched);
-            console.log("Input value --> " + isDealerSearched);
-            console.log(dataByName);
+            const data = await getDataBBDDRepartidores();            
             setIsData(data || []);
             setIsDataSetted(true);
             console.log(data);
@@ -42,7 +41,7 @@ const DealerData = () => {
 
     return (
         <div className="container-box">
-            <InputBuscador setIsDealerSearched={setIsDealerSearched}/>
+            <InputBuscador />
             {isDataSetted ? (
                 <table>
                     <thead>
