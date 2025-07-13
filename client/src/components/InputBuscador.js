@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ReactComponent as IconEnter } from "./../icons/iconEnter.svg";
+import { ReactComponent as IconEnter } from "./../icons/iconEnter2.svg";
 import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
 import { getDataBBDDComercialsByName } from "./../db/getDataBBDDComercialsByName";
 
@@ -16,10 +16,15 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
     const handleClick = () => {        
         dataByName();
         setIsButtonClicked(true);
+
+        if(inputValue === ""){
+            handleClickButtonClose();
+        }
     };
 
     const handleClickButtonClose = () => {
         setIsButtonClicked(false);
+        setInputValue("");
     };
 
     const dataByName = async () => {
@@ -47,6 +52,11 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
                 autoComplete="off"
                 autocapitalize="off"
                 spellcheck="false"
+                onKeyUp={(e) => {
+                    if(e.key === "Enter") {
+                        handleClick();
+                    };
+                }}
             />
             <button onClick={handleClick}>
                 <IconEnter className="iconEnterInput" />
