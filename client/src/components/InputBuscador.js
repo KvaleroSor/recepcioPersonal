@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import { ReactComponent as IconEnter } from "./../icons/iconEnter.svg";
+import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
 import { getDataBBDDComercialsByName } from "./../db/getDataBBDDComercialsByName";
 
-const InputBuscador = () => {
+const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
     /**
      * ANOTACIONES 📝
-     * 
-     * 1 - Implementar el stringsimilarity para la busqueda del nombre de la empresa 
+     *
+     * 1 - Implementar el stringsimilarity para la busqueda del nombre de la empresa
      *     repartidora que queremos buscar.
-     * 
+     *
      */
     const [inputValue, setInputValue] = useState("");
 
-    const handleClick = () => {                          
-        setInputValue("");
+    const handleClick = () => {        
         dataByName();
+        setIsButtonClicked(true);
     };
 
-    const dataByName = async () => {        
+    const dataByName = async () => {
         const dataByName = await getDataBBDDComercialsByName(
             inputValue.toLowerCase()
         );
 
-        console.log(dataByName);
-    }
+        setIsDataByName(dataByName);
+    };
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);        
+        setInputValue(e.target.value);
+        console.log(e.target.value);
     };
 
     return (
@@ -36,11 +38,17 @@ const InputBuscador = () => {
                 className="input-buscador"
                 type="text"
                 placeholder="BUSCAR"
-                value={inputValue} 
-                onChange={handleInputChange}                
+                value={inputValue}
+                onChange={handleInputChange}
+                autoComplete="off"
+                autocapitalize="off"
+                spellcheck="false"
             />
             <button onClick={handleClick}>
                 <IconEnter className="iconEnterInput" />
+            </button>
+            <button onClick={handleClick}>
+                <IconClose className="iconCloseInput" />
             </button>
         </div>
     );

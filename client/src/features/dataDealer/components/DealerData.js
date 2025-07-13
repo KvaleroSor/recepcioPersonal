@@ -10,23 +10,96 @@ import InputBuscador from "../../../components/InputBuscador";
 const DealerData = () => {
     /**
      * ANOTACIONES 📝
-     * 
-     * 1 - Revisar alguna función de la clase String para poner la primera letra en mayúscula.  
+     *
+     * 1 - Revisar alguna función de la clase String para poner la primera letra en mayúscula.
      */
     const [isData, setIsData] = useState([]);
     const [isDataSetted, setIsDataSetted] = useState(false);
+    const [isDataByName, setIsDataByName] = useState([]);
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [numPage, setNumPage] = useState(1);
     const numElemPage = 5;
 
+    /**
+     *  ANOTACIÓN 📝
+     *
+     * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
+     * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
+     *
+     */
+
+    /******************************************************************
+     *                           PAGINACIÓN                           *
+     ******************************************************************/
+
+    let currentDealers;
+    let currentDealersByName;
+    let totalPages;
+
+    const lastDealerShow = numPage * numElemPage;
+    const firstDealerShow = lastDealerShow - numElemPage;
+    if (!isButtonClicked) {
+        currentDealers = isData.slice(firstDealerShow, lastDealerShow);
+        totalPages = Math.ceil(isData.length / numElemPage);
+    } else {
+        currentDealersByName = isDataByName.slice(
+            firstDealerShow,
+            lastDealerShow
+        );
+        totalPages = Math.ceil(isDataByName.length / numElemPage);
+    }
+
+    /******************************************************************
+     *                           PAGINACIÓN                           *
+     ******************************************************************/
+
     const handleData = async () => {
         try {
-            const data = await getDataBBDDRepartidores();            
+            const data = await getDataBBDDRepartidores();
             setIsData(data || []);
             setIsDataSetted(true);
-            console.log(data);
+            console.log(isDataByName);
         } catch (error) {
             console.log(error);
             setIsDataSetted(false);
+        }
+    };
+
+    const showData = () => {
+        if (!isButtonClicked) {
+            const templateAllDealers = (
+                <tbody>
+                    {currentDealers.length > 0 ? (
+                        <>
+                            {currentDealers.map((element) => (
+                                <Dealer key={element.id} dealer={element} />
+                            ))}
+                        </>
+                    ) : (
+                        <tr>
+                            <td>CARGANDO ...!</td>
+                        </tr>
+                    )}
+                </tbody>
+            );
+            return templateAllDealers;
+        } else {
+            const templateValueByName = (
+                <tbody>
+                    {currentDealersByName.length > 0 ? (
+                        <>
+                            {currentDealersByName.map((element) => (
+                                <Dealer key={element.id} dealer={element} />
+                            ))}
+                        </>
+                    ) : (
+                        <tr>
+                            <td>CARGANDO ...!</td>
+                        </tr>
+                    )}
+                </tbody>
+            );
+            return templateValueByName;
         }
     };
 
@@ -34,15 +107,13 @@ const DealerData = () => {
         handleData();
     }, []);
 
-    const lastDealerShow = numPage * numElemPage;
-    const firstDealerShow = lastDealerShow - numElemPage;
-    const currentDealers = isData.slice(firstDealerShow, lastDealerShow);
-    const totalPages = Math.ceil(isData.length / numElemPage);
-
     return (
         <div className="container-box">
-            <InputBuscador />
-            {isDataSetted ? (
+            <InputBuscador
+                setIsDataByName={setIsDataByName}
+                setIsButtonClicked={setIsButtonClicked}
+            />
+            {isDataSetted || isDataByName ? (
                 <table>
                     <thead>
                         <tr>
@@ -53,42 +124,13 @@ const DealerData = () => {
                             <th className="dealer-td-th">Uso Personal</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {currentDealers.length > 0 ? (
-                            <>
-                                {currentDealers.map((element) => (
-                                    <Dealer key={element.id} dealer={element} />
-                                ))}
-                            </>
-                        ) : (
-                            <tr>
-                                <td>CARGANDO ...!</td>
-                            </tr>
-                        )}
-                        {/* Código que recorra la data e imprima por cada por cada comercial que encontremos
-                    en la BBDD una fila con las respectivas columnas, imprimiendo la información del 
-                    comercial. 
-                    
-                    <tr>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                    </tr>
-                */}
-                    </tbody>
+                    {showData()}                    
                 </table>
             ) : (
                 <div>
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
-            )}
-            {/* 
-                ANOTACIÓN 📝
-                
-                - Modificar el color de los iconos o cambiarlos 
-                por iconos que se puedan modificar su color.
-            */}
+            )}            
             <div className="controles-pagination">
                 <button
                     className="button-pagination"
