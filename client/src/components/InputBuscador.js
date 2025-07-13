@@ -18,6 +18,10 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
         setIsButtonClicked(true);
     };
 
+    const handleClickButtonClose = () => {
+        
+    };
+
     const dataByName = async () => {
         const dataByName = await getDataBBDDComercialsByName(
             inputValue.toLowerCase()
@@ -47,7 +51,7 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
             <button onClick={handleClick}>
                 <IconEnter className="iconEnterInput" />
             </button>
-            <button onClick={handleClick}>
+            <button onClick={handleClickButtonClose}>
                 <IconClose className="iconCloseInput" />
             </button>
         </div>
