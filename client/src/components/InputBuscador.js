@@ -19,7 +19,7 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
     };
 
     const handleClickButtonClose = () => {
-        
+        setIsButtonClicked(false);
     };
 
     const dataByName = async () => {
