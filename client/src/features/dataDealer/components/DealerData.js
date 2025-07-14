@@ -6,10 +6,8 @@ import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRig
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import "./../../../styles/App.scss";
 import InputBuscador from "../../../components/InputBuscador";
-import getDataBBDDDealersByName from "../../../db/getDataBBDDDealersByName";
-import stringSimilarity from "string-similarity";
 
-const DealerData = () => {    
+const DealerData = () => {
     /**
      * ANOTACIONES 📝
      *
@@ -61,19 +59,23 @@ const DealerData = () => {
      ******************************************************************/
 
     const handleData = async () => {
+        const data = await getDataBBDDRepartidores();
+
         try {
             if (!isButtonClicked) {
-                const data = await getDataBBDDRepartidores();
                 setIsData(data || []);
-                setIsDataSetted(true);                
+                setIsDataSetted(true);
             } else {
-                const dataByName = await getDataBBDDDealersByName(
-                    isInputValue.toLowerCase()
-                );
+                const dataByName = data.filter(
+                    (element) =>
+                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())                        
+                );            
 
-            const dataFindedSimilarity = stringSimilarity.findBestMatch(isInputValue.toLowerCase(), dataByName);
-                setIsDataByName(dataByName || []);             
-                console.log(dataFindedSimilarity);   
+                if (dataByName.length > 0) {
+                    setIsDataByName(dataByName || []);
+                } else {
+                    alert("No se ha encontrado ningún repartidor.");
+                }
             }
         } catch (error) {
             console.log(error);
@@ -81,9 +83,13 @@ const DealerData = () => {
         }
     };
 
- /******************************************************************
-  *                      GESTIÓN DATOS BBDD                        *
-  ******************************************************************/
+    /******************************************************************
+     *                      GESTIÓN DATOS BBDD                        *
+     ******************************************************************/
+
+    /******************************************************************
+     *                      MOSTRANDO LOS DATOS                       *
+     ******************************************************************/
 
     const showData = () => {
         if (!isButtonClicked) {
@@ -123,8 +129,13 @@ const DealerData = () => {
         }
     };
 
+    /******************************************************************
+     *                      MOSTRANDO LOS DATOS                       *
+     ******************************************************************/
+
     useEffect(() => {
         handleData();
+        setIsInputValue("");
     }, [isButtonClicked]);
 
     return (

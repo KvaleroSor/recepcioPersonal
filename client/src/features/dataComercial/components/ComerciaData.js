@@ -63,16 +63,23 @@ const ComercialData = () => {
      ******************************************************************/
 
     const handleData = async () => {
+        const data = await getDataBBDDComerciales();
+        
         try {
-            if (!isButtonClicked) {
-                const data = await getDataBBDDComerciales();
+            if (!isButtonClicked) {                
                 setIsData(data || []);
                 setIsDataSetted(true);
             } else {
-                const dataByName = await getDataBBDDComercialsByName(
-                    isInputValue.toLowerCase().trim()
+                const dataByName = data.filter(
+                    (element) =>
+                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())                        
                 );
-                setIsDataByName(dataByName || []);
+
+                if(dataByName.length > 0){
+                    setIsDataByName(dataByName || []);
+                }else{
+                    alert("No se ha encontrado ningún repartidor.");
+                }
                 
             }
         } catch (error) {
@@ -84,6 +91,10 @@ const ComercialData = () => {
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
      *****************************************************************/
+
+    /******************************************************************
+     *                      MOSTRANDO LOS DATOS                       *
+     ******************************************************************/
 
     const showData = () => {
         if (!isButtonClicked) {
@@ -122,6 +133,10 @@ const ComercialData = () => {
             return templateValueByName;
         }
     };
+
+    /******************************************************************
+     *                      MOSTRANDO LOS DATOS                       *
+     ******************************************************************/
 
     useEffect(() => {
         handleData();
