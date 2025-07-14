@@ -26,6 +26,10 @@ table {
     padding-bottom: 3rem;   
 }
 
+.custom-width{
+    width: 80% !important;
+}
+
 .input-buscador {    
     @include styles_input;
     font-size: 2rem;

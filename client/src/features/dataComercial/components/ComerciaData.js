@@ -6,7 +6,6 @@ import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft
 import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRight.svg";
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import InputBuscador from "../../../components/InputBuscador";
-import getDataBBDDComercialsByName from "../../../db/getDataBBDDComercialsByName";
 
 const ComercialData = () => {
     /**
@@ -147,7 +146,7 @@ const ComercialData = () => {
             <InputBuscador
                 setIsButtonClicked={setIsButtonClicked}
                 setIsInputValue={setIsInputValue}
-
+                customClass="custom-width"
                 className="input_comercialData"
             />
 

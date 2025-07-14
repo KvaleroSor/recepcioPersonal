@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as IconEnter } from "./../icons/iconEnter2.svg";
 import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
 
-const InputBuscador = ({ setIsButtonClicked, setIsInputValue }) => {
+const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }) => {
     /**
      * ANOTACIONES 📝
      *
@@ -33,7 +33,7 @@ const InputBuscador = ({ setIsButtonClicked, setIsInputValue }) => {
     };
 
     return (
-        <div className="container_input-buscador">
+        <div className={`container_input-buscador ${customClass}`}>
             <input
                 id="input-buscador_dealers"
                 className="input-buscador"
