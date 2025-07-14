@@ -8,8 +8,7 @@ table {
 tbody tr {
     &:hover {
         background-color: $prueba_1_buttons;
-
-        // 1. Aplicamos el radio a la primera y última celda de la fila en hover
+    
         td:first-child {
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
@@ -61,5 +60,13 @@ td {
 }
 
 .btn-width_setteable--comercialData{
+    width: 80% !important;
+}
+
+.container-input_comercialData{
+    width: 80%;
+}
+
+.input_comercialData{
     width: 80% !important;
 }

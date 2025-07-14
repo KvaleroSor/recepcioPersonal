@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { ReactComponent as IconEnter } from "./../icons/iconEnter2.svg";
 import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
-import { getDataBBDDComercialsByName } from "./../db/getDataBBDDComercialsByName";
 
-const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
+const InputBuscador = ({ setIsButtonClicked, setIsInputValue }) => {
     /**
      * ANOTACIONES 📝
      *
@@ -14,10 +13,10 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
     const [inputValue, setInputValue] = useState("");
 
     const handleClick = () => {        
-        dataByName();
         setIsButtonClicked(true);
+        setIsInputValue(inputValue);
 
-        if(inputValue === ""){
+        if (inputValue === "") {
             handleClickButtonClose();
         }
     };
@@ -27,16 +26,9 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
         setInputValue("");
     };
 
-    const dataByName = async () => {
-        const dataByName = await getDataBBDDComercialsByName(
-            inputValue.toLowerCase()
-        );
-
-        setIsDataByName(dataByName);
-    };
-
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
+        
         console.log(e.target.value);
     };
 
@@ -50,10 +42,10 @@ const InputBuscador = ({ setIsDataByName, setIsButtonClicked }) => {
                 value={inputValue}
                 onChange={handleInputChange}
                 autoComplete="off"
-                autocapitalize="off"
-                spellcheck="false"
+                autoCapitalize="off"
+                spellCheck="false"
                 onKeyUp={(e) => {
-                    if(e.key === "Enter") {
+                    if (e.key === "Enter") {
                         handleClick();
                     };
                 }}

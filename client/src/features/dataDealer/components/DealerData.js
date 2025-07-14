@@ -6,6 +6,7 @@ import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRig
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import "./../../../styles/App.scss";
 import InputBuscador from "../../../components/InputBuscador";
+import getDataBBDDDealersByName from "../../../db/getDataBBDDDealersByName";
 
 const DealerData = () => {
     /**
@@ -17,6 +18,7 @@ const DealerData = () => {
     const [isDataSetted, setIsDataSetted] = useState(false);
     const [isDataByName, setIsDataByName] = useState([]);
     const [isButtonClicked, setIsButtonClicked] = useState(false);
+    const [isInputValue, setIsInputValue] = useState("");
     const [numPage, setNumPage] = useState(1);
     const numElemPage = 5;
 
@@ -35,9 +37,9 @@ const DealerData = () => {
     let currentDealers;
     let currentDealersByName;
     let totalPages;
-
     const lastDealerShow = numPage * numElemPage;
     const firstDealerShow = lastDealerShow - numElemPage;
+
     if (!isButtonClicked) {
         currentDealers = isData.slice(firstDealerShow, lastDealerShow);
         totalPages = Math.ceil(isData.length / numElemPage);
@@ -53,17 +55,33 @@ const DealerData = () => {
      *                           PAGINACIÓN                           *
      ******************************************************************/
 
+    /******************************************************************
+     *                           GESTIÓN DATOS BBDD                   *
+     ******************************************************************/
+
     const handleData = async () => {
         try {
-            const data = await getDataBBDDRepartidores();
-            setIsData(data || []);
-            setIsDataSetted(true);
-            console.log(isDataByName);
+            if (!isButtonClicked) {
+                const data = await getDataBBDDRepartidores();
+                setIsData(data || []);
+                setIsDataSetted(true);
+                console.log("Hola desde handledata en dealerdata cuando el botón no se ha pulsado")
+            } else {
+                const dataByName = await getDataBBDDDealersByName(
+                    isInputValue.toLowerCase()
+                );
+                setIsDataByName(dataByName || []);
+                console.log("Hola desde handledata en dealerdata");
+            }
         } catch (error) {
             console.log(error);
             setIsDataSetted(false);
         }
     };
+
+ /******************************************************************
+  *                      GESTIÓN DATOS BBDD                        *
+  ******************************************************************/
 
     const showData = () => {
         if (!isButtonClicked) {
@@ -105,13 +123,13 @@ const DealerData = () => {
 
     useEffect(() => {
         handleData();
-    }, []);
+    }, [isButtonClicked]);
 
     return (
         <div className="container-box">
             <InputBuscador
-                setIsDataByName={setIsDataByName}
                 setIsButtonClicked={setIsButtonClicked}
+                setIsInputValue={setIsInputValue}
             />
             {isDataSetted || isDataByName ? (
                 <table>
@@ -124,13 +142,13 @@ const DealerData = () => {
                             <th className="dealer-td-th">Uso Personal</th>
                         </tr>
                     </thead>
-                    {showData()}                    
+                    {showData()}
                 </table>
             ) : (
                 <div>
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
-            )}            
+            )}
             <div className="controles-pagination">
                 <button
                     className="button-pagination"

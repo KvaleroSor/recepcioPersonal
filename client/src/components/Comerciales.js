@@ -75,7 +75,7 @@ const Comerciales = () => {
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;
-        setValues({ ...values, [name]: value });
+        setValues({ ...values, [name]: value.toLowerCase().trim() });
     };
 
     const handleClosePopup = () => {

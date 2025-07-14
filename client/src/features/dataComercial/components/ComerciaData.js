@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Comercial from "./Comercial";
 import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
-import { ReactComponent as IconoArrowLeft} from "./../../../icons/iconArrowLeft.svg";
-import { ReactComponent as IconoArrowRight} from "./../../../icons/iconArrowRight.svg";
+import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft.svg";
+import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRight.svg";
 import ButtonCloseData from "../../../components/ButtonCloseData";
+import InputBuscador from "../../../components/InputBuscador";
+import getDataBBDDComercialsByName from "../../../db/getDataBBDDComercialsByName";
 
 const ComercialData = () => {
     /**
@@ -14,35 +16,128 @@ const ComercialData = () => {
      * el archivo de "DealearData".
      */
     const [isData, setIsData] = useState([]);
-    const [isDataSetted, setIsDataSetted] = useState(false);
     const [numPage, setNumPage] = useState(1);
+    const [isDataByName, setIsDataByName] = useState([]);
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
+    const [isDataSetted, setIsDataSetted] = useState(false);
+    const [isInputValue, setIsInputValue] = useState("");
     const numElemPage = 5;
+
+    /**
+ *  ANOTACIÓN 📝
+ *
+ * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
+ * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
+ *
+ */
+
+
+
+    /******************************************************************
+     *                           PAGINACIÓN                           *
+     ******************************************************************/
+
+    let currentDealers;
+    let currentDealersByName;
+    let totalPages;
+    const lastDealerShow = numPage * numElemPage;
+    const firstDealerShow = lastDealerShow - numElemPage;
+
+    if (!isButtonClicked) {
+        currentDealers = isData.slice(firstDealerShow, lastDealerShow);
+        totalPages = Math.ceil(isData.length / numElemPage);
+    } else {
+        currentDealersByName = isDataByName.slice(
+            firstDealerShow,
+            lastDealerShow
+        );
+        totalPages = Math.ceil(isDataByName.length / numElemPage);
+    }
+
+    /******************************************************************
+     *                           PAGINACIÓN                           *
+     ******************************************************************/
+
+    /******************************************************************
+     *                           GESTIÓN DATOS BBDD                   *
+     ******************************************************************/
 
     const handleData = async () => {
         try {
-            const data = await getDataBBDDComerciales();
-            setIsData(data || []);
-            setIsDataSetted(true);
-            console.log(data);
+            if (!isButtonClicked) {
+                const data = await getDataBBDDComerciales();
+                setIsData(data || []);
+                setIsDataSetted(true);
+            } else {
+                const dataByName = await getDataBBDDComercialsByName(
+                    isInputValue.toLowerCase().trim()
+                );
+                setIsDataByName(dataByName || []);
+                console.log("Value of --> " + isInputValue);
+                console.log(dataByName);
+            }
         } catch (error) {
             console.log(error);
             setIsDataSetted(false);
         }
+    };
 
+    /*****************************************************************
+     *                      GESTIÓN DATOS BBDD                       *
+     *****************************************************************/
+
+    const showData = () => {
+        if (!isButtonClicked) {
+            const templateAllDealers = (
+                <tbody>
+                    {currentDealers.length > 0 ? (
+                        <>
+                            {currentDealers.map((element) => (
+                                <Comercial key={element.id} comercial={element} />
+                            ))}
+                        </>
+                    ) : (
+                        <tr>
+                            <td>CARGANDO ...!</td>
+                        </tr>
+                    )}
+                </tbody>
+            );
+            return templateAllDealers;
+        } else {
+            const templateValueByName = (
+                <tbody>
+                    {currentDealersByName.length > 0 ? (
+                        <>
+                            {currentDealersByName.map((element) => (
+                                <Comercial key={element.id} comercial={element} />
+                            ))}
+                        </>
+                    ) : (
+                        <tr>
+                            <td>CARGANDO ...!</td>
+                        </tr>
+                    )}
+                </tbody>
+            );
+            return templateValueByName;
+        }
     };
 
     useEffect(() => {
         handleData();
-    }, []);
-
-    const lastDealerShow = numPage * numElemPage;
-    const firstDealerShow = lastDealerShow - numElemPage;
-    const currentDealers = isData.slice(firstDealerShow, lastDealerShow);
-    const totalPages = Math.ceil(isData.length / numElemPage);
+    }, [isButtonClicked]);
 
     return (
         <div className="container-box">
-            {isDataSetted ? (
+            <InputBuscador
+                setIsButtonClicked={setIsButtonClicked}
+                setIsInputValue={setIsInputValue}
+
+                className="input_comercialData"
+            />
+
+            {isDataSetted || isDataByName ? (
                 <table className="width-table_comercials">
                     <thead>
                         <tr>
@@ -53,43 +148,14 @@ const ComercialData = () => {
                             <th className="dealer-td-th">Persona de Imasd que busca</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {currentDealers.length > 0 ? (
-                            <>
-                                {currentDealers.map((element) => (
-                                    <Comercial key={element.id} comercial={element} />
-                                ))}                                
-                            </>
-                        ) : (
-                            <tr>
-                                <td>CARGANDO ...!</td>
-                            </tr>
-                        )}
-
-                        {/* Código que recorra la data e imprima por cada por cada comercial que encontremos
-                    en la BBDD una fila con las respectivas columnas, imprimiendo la información del 
-                    comercial. 
-                    
-                    <tr>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                        <td>Información del comercial</td>
-                    </tr>
-                */}
-                    </tbody>
+                    {showData()}
                 </table>
             ) : (
                 <div>
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
             )}
-            {/* 
-                            ANOTACIÓN 📝
-                            
-                            - Modificar el color de los iconos o cambiarlos 
-                            por iconos que se puedan modificar su color.
-                        */}
+
             <div className="controles-pagination">
                 <button
                     className="button-pagination"
@@ -113,7 +179,7 @@ const ComercialData = () => {
                     <IconoArrowRight className="icons-buttons--pagination" />
                 </button>
             </div>
-            <ButtonCloseData customClassName="btn-width_setteable--comercialData"/>
+            <ButtonCloseData customClassName="btn-width_setteable--comercialData" />
         </div>
     );
 };
