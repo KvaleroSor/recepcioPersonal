@@ -9,6 +9,7 @@ import InputBuscador from "../../../components/InputBuscador";
 import getDataBBDDDealersByName from "../../../db/getDataBBDDDealersByName";
 
 const DealerData = () => {
+    const stringSimilarity = require("string-similarity");
     /**
      * ANOTACIONES 📝
      *
@@ -64,14 +65,14 @@ const DealerData = () => {
             if (!isButtonClicked) {
                 const data = await getDataBBDDRepartidores();
                 setIsData(data || []);
-                setIsDataSetted(true);
-                console.log("Hola desde handledata en dealerdata cuando el botón no se ha pulsado")
+                setIsDataSetted(true);                
             } else {
                 const dataByName = await getDataBBDDDealersByName(
                     isInputValue.toLowerCase()
                 );
-                setIsDataByName(dataByName || []);
-                console.log("Hola desde handledata en dealerdata");
+
+            const dataFindedSimilarity = stringSimilarity.findBestMatch(isInputValue, dataByName);
+                setIsDataByName(dataFindedSimilarity || []);                
             }
         } catch (error) {
             console.log(error);

@@ -73,8 +73,7 @@ const ComercialData = () => {
                     isInputValue.toLowerCase().trim()
                 );
                 setIsDataByName(dataByName || []);
-                console.log("Value of --> " + isInputValue);
-                console.log(dataByName);
+                
             }
         } catch (error) {
             console.log(error);
