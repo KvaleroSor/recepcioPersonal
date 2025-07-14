@@ -7,9 +7,9 @@ import ButtonCloseData from "../../../components/ButtonCloseData";
 import "./../../../styles/App.scss";
 import InputBuscador from "../../../components/InputBuscador";
 import getDataBBDDDealersByName from "../../../db/getDataBBDDDealersByName";
+import stringSimilarity from "string-similarity";
 
-const DealerData = () => {
-    const stringSimilarity = require("string-similarity");
+const DealerData = () => {    
     /**
      * ANOTACIONES 📝
      *
@@ -71,8 +71,9 @@ const DealerData = () => {
                     isInputValue.toLowerCase()
                 );
 
-            const dataFindedSimilarity = stringSimilarity.findBestMatch(isInputValue, dataByName);
-                setIsDataByName(dataFindedSimilarity || []);                
+            const dataFindedSimilarity = stringSimilarity.findBestMatch(isInputValue.toLowerCase(), dataByName);
+                setIsDataByName(dataByName || []);             
+                console.log(dataFindedSimilarity);   
             }
         } catch (error) {
             console.log(error);
