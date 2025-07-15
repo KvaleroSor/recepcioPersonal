@@ -80,6 +80,10 @@ const ComercialData = () => {
                 setIsData(data || []);
                 setIsDataSetted(true);
             } else {
+
+                /**
+                 * Revisar la lógica de esta parte, no funciona correctamente ❌
+                 */
                 const dataByName = data.filter(
                     (element) =>
                         element.nombre.toLowerCase().includes(isInputValue.toLowerCase())
@@ -101,7 +105,6 @@ const ComercialData = () => {
                 } else {
                     alert("No se ha encontrado lo que buscas...!");
                 }
-
             }
         } catch (error) {
             console.log(error);
