@@ -11,11 +11,10 @@
 
 button{
     width: 6rem;
-    height: 3rem;
-    
-    border-radius: 0.5rem;
-    
+    height: 3rem;    
+    border-radius: 0.5rem;    
     color: $prueba_1_text;     
+    font-size: 0.9rem;
     transition: ease 0.2s;
 
     &:hover{
