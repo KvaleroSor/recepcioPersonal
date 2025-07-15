@@ -7,6 +7,7 @@ import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRig
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import InputBuscador from "../../../components/InputBuscador";
 import { CLOSING } from "ws";
+import ButtonGroup from "../../buttonGroup-selectSearch/components/ButtonGroup";
 
 const ComercialData = () => {
     /**
@@ -198,13 +199,14 @@ const ComercialData = () => {
 
     return (
         <div className="container-box">
+            <ButtonGroup />
             <InputBuscador
                 setIsButtonClicked={setIsButtonClicked}
                 setIsInputValue={setIsInputValue}
                 customClass="custom-width"
                 className="input_comercialData"
             />
-
+            
             {isDataSetted || isDataByName ? (
                 <table className="width-table_comercials">
                     <thead>
