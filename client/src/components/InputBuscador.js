@@ -3,13 +3,6 @@ import { ReactComponent as IconEnter } from "./../icons/iconEnter2.svg";
 import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
 
 const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }) => {
-    /**
-     * ANOTACIONES 📝
-     *
-     * 1 - Implementar el stringsimilarity para la busqueda del nombre de la empresa
-     *     repartidora que queremos buscar.
-     *
-     */
     const [inputValue, setInputValue] = useState("");
 
     const handleClick = () => {        

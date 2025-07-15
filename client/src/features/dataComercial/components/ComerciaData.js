@@ -6,6 +6,7 @@ import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft
 import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRight.svg";
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import InputBuscador from "../../../components/InputBuscador";
+import { CLOSING } from "ws";
 
 const ComercialData = () => {
     /**
@@ -17,6 +18,7 @@ const ComercialData = () => {
     const [isData, setIsData] = useState([]);
     const [numPage, setNumPage] = useState(1);
     const [isDataByName, setIsDataByName] = useState([]);
+    const [isDataByCompany, setIsDataByCompany] = useState([]);
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [isDataSetted, setIsDataSetted] = useState(false);
     const [isInputValue, setIsInputValue] = useState("");
@@ -38,6 +40,7 @@ const ComercialData = () => {
 
     let currentDealers;
     let currentDealersByName;
+    let currentDealersByCompany;
     let totalPages;
     const lastDealerShow = numPage * numElemPage;
     const firstDealerShow = lastDealerShow - numElemPage;
@@ -46,11 +49,19 @@ const ComercialData = () => {
         currentDealers = isData.slice(firstDealerShow, lastDealerShow);
         totalPages = Math.ceil(isData.length / numElemPage);
     } else {
-        currentDealersByName = isDataByName.slice(
-            firstDealerShow,
-            lastDealerShow
-        );
-        totalPages = Math.ceil(isDataByName.length / numElemPage);
+        if (isDataByName) {
+            currentDealersByName = isDataByName.slice(
+                firstDealerShow,
+                lastDealerShow
+            );
+            totalPages = Math.ceil(isDataByName.length / numElemPage);
+        } else {
+            currentDealersByCompany = isDataByCompany.slice(
+                firstDealerShow,
+                lastDealerShow
+            );
+            totalPages = Math.ceil(isDataByCompany.length / numElemPage);
+        }
     }
 
     /******************************************************************
@@ -63,23 +74,34 @@ const ComercialData = () => {
 
     const handleData = async () => {
         const data = await getDataBBDDComerciales();
-        
+
         try {
-            if (!isButtonClicked) {                
+            if (!isButtonClicked) {
                 setIsData(data || []);
                 setIsDataSetted(true);
             } else {
                 const dataByName = data.filter(
                     (element) =>
-                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())                        
+                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())
                 );
 
-                if(dataByName.length > 0){
+                const dataByCompany = data.filter(
+                    (element) =>
+                        element.empresa.toLowerCase().includes(isInputValue.toLowerCase())
+                );
+
+                console.log("Input value", isInputValue);
+                console.log("dataByName", dataByName);
+                console.log("dataByCompany", dataByCompany);
+
+                if (dataByName.length > 0) {
                     setIsDataByName(dataByName || []);
-                }else{
-                    alert("No se ha encontrado ningún repartidor.");
+                } else if (dataByCompany.length > 0) {
+                    setIsDataByCompany(dataByCompany || []);
+                } else {
+                    alert("No se ha encontrado lo que buscas...!");
                 }
-                
+
             }
         } catch (error) {
             console.log(error);
@@ -90,6 +112,15 @@ const ComercialData = () => {
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
      *****************************************************************/
+
+    // const cleanValueHooks = () => {
+    //     setIsData([]);
+    //     setIsDataByName([]);
+    //     setIsDataByCompany([]);
+    //     setIsButtonClicked(false);
+    //     setIsDataSetted(false);
+    //     setIsInputValue("");
+    // }
 
     /******************************************************************
      *                      MOSTRANDO LOS DATOS                       *
@@ -114,24 +145,45 @@ const ComercialData = () => {
             );
             return templateAllDealers;
         } else {
-            const templateValueByName = (
-                <tbody>
-                    {currentDealersByName.length > 0 ? (
-                        <>
-                            {currentDealersByName.map((element) => (
-                                <Comercial key={element.id} comercial={element} />
-                            ))}
-                        </>
-                    ) : (
-                        <tr>
-                            <td>CARGANDO ...!</td>
-                        </tr>
-                    )}
-                </tbody>
-            );
-            return templateValueByName;
+            if (isDataByName) {
+                const templateValueByName = (
+                    <tbody>
+                        {currentDealersByName.length > 0 ? (
+                            <>
+                                {currentDealersByName.map((element) => (
+                                    <Comercial key={element.id} comercial={element} />
+                                ))}
+                            </>
+                        ) : (
+                            <tr>
+                                <td>CARGANDO ...!</td>
+                            </tr>
+                        )}
+                    </tbody>
+                );
+                return templateValueByName;
+            } else {
+                const templateValueByCompany = (
+                    <tbody>
+                        {currentDealersByCompany.length > 0 ? (
+                            <>
+                                {currentDealersByCompany.map((element) => (
+                                    <Comercial key={element.id} comercial={element} />
+                                ))}
+                            </>
+                        ) : (
+                            <tr>
+                                <td>CARGANDO ...!</td>
+                            </tr>
+                        )}
+                    </tbody>
+                );
+                return templateValueByCompany;
+            }
         }
     };
+
+
 
     /******************************************************************
      *                      MOSTRANDO LOS DATOS                       *
@@ -162,6 +214,7 @@ const ComercialData = () => {
                         </tr>
                     </thead>
                     {showData()}
+                    {/* {cleanValueHooks()} */}
                 </table>
             ) : (
                 <div>

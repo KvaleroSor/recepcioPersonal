@@ -41,12 +41,13 @@ const Comerciales = () => {
             }
 
             const nombresEnLista = personalImasdBBDD.map((p) =>
-                p && p.nombre ? p.nombre.toLowerCase().trim() : ""
+                p && p.nombre ? p.nombre : ""
             );
             const matches = stringSimilarity.findBestMatch(
-                values.personaImasd.toLowerCase().trim(),
+                values.personaImasd.toLowerCase(),
                 nombresEnLista
             );
+            console.log("matches", matches);
             const personaImasdEncontrada =
                 personalImasdBBDD[matches.bestMatchIndex];
 
@@ -75,7 +76,7 @@ const Comerciales = () => {
 
     const handleChange = (evt) => {
         const { name, value } = evt.target;
-        setValues({ ...values, [name]: value.toLowerCase().trim() });
+        setValues({ ...values, [name]: value});
     };
 
     const handleClosePopup = () => {
