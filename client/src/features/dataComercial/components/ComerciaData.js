@@ -6,14 +6,13 @@ import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft
 import { ReactComponent as IconoArrowRight } from "./../../../icons/iconArrowRight.svg";
 import ButtonCloseData from "../../../components/ButtonCloseData";
 import InputBuscador from "../../../components/InputBuscador";
-import { CLOSING } from "ws";
 import ButtonGroup from "../../buttonGroup-selectSearch/components/ButtonGroup";
 
 const ComercialData = () => {
     /**
      * ANOTACIÓN 📝
-     * 
-     * Implementar la paginación como la hemos implementado en 
+     *
+     * Implementar la paginación como la hemos implementado en
      * el archivo de "DealearData".
      */
     const [isData, setIsData] = useState([]);
@@ -23,6 +22,7 @@ const ComercialData = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [isDataSetted, setIsDataSetted] = useState(false);
     const [isInputValue, setIsInputValue] = useState("");
+    const [isButtonTypePushed, setIsButtonTypePushed] = useState("");
     const numElemPage = 5;
 
     /**
@@ -79,30 +79,30 @@ const ComercialData = () => {
                 setIsData(data || []);
                 setIsDataSetted(true);
             } else {
+                if (isButtonTypePushed === "comercial") {
+                    const dataByName = data.filter((element) =>
+                        element.nombre
+                            .toLowerCase()
+                            .includes(isInputValue.toLowerCase())
+                    );
 
-                /**
-                 * Revisar la lógica de esta parte, no funciona correctamente ❌
-                 */
-                const dataByName = data.filter(
-                    (element) =>
-                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())
-                );
+                    if (dataByName.length > 0) {
+                        setIsDataByName(dataByName || []);
+                    } else {
+                        alert("No se ha encontrado a nadie con ese nombre.");
+                    }
+                } else if (isButtonTypePushed === "empresa") {
+                    const dataByCompany = data.filter((element) =>
+                        element.empresa
+                            .toLowerCase()
+                            .includes(isInputValue.toLowerCase())
+                    );
 
-                const dataByCompany = data.filter(
-                    (element) =>
-                        element.empresa.toLowerCase().includes(isInputValue.toLowerCase())
-                );
-
-                console.log("Input value", isInputValue);
-                console.log("dataByName", dataByName);
-                console.log("dataByCompany", dataByCompany);
-
-                if (dataByName.length > 0) {
-                    setIsDataByName(dataByName || []);
-                } else if (dataByCompany.length > 0) {
-                    setIsDataByCompany(dataByCompany || []);
-                } else {
-                    alert("No se ha encontrado lo que buscas...!");
+                    if (dataByCompany.length > 0) {
+                        setIsDataByCompany(dataByCompany || []);
+                    } else {
+                        alert("No se ha encontrado a nadie con esa empresa.");
+                    }
                 }
             }
         } catch (error) {
@@ -135,7 +135,10 @@ const ComercialData = () => {
                     {currentDealers.length > 0 ? (
                         <>
                             {currentDealers.map((element) => (
-                                <Comercial key={element.id} comercial={element} />
+                                <Comercial
+                                    key={element.id}
+                                    comercial={element}
+                                />
                             ))}
                         </>
                     ) : (
@@ -147,13 +150,16 @@ const ComercialData = () => {
             );
             return templateAllDealers;
         } else {
-            if (isDataByName) {
+            if (isButtonTypePushed === "comercial") {
                 const templateValueByName = (
                     <tbody>
                         {currentDealersByName.length > 0 ? (
                             <>
                                 {currentDealersByName.map((element) => (
-                                    <Comercial key={element.id} comercial={element} />
+                                    <Comercial
+                                        key={element.id}
+                                        comercial={element}
+                                    />
                                 ))}
                             </>
                         ) : (
@@ -170,7 +176,10 @@ const ComercialData = () => {
                         {currentDealersByCompany.length > 0 ? (
                             <>
                                 {currentDealersByCompany.map((element) => (
-                                    <Comercial key={element.id} comercial={element} />
+                                    <Comercial
+                                        key={element.id}
+                                        comercial={element}
+                                    />
                                 ))}
                             </>
                         ) : (
@@ -185,8 +194,6 @@ const ComercialData = () => {
         }
     };
 
-
-
     /******************************************************************
      *                      MOSTRANDO LOS DATOS                       *
      ******************************************************************/
@@ -197,14 +204,14 @@ const ComercialData = () => {
 
     return (
         <div className="container-box">
-            <ButtonGroup />
+            <ButtonGroup setIsButtonTypePushed={setIsButtonTypePushed} />
             <InputBuscador
                 setIsButtonClicked={setIsButtonClicked}
                 setIsInputValue={setIsInputValue}
                 customClass="custom-width"
                 className="input_comercialData"
             />
-            
+
             {isDataSetted || isDataByName ? (
                 <table className="width-table_comercials">
                     <thead>
@@ -213,7 +220,9 @@ const ComercialData = () => {
                             <th>Nombre del Comercial</th>
                             <th>Nombre de la Empresa</th>
                             <th className="dealer-td-th">Fecha</th>
-                            <th className="dealer-td-th">Persona de Imasd que busca</th>
+                            <th className="dealer-td-th">
+                                Persona de Imasd que busca
+                            </th>
                         </tr>
                     </thead>
                     {showData()}
