@@ -15,6 +15,13 @@ button{
     border-radius: 0.5rem;    
     color: $prueba_1_text;     
     font-size: 0.9rem;
+    
+}
+
+.button-styles_buttonGroup{
+    border: 1px solid $prueba_1_buttons;
+    margin: 0.5rem;
+    cursor: pointer;
     transition: ease 0.2s;
 
     &:hover{
@@ -26,12 +33,6 @@ button{
         background-color: $prueba_1_buttons;
         border: none;
     }
-}
-
-.button-styles_buttonGroup{
-    border: 1px solid $prueba_1_buttons;
-    margin: 0.5rem;
-    cursor: pointer;
 }
 
 .button-margin_left--setup{
