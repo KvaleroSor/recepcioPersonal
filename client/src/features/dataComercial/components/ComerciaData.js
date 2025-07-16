@@ -173,6 +173,12 @@ const ComercialData = () => {
             } else {
                 const templateValueByCompany = (
                     <tbody>
+                        {/* 
+                            Problemas con este fragmento de código,
+                            está llegando undefined ❌
+
+                            💥 currentDealersByCompany.length = undefined
+                        */}
                         {currentDealersByCompany.length > 0 ? (
                             <>
                                 {currentDealersByCompany.map((element) => (
