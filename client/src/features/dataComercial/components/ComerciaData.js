@@ -26,14 +26,12 @@ const ComercialData = () => {
     const numElemPage = 5;
 
     /**
- *  ANOTACIÓN 📝
- *
- * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
- * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
- *
- */
-
-
+     *  ANOTACIÓN 📝
+     *
+     * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
+     * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
+     *
+     */
 
     /******************************************************************
      *                           PAGINACIÓN                           *
