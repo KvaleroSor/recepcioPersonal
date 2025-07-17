@@ -1,0 +1,45 @@
+@import "./variables";
+
+.container-buttonGroup{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 3rem;    
+    margin-bottom: 1rem;
+}
+
+button{
+    width: 6rem;
+    height: 3rem;    
+    border-radius: 0.5rem;    
+    color: $prueba_1_text;     
+    font-size: 0.9rem;
+    
+}
+
+.button-styles_buttonGroup{
+    border: 1px solid $prueba_1_buttons;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: ease 0.2s;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    &:active{
+        transform: scale(0.9);
+        background-color: $prueba_1_buttons;
+        border: none;
+    }
+}
+
+.button-margin_left--setup{
+    margin-left: 10rem;
+}
+
+.button_background-add{
+    background-color: $prueba_1_buttons;
+    border: none;
+}
