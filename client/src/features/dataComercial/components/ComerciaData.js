@@ -44,11 +44,30 @@ const ComercialData = () => {
     const lastDealerShow = numPage * numElemPage;
     const firstDealerShow = lastDealerShow - numElemPage;
 
+    // if (!isButtonClicked) {
+    //     currentDealers = isData.slice(firstDealerShow, lastDealerShow);
+    //     totalPages = Math.ceil(isData.length / numElemPage);
+    // } else {
+    //     if (isDataByName) {
+    //         currentDealersByName = isDataByName.slice(
+    //             firstDealerShow,
+    //             lastDealerShow
+    //         );
+    //         totalPages = Math.ceil(isDataByName.length / numElemPage);
+    //     } else {
+    //         currentDealersByCompany = isDataByCompany.slice(
+    //             firstDealerShow,
+    //             lastDealerShow
+    //         );
+    //         totalPages = Math.ceil(isDataByCompany.length / numElemPage);
+    //     }
+    // }
+
     if (!isButtonClicked) {
         currentDealers = isData.slice(firstDealerShow, lastDealerShow);
         totalPages = Math.ceil(isData.length / numElemPage);
     } else {
-        if (isDataByName) {
+        if (isButtonTypePushed === "comercial") {
             currentDealersByName = isDataByName.slice(
                 firstDealerShow,
                 lastDealerShow
@@ -172,13 +191,7 @@ const ComercialData = () => {
                 return templateValueByName;
             } else {
                 const templateValueByCompany = (
-                    <tbody>
-                        {/* 
-                            Problemas con este fragmento de código,
-                            está llegando undefined ❌
-
-                            💥 currentDealersByCompany.length = undefined
-                        */}
+                    <tbody>                       
                         {currentDealersByCompany.length > 0 ? (
                             <>
                                 {currentDealersByCompany.map((element) => (

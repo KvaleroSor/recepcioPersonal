@@ -17,6 +17,7 @@ const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }
     const handleClickButtonClose = () => {
         setIsButtonClicked(false);
         setInputValue("");
+        window.location.reload();
     };
 
     const handleInputChange = (e) => {
