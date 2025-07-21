@@ -47,7 +47,6 @@ const Comerciales = () => {
                 values.personaImasd.toLowerCase(),
                 nombresEnLista
             );
-            console.log("matches", matches);
             const personaImasdEncontrada =
                 personalImasdBBDD[matches.bestMatchIndex];
 

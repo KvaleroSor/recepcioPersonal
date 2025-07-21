@@ -9,7 +9,7 @@ const getDataBBDDPersonalImasd = async () => {
         console.log("Data encontrada:", personalList);
         return personalList; // Devolvemos la lista de personal
     } catch (error) {
-        console.error("ERROR - NO SE HAN ENCONTRADO LOS DATOS ❌", error);
+        console.error("Error getting documents: ", error);
         return []; // Devolvemos un array vacío en caso de error
     }
 }

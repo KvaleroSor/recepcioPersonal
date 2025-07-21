@@ -31,10 +31,10 @@ const udatingDataComercialJsonFile = async (values) => {
         }
 
         const data = await response.json();
-        console.log(`Comercial actualizado --> ${JSON.stringify(data)}`);
+                
         return data;
     } catch (error) {
-        console.error(`Error --> ${error}`);
+        console.error("Error al actualizar el comercial:", error);
     }
 };
 

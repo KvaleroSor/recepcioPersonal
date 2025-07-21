@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDoorBird } from "../hooks/useDoorBird";
 import "./../../../styles/App.scss";
-// import { getLiveImageURL } from '../services/doorBirdApi';
 
 const VideoFeed = () => {
-    // const { liveImageURL, error: hookError } = useDoorBird();
     const obj_ImageUrl = useDoorBird();
     const [imageLoadError, setImageLoadError] = useState(false);
     const liveImageURL = obj_ImageUrl.liveImageURL;
@@ -12,9 +10,10 @@ const VideoFeed = () => {
 
     // Mostramos el placeholder si no hay URL o si la imagen falló al cargar.
     const showPlaceholder = !liveImageURL || imageLoadError;
-    // console.log(`URL --> ${liveImageURL}`);
-    console.log(liveImageURL);
-    console.log(imageLoadError);
+
+    const handleImageError = () => {
+        setImageLoadError(true);
+    }
 
     return (
         <div className="doorbird-video-container">
@@ -31,7 +30,7 @@ const VideoFeed = () => {
                     src={liveImageURL}
                     alt="Live feed from DoorBird"
                     className="doorbird-video-feed"
-                    onError={() => setImageLoadError(true)} 
+                    onError={handleImageError} 
                     referrerPolicy="no-referrer"
                 />
             )}

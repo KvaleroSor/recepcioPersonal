@@ -46,13 +46,6 @@ console.log(
     "MODO DE EJECUCIÓN:",
     IS_MOCK_MODE ? "Simulación (Development)" : "Producción"
 );
-console.log("=================================");
-console.log("VARIABLES DE ENTORNO");
-console.log("=================================");
-console.log(`IP --> ${process.env.DOORBIRD_IP}`);
-console.log(`USER --> ${process.env.DOORBIRD_USER}`);
-console.log(`PASSWORD --> ${process.env.DOORBIRD_PASSWORD}`);
-console.log("=================================");
 
 /**
  * 5️⃣

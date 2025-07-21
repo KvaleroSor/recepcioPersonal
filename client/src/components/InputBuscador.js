@@ -21,9 +21,7 @@ const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }
     };
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);
-        
-        console.log(e.target.value);
+        setInputValue(e.target.value);   
     };
 
     return (
