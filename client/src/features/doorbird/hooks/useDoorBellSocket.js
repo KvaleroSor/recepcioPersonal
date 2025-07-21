@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
-import { CLOSING } from "ws";
+import { useState, useEffect, useRef } from "react";
 
 const WEBSOCKET__URL = "ws://localhost:3001";
 
-export const useDoorBellSocket = () => {
+export const useDoorBellSocket = (url = WEBSOCKET__URL) => {
     const [isRinging, setIsRinging] = useState(false);
+    const ws = useRef(null);
 
     useEffect(() => {
-        const ws = new WebSocket(WEBSOCKET__URL);
+        ws.current = new WebSocket(url);
 
-        ws.onopen = () => {
+        ws.current.onopen = () => {
             console.log(`Conectado al servidor de notificaciones ✅`);
         };
 
-        ws.onmessage = (event) => {            
+        ws.current.onmessage = (event) => {            
             try {
                 const message = JSON.parse(event.data);
 
@@ -28,17 +28,19 @@ export const useDoorBellSocket = () => {
             }
         };
         
-        ws.onerror = (error) => {
+        ws.current.onerror = (error) => {
             console.log(`ERROR - En el websocket | ERROR - ${error}`);
         };
 
-        ws.onclose = () => {
+        ws.current.onclose = () => {
             console.log("Desconectado del servidor de notificaciones ❌");        };
 
         return () => {
-            ws.close();
+            if (ws.current) {
+                ws.current.close();
+            }
         };
-    }, []);
+    }, [url]);
 
     return { isRinging, setIsRinging };
 };

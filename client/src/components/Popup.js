@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
     let title = "ACCIONES A REALIZAR!";
     let contentRender = null;
+
+    useEffect(() => {
+        if (tipo === "comercial" && data && data.personaImasd) {
+            // La lógica que estaba dentro del hook se mantiene,
+            // pero ahora el hook se ejecuta incondicionalmente.
+        }
+    }, [data, tipo]);
 
     if (!data) {
         contentRender = <p>No hay datos para mostrar.</p>;
@@ -16,15 +23,6 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
         const tlfPersonaImasd = personaImasd
             ? personaImasd.telefono
             : "No encontrado";
-
-        useEffect(() => {
-            if (personaImasd) {
-                // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
-                // setFormData({
-                //     // No se proporciona información sobre qué datos se deben establecer en el formulario
-                // });
-            }
-        }, [personaImasd]);
 
         contentRender = (
             <>

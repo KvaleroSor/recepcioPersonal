@@ -4,10 +4,10 @@ import { db } from "./firebaseConfig";
 // Write
 const setDataBBDDRepartidores = async (infoRepartidor) => {
     try {
-        const docRef = await addDoc(collection(db, "repartidores"), {
+        await addDoc(collection(db, "repartidores"), {
             ...infoRepartidor,
             fecha: serverTimestamp(),
-        });        
+        });
     } catch (e) {
         console.log(`Error al añadir el documento ${e}`);
     }

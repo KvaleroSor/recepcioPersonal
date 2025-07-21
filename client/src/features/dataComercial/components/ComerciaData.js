@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Comercial from "./Comercial";
 import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
@@ -90,7 +90,7 @@ const ComercialData = () => {
      *                           GESTIÓN DATOS BBDD                   *
      ******************************************************************/
 
-    const handleData = async () => {
+    const handleData = useCallback(async () => {
         const data = await getDataBBDDComerciales();
 
         try {
@@ -128,7 +128,7 @@ const ComercialData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-    };
+    }, [isButtonClicked, isButtonTypePushed, isInputValue]);
 
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
@@ -219,7 +219,7 @@ const ComercialData = () => {
 
     useEffect(() => {
         handleData();
-    }, [isButtonClicked]);
+    }, [handleData]);
 
     return (
         <div className="container-box">
