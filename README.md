@@ -2,11 +2,11 @@
 
 ¡Bienvenido al futuro de la gestión de visitas! Este proyecto es tu asistente personal para una recepción moderna y eficiente. Olvídate de los cuadernos y las esperas, ¡aquí todo es digital y fluido! ✨
 
-## 🌟 Funcionalidades Estelares
+## 🌟 Funcionalidades
 
 -   **Gestión de Visitas Inteligente:** Registra y organiza a tus visitantes con un par de clics. ¡Adiós al caos! 📋
 -   **Notificaciones en Tiempo Real:** ¿Alguien en la puerta? ¡Te avisamos al instante! 🔔 (Gracias a nuestra integración con DoorBird y WebSockets).
--   **Interfaz de Usuario Amigable:** Diseñada para que tanto el personal de recepción como los visitantes tengan una experiencia de 10. 💖
+-   **Interfaz de Usuario Amigable:** Diseñada para que tanto el personal de recepción como los visitantes tengan una experiencia de 10. 
 -   **Seguridad y Privacidad:** Tus datos y los de tus visitas, protegidos como un tesoro. 🔒
 
 ## 🛠️ Tecnologías Usadas (¡La Magia Detrás!)
