@@ -33,7 +33,7 @@ export const openDoor = async (releayNumber) => {
             );
         }
         const result = await response.json();
-        console.log("Respuesta del servidor (openDoor):", result.message);
+
         return result.success;
     } catch (error) {
         console.error(
@@ -60,7 +60,7 @@ export const turnLightOn = async () => {
             );
         }
         const result = await response.json();
-        console.log("Respuesta del servidor (turnLightOn):", result.message);
+
         return result.success;
     } catch (error) {
         console.error(

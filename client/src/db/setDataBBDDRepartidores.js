@@ -7,8 +7,7 @@ const setDataBBDDRepartidores = async (infoRepartidor) => {
         const docRef = await addDoc(collection(db, "repartidores"), {
             ...infoRepartidor,
             fecha: serverTimestamp(),
-        });
-        console.log(`Documento guardado con ID: ${docRef.id}`);
+        });        
     } catch (e) {
         console.log(`Error al añadir el documento ${e}`);
     }

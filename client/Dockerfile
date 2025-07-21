@@ -25,6 +25,8 @@ COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponemos el puerto 80 que Nginx usa por defecto
+# Posiblemente se tenga que cambiar el puerto al que se le asigne porque 
+# el puerto 80 estará en uso
 EXPOSE 80
 
 # El comando por defecto de Nginx se encarga de iniciar el servidor

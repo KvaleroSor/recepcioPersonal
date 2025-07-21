@@ -7,9 +7,7 @@ const setDataBBDDComercial = async (infoComercial) => {
         const docRef = await addDoc(collection(db, "comerciales"), {
             ...infoComercial,
             fecha: serverTimestamp(),
-        });
-        
-        console.log(`Documento guardado con ID: ${docRef.id}`);
+        });        
     } catch (e) {
         console.log(`Error al añadir el documento ${e}`);
     }

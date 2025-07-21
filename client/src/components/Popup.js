@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
@@ -9,7 +9,7 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
         contentRender = <p>No hay datos para mostrar.</p>;
     } else if (tipo === "comercial") {
         // El Popup ya no hace cálculos. Solo recibe y muestra el objeto resuelto.
-        const personaImasd = data.personaImasdData;
+        const { personaImasd } = data;
         const nombrePersonaImasd = personaImasd
             ? personaImasd.nombre
             : "No encontrado";
@@ -17,7 +17,14 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
             ? personaImasd.telefono
             : "No encontrado";
 
-        console.log("Datos finales recibidos en el Popup:", personaImasd);
+        useEffect(() => {
+            if (personaImasd) {
+                // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
+                // setFormData({
+                //     // No se proporciona información sobre qué datos se deben establecer en el formulario
+                // });
+            }
+        }, [personaImasd]);
 
         contentRender = (
             <>

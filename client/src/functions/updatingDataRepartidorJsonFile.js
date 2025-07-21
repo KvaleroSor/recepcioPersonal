@@ -26,11 +26,13 @@ const updatingDataRepartidorJsonFile = async (repartidor) => {
             if (contentType && contentType.indexOf("application/json") !== -1) {
                 return response.json();
             } else {
-                return {}; // O null, o un objeto que indique éxito sin datos
+                return {};
             }
         })
-        .then((data) => console.log(`Actualizado --> ${data}`))
-        .catch((error) => console.error(`Error --> ${error}`));
+        .then((data) => {})
+        .catch((error) =>
+            console.error("Error al actualizar el repartidor:", error)
+        );
 };
 
 export default updatingDataRepartidorJsonFile;
