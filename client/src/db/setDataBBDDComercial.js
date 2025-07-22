@@ -4,7 +4,7 @@ import { db } from "./firebaseConfig";
 // Write
 const setDataBBDDComercial = async (infoComercial) => {
     try {
-        const docRef = await addDoc(collection(db, "comerciales"), {
+        await addDoc(collection(db, "comerciales"), {
             ...infoComercial,
             fecha: serverTimestamp(),
         });        

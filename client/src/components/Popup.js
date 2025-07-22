@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
+    useEffect(() => {
+        if (tipo === "comercial" && data && data.personaImasd) {
+            // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
+            // setFormData({
+            //     // No se proporciona información sobre qué datos se deben establecer en el formulario
+            // });
+        }
+    }, [tipo, data]);
     let title = "ACCIONES A REALIZAR!";
     let contentRender = null;
 
@@ -17,14 +25,6 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
             ? personaImasd.telefono
             : "No encontrado";
 
-        useEffect(() => {
-            if (personaImasd) {
-                // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
-                // setFormData({
-                //     // No se proporciona información sobre qué datos se deben establecer en el formulario
-                // });
-            }
-        }, [personaImasd]);
 
         contentRender = (
             <>

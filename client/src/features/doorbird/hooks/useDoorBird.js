@@ -13,7 +13,6 @@ import {
 export const useDoorBird = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [lastBellEvent, setLastBellEvent] = useState(null);
 
     // Obtenemos la URL del vídeo directamente. No necesita estado.
     const liveImageUrl = getLiveImageURL(); 
