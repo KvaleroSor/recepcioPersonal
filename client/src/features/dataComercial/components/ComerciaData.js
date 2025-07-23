@@ -25,14 +25,6 @@ const ComercialData = () => {
     const [isButtonTypePushed, setIsButtonTypePushed] = useState("");
     const numElemPage = 5;
 
-    /**
-     *  ANOTACIÓN 📝
-     *
-     * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
-     * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
-     *
-     */
-
     /******************************************************************
      *                           PAGINACIÓN                           *
      ******************************************************************/
@@ -43,25 +35,6 @@ const ComercialData = () => {
     let totalPages;
     const lastDealerShow = numPage * numElemPage;
     const firstDealerShow = lastDealerShow - numElemPage;
-
-    // if (!isButtonClicked) {
-    //     currentDealers = isData.slice(firstDealerShow, lastDealerShow);
-    //     totalPages = Math.ceil(isData.length / numElemPage);
-    // } else {
-    //     if (isDataByName) {
-    //         currentDealersByName = isDataByName.slice(
-    //             firstDealerShow,
-    //             lastDealerShow
-    //         );
-    //         totalPages = Math.ceil(isDataByName.length / numElemPage);
-    //     } else {
-    //         currentDealersByCompany = isDataByCompany.slice(
-    //             firstDealerShow,
-    //             lastDealerShow
-    //         );
-    //         totalPages = Math.ceil(isDataByCompany.length / numElemPage);
-    //     }
-    // }
 
     if (!isButtonClicked) {
         currentDealers = isData.slice(firstDealerShow, lastDealerShow);
