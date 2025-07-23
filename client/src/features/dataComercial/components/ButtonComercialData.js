@@ -11,7 +11,7 @@ const ButtonComercialData = () => {
     };
 
     return (
-        <button className="btn button-data" onClick={handleClick}>
+        <button className="btn button-data button-data_border--ajust" onClick={handleClick}>
             <p>Registro Comerciales</p>
             {/* <IconHombre className="iconsForm iconsForm_buttons icon_button--comercialData" /> */}
         </button>

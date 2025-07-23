@@ -6,7 +6,7 @@ const getDataBBDDPersonalImasd = async () => {
     try {
         const querySnapshot = await getDocs(collectionPerosonalImasd);
         const personalList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log("Data encontrada:", personalList);
+        // console.log("Data encontrada:", personalList);
         return personalList; // Devolvemos la lista de personal
     } catch (error) {
         console.error("Error getting documents: ", error);

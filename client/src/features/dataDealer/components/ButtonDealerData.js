@@ -10,7 +10,7 @@ const ButtonDealerData = () => {
     };
 
     return (
-        <button className="btn button-data" onClick={handleClick}>
+        <button className="btn button-data button-data_border--ajust" onClick={handleClick}>
             <p>Registro Repartidores</p>
         </button>
     );

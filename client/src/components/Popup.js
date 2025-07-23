@@ -1,35 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ButtonCerrarPopup from "./ButtonCerrarPopup";
 
 const Popup = ({ data, tipo, onCloseRequest }) => {
-    useEffect(() => {
-        if (tipo === "comercial" && data && data.personaImasd) {
-            // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
-            // setFormData({
-            //     // No se proporciona información sobre qué datos se deben establecer en el formulario
-            // });
-        }
-    }, [tipo, data]);
-    let title = "ACCIONES A REALIZAR!";
-    let contentRender = null;
-
     // useEffect(() => {
     //     if (tipo === "comercial" && data && data.personaImasd) {
-    //         // La lógica que estaba dentro del hook se mantiene,
-    //         // pero ahora el hook se ejecuta incondicionalmente.
+    //         // No se utiliza setFormData en este código, por lo que se ha comentado esta línea
+    //         // setFormData({
+    //         //     // No se proporciona información sobre qué datos se deben establecer en el formulario
+    //         // });
     //     }
-    // }, [data, tipo]);
+    // }, [tipo, data]);
+    let title = "ACCIONES A REALIZAR!";
+    let contentRender = null;
 
     if (!data) {
         contentRender = <p>No hay datos para mostrar.</p>;
     } else if (tipo === "comercial") {
-        // El Popup ya no hace cálculos. Solo recibe y muestra el objeto resuelto.
-        const { personaImasd } = data;
-        const nombrePersonaImasd = personaImasd
-            ? personaImasd.nombre
+        const { personaImasdData } = data;
+        console.log(personaImasdData);
+        const nombrePersonaImasd = personaImasdData
+            ? personaImasdData.nombre
             : "No encontrado";
-        const tlfPersonaImasd = personaImasd
-            ? personaImasd.telefono
+        const tlfPersonaImasd = personaImasdData
+            ? personaImasdData.telefono
             : "No encontrado";
             
         contentRender = (

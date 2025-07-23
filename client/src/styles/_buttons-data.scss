@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./generalStylesMixins";
 
 .button-data {
     width: 7rem;
@@ -26,6 +27,7 @@ button{
     border: none;
     box-shadow: none;
     width: 5rem;
+    // border-radius: 5px !important;
 }
 
 .button-pagination{   
@@ -52,4 +54,8 @@ button{
 .text-pagination{
     color: $prueba_1_text;
     
+}
+
+.button-data_border--ajust{
+    border-radius: 5px;
 }
