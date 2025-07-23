@@ -13,6 +13,13 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
     let title = "ACCIONES A REALIZAR!";
     let contentRender = null;
 
+    // useEffect(() => {
+    //     if (tipo === "comercial" && data && data.personaImasd) {
+    //         // La lógica que estaba dentro del hook se mantiene,
+    //         // pero ahora el hook se ejecuta incondicionalmente.
+    //     }
+    // }, [data, tipo]);
+
     if (!data) {
         contentRender = <p>No hay datos para mostrar.</p>;
     } else if (tipo === "comercial") {
@@ -24,8 +31,7 @@ const Popup = ({ data, tipo, onCloseRequest }) => {
         const tlfPersonaImasd = personaImasd
             ? personaImasd.telefono
             : "No encontrado";
-
-
+            
         contentRender = (
             <>
                 <p className="popup__text-popup">

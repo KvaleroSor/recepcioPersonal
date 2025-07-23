@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Comercial from "./Comercial";
 import { getDataBBDDComerciales } from "../../../db/getDataBBDDComerciales";
 import "./../../../styles/App.scss";
@@ -25,14 +25,6 @@ const ComercialData = () => {
     const [isButtonTypePushed, setIsButtonTypePushed] = useState("");
     const numElemPage = 5;
 
-    /**
-     *  ANOTACIÓN 📝
-     *
-     * 1️⃣ - Modificar para que se pueda desde la misma pantalla de consulta de datos volver a mostrar todos los datos ❌
-     * 2️⃣ - Incorporar "StringSimilarity" para una busqueda más intuitiva ❌
-     *
-     */
-
     /******************************************************************
      *                           PAGINACIÓN                           *
      ******************************************************************/
@@ -43,25 +35,6 @@ const ComercialData = () => {
     let totalPages;
     const lastDealerShow = numPage * numElemPage;
     const firstDealerShow = lastDealerShow - numElemPage;
-
-    // if (!isButtonClicked) {
-    //     currentDealers = isData.slice(firstDealerShow, lastDealerShow);
-    //     totalPages = Math.ceil(isData.length / numElemPage);
-    // } else {
-    //     if (isDataByName) {
-    //         currentDealersByName = isDataByName.slice(
-    //             firstDealerShow,
-    //             lastDealerShow
-    //         );
-    //         totalPages = Math.ceil(isDataByName.length / numElemPage);
-    //     } else {
-    //         currentDealersByCompany = isDataByCompany.slice(
-    //             firstDealerShow,
-    //             lastDealerShow
-    //         );
-    //         totalPages = Math.ceil(isDataByCompany.length / numElemPage);
-    //     }
-    // }
 
     if (!isButtonClicked) {
         currentDealers = isData.slice(firstDealerShow, lastDealerShow);
@@ -90,7 +63,7 @@ const ComercialData = () => {
      *                           GESTIÓN DATOS BBDD                   *
      ******************************************************************/
 
-    const handleData = async () => {
+    const handleData = useCallback(async () => {
         const data = await getDataBBDDComerciales();
 
         try {
@@ -128,7 +101,7 @@ const ComercialData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-    };
+    }, [isButtonClicked, isButtonTypePushed, isInputValue]);
 
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
@@ -219,7 +192,7 @@ const ComercialData = () => {
 
     useEffect(() => {
         handleData();
-    }, [isButtonClicked]);
+    }, [handleData]);
 
     return (
         <div className="container-box">
