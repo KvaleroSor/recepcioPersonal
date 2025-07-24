@@ -23,6 +23,7 @@ button{
     margin: 0.5rem;
     cursor: pointer;
     transition: ease 0.2s;
+    justify-content: center;
 
     &:hover{
         transform: scale(1.1);
