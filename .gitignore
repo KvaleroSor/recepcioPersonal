@@ -3,5 +3,10 @@ node_modules
 #Secrets values for DoorBird
 .env
 
+#File env.production
+.env.production
+
 #Secrets values from BBDD
 .firebaseConfig.js
+
+
