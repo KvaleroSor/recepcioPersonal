@@ -1,7 +1,9 @@
 import React from "react";
 import "./../../../styles/App.scss";
+import { ReactComponent as IconClose } from "./../../../icons/iconClose.svg";
+import deleteDataBBDDDearlers from "./../../../db/deleteDataBBDDDealers"
 
-const Dealer = ({ dealer }) => {
+const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
     const { nombre, fecha, tipoUsoEmpresa, tipoUsoPersonal } = dealer;
 
     const upperingFirstCase = () => {
@@ -10,6 +12,12 @@ const Dealer = ({ dealer }) => {
     };
 
     const nombreUpperedCase = upperingFirstCase();
+
+    const handleClickDeleteButton = async () => {
+        await deleteDataBBDDDearlers(dealer.id);
+        console.log(dealer.id);
+        setIsButtonDeleteClicked(true);
+    }
 
     return (
         <tr>
@@ -24,6 +32,9 @@ const Dealer = ({ dealer }) => {
             </td>
             <td className="dealer-td-th">{tipoUsoEmpresa ? "x" : "-"}</td>
             <td className="dealer-td-th">{tipoUsoPersonal ? "x" : "-"}</td>
+            <button onClick={() => handleClickDeleteButton()}>
+                <IconClose className="iconCloseInput" />
+            </button>
         </tr>
     );
 };

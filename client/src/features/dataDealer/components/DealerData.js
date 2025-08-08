@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getDataBBDDRepartidores } from "../../../db/getDataBBDDRepartidores";
 import Dealer from "./Dealer";
 import { ReactComponent as IconoArrowLeft } from "./../../../icons/iconArrowLeft.svg";
@@ -19,6 +19,7 @@ const DealerData = () => {
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [isInputValue, setIsInputValue] = useState("");
     const [numPage, setNumPage] = useState(1);
+    const [isButtonDeleteClicked, setIsButtonDeleteClicked] = useState(false);
     const numElemPage = 5;
 
     /******************************************************************
@@ -50,18 +51,20 @@ const DealerData = () => {
      *                           GESTIÓN DATOS BBDD                   *
      ******************************************************************/
 
-    const handleData = async () => {
+    const handleData = useCallback(async () => {
         const data = await getDataBBDDRepartidores();
+        setIsButtonDeleteClicked(false);
 
         try {
             if (!isButtonClicked) {
                 setIsData(data || []);
                 setIsDataSetted(true);
             } else {
-                const dataByName = data.filter(
-                    (element) =>
-                        element.nombre.toLowerCase().includes(isInputValue.toLowerCase())                        
-                );            
+                const dataByName = data.filter((element) =>
+                    element.nombre
+                        .toLowerCase()
+                        .includes(isInputValue.toLowerCase())
+                );
 
                 if (dataByName.length > 0) {
                     setIsDataByName(dataByName || []);
@@ -73,7 +76,7 @@ const DealerData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-    };
+    }, [isButtonDeleteClicked]);
 
     /******************************************************************
      *                      GESTIÓN DATOS BBDD                        *
@@ -90,7 +93,13 @@ const DealerData = () => {
                     {currentDealers.length > 0 ? (
                         <>
                             {currentDealers.map((element) => (
-                                <Dealer key={element.id} dealer={element} />
+                                <Dealer
+                                    key={element.id}
+                                    dealer={element}
+                                    setIsButtonDeleteClicked={
+                                        setIsButtonDeleteClicked
+                                    }
+                                />
                             ))}
                         </>
                     ) : (
@@ -107,7 +116,13 @@ const DealerData = () => {
                     {currentDealersByName.length > 0 ? (
                         <>
                             {currentDealersByName.map((element) => (
-                                <Dealer key={element.id} dealer={element} />
+                                <Dealer
+                                    key={element.id}
+                                    dealer={element}
+                                    setIsButtonDeleteClicked={
+                                        setIsButtonDeleteClicked
+                                    }
+                                />
                             ))}
                         </>
                     ) : (
@@ -128,7 +143,7 @@ const DealerData = () => {
     useEffect(() => {
         handleData();
         setIsInputValue("");
-    }, [isButtonClicked]);
+    }, [isButtonClicked, isButtonDeleteClicked]);
 
     return (
         <div className="container-box">

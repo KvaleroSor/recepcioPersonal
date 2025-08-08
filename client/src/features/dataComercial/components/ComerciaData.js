@@ -23,6 +23,7 @@ const ComercialData = () => {
     const [isDataSetted, setIsDataSetted] = useState(false);
     const [isInputValue, setIsInputValue] = useState("");
     const [isButtonTypePushed, setIsButtonTypePushed] = useState("");
+    const [isButtonDeleteClicked, setIsButtonDeleteClicked] = useState(false);
     const numElemPage = 5;
 
     /******************************************************************
@@ -65,6 +66,7 @@ const ComercialData = () => {
 
     const handleData = useCallback(async () => {
         const data = await getDataBBDDComerciales();
+        setIsButtonDeleteClicked(false);
 
         try {
             if (!isButtonClicked) {
@@ -95,13 +97,13 @@ const ComercialData = () => {
                     } else {
                         alert("No se ha encontrado a nadie con esa empresa.");
                     }
-                }
+                }                
             }
         } catch (error) {
             console.log(error);
             setIsDataSetted(false);
         }
-    }, [isButtonClicked, isButtonTypePushed, isInputValue]);
+    }, [isButtonClicked, isButtonTypePushed, isInputValue, isButtonDeleteClicked]);
 
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
@@ -130,6 +132,7 @@ const ComercialData = () => {
                                 <Comercial
                                     key={element.id}
                                     comercial={element}
+                                    setIsButtonDeleteClicked={setIsButtonDeleteClicked}
                                 />
                             ))}
                         </>
@@ -151,6 +154,7 @@ const ComercialData = () => {
                                     <Comercial
                                         key={element.id}
                                         comercial={element}
+                                        setIsButtonDeleteClicked={setIsButtonDeleteClicked}
                                     />
                                 ))}
                             </>
@@ -171,6 +175,7 @@ const ComercialData = () => {
                                     <Comercial
                                         key={element.id}
                                         comercial={element}
+                                        setIsButtonDeleteClicked={setIsButtonDeleteClicked}
                                     />
                                 ))}
                             </>
