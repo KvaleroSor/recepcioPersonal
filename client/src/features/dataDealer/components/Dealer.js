@@ -1,7 +1,7 @@
 import React from "react";
 import "./../../../styles/App.scss";
 import { ReactComponent as IconClose } from "./../../../icons/iconClose.svg";
-import deleteDataBBDDDearlers from "./../../../db/deleteDataBBDDDealers"
+import deleteDataBBDDDearlers from "./../../../db/deleteDataBBDDDealers";
 
 const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
     const { nombre, fecha, tipoUsoEmpresa, tipoUsoPersonal } = dealer;
@@ -17,24 +17,32 @@ const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
         await deleteDataBBDDDearlers(dealer.id);
         console.log(dealer.id);
         setIsButtonDeleteClicked(true);
-    }
+    };
 
     return (
         <tr>
             {/* <td>{id}</td> */}
-            <td>{nombreUpperedCase}</td>
+            <td>
+                <div className="coll-content_companyName">{nombreUpperedCase}</div>
+            </td>
             <td className="container-fecha">
-                {fecha
-                    ? `${fecha.toDate().toLocaleDateString("es-ES")} | ${fecha
-                          .toDate()
-                          .toLocaleTimeString()}`
-                    : "No Registrada!"}
+                <div className="coll-content_dataName">
+                    {fecha
+                        ? `${fecha
+                              .toDate()
+                              .toLocaleDateString("es-ES")} | ${fecha
+                              .toDate()
+                              .toLocaleTimeString()}`
+                        : "No Registrada!"}
+                </div>
             </td>
             <td className="dealer-td-th">{tipoUsoEmpresa ? "x" : "-"}</td>
             <td className="dealer-td-th">{tipoUsoPersonal ? "x" : "-"}</td>
-            <button onClick={() => handleClickDeleteButton()}>
-                <IconClose className="iconCloseInput" />
-            </button>
+            <td>
+                <button onClick={() => handleClickDeleteButton()}>
+                    <IconClose className="iconCloseInput" />
+                </button>
+            </td>
         </tr>
     );
 };

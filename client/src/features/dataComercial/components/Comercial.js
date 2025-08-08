@@ -1,7 +1,7 @@
 import React from "react";
 import "./../../../styles/App.scss";
 import { ReactComponent as IconClose } from "./../../../icons/iconClose.svg";
-import deleteDataBBDDComercials from '../../../db/deleteDataBBDDComercials';
+import deleteDataBBDDComercials from "../../../db/deleteDataBBDDComercials";
 
 const Comercial = ({ comercial, setIsButtonDeleteClicked }) => {
     const { nombre, empresa, fecha, personaImasd } = comercial;
@@ -18,7 +18,7 @@ const Comercial = ({ comercial, setIsButtonDeleteClicked }) => {
         console.log(comercial);
         console.log(comercial.id);
         setIsButtonDeleteClicked(true);
-    }
+    };
 
     return (
         <>
@@ -37,10 +37,12 @@ const Comercial = ({ comercial, setIsButtonDeleteClicked }) => {
                         : "No Registrada!"}
                 </td>
                 <td className="container-personalImasd">{personaImasd}</td>
-                <button
-                    onClick={handleClickDeleteButton}
-                 ><IconClose className="iconCloseInput" /></button>
-            </tr>           
+                <td>
+                    <button onClick={handleClickDeleteButton}>
+                        <IconClose className="iconCloseInput" />
+                    </button>
+                </td>
+            </tr>
         </>
     );
 };
