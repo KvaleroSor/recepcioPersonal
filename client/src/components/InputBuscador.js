@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { ReactComponent as IconEnter } from "./../icons/iconEnter2.svg";
 import { ReactComponent as IconClose } from "./../icons/iconClose.svg";
 
-const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }) => {
+const InputBuscador = ({
+    setIsButtonClicked,
+    setIsInputValue,
+    customClass = "",
+}) => {
     const [inputValue, setInputValue] = useState("");
 
-    const handleClick = () => {        
+    const handleClick = () => {
         setIsButtonClicked(true);
         setIsInputValue(inputValue);
 
@@ -21,7 +25,7 @@ const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }
     };
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);   
+        setInputValue(e.target.value);
     };
 
     return (
@@ -39,7 +43,7 @@ const InputBuscador = ({ setIsButtonClicked, setIsInputValue, customClass = '' }
                 onKeyUp={(e) => {
                     if (e.key === "Enter") {
                         handleClick();
-                    };
+                    }
                 }}
             />
             <button onClick={handleClick}>

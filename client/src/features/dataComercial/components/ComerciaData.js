@@ -65,8 +65,7 @@ const ComercialData = () => {
      ******************************************************************/
 
     const handleData = useCallback(async () => {
-        const data = await getDataBBDDComerciales();
-        setIsButtonDeleteClicked(false);
+        const data = await getDataBBDDComerciales();      
 
         try {
             if (!isButtonClicked) {
@@ -97,13 +96,17 @@ const ComercialData = () => {
                     } else {
                         alert("No se ha encontrado a nadie con esa empresa.");
                     }
-                }                
+                }
             }
         } catch (error) {
             console.log(error);
             setIsDataSetted(false);
         }
-    }, [isButtonClicked, isButtonTypePushed, isInputValue, isButtonDeleteClicked]);
+    }, [
+        isButtonClicked,
+        isButtonTypePushed,
+        isInputValue
+    ]);
 
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
@@ -117,6 +120,10 @@ const ComercialData = () => {
     //     setIsDataSetted(false);
     //     setIsInputValue("");
     // }
+
+    useEffect(() => {
+        setIsButtonDeleteClicked(false);
+    }, [isButtonDeleteClicked]);
 
     /******************************************************************
      *                      MOSTRANDO LOS DATOS                       *
@@ -132,7 +139,9 @@ const ComercialData = () => {
                                 <Comercial
                                     key={element.id}
                                     comercial={element}
-                                    setIsButtonDeleteClicked={setIsButtonDeleteClicked}
+                                    setIsButtonDeleteClicked={
+                                        setIsButtonDeleteClicked
+                                    }
                                 />
                             ))}
                         </>
@@ -154,7 +163,9 @@ const ComercialData = () => {
                                     <Comercial
                                         key={element.id}
                                         comercial={element}
-                                        setIsButtonDeleteClicked={setIsButtonDeleteClicked}
+                                        setIsButtonDeleteClicked={
+                                            setIsButtonDeleteClicked
+                                        }
                                     />
                                 ))}
                             </>
@@ -168,14 +179,16 @@ const ComercialData = () => {
                 return templateValueByName;
             } else {
                 const templateValueByCompany = (
-                    <tbody>                       
+                    <tbody>
                         {currentDealersByCompany.length > 0 ? (
                             <>
                                 {currentDealersByCompany.map((element) => (
                                     <Comercial
                                         key={element.id}
                                         comercial={element}
-                                        setIsButtonDeleteClicked={setIsButtonDeleteClicked}
+                                        setIsButtonDeleteClicked={
+                                            setIsButtonDeleteClicked
+                                        }
                                     />
                                 ))}
                             </>

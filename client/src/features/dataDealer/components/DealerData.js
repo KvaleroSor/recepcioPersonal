@@ -47,13 +47,14 @@ const DealerData = () => {
      *                           PAGINACIÓN                           *
      ******************************************************************/
 
+
+
     /******************************************************************
      *                           GESTIÓN DATOS BBDD                   *
      ******************************************************************/
 
     const handleData = useCallback(async () => {
         const data = await getDataBBDDRepartidores();
-        setIsButtonDeleteClicked(false);
 
         try {
             if (!isButtonClicked) {
@@ -76,7 +77,18 @@ const DealerData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-    }, [isButtonDeleteClicked]);
+    }, [isButtonClicked, isInputValue]);
+
+    useEffect(() => {
+        handleData();
+    }, handleData)
+
+    useEffect(() => {
+        if (isButtonDeleteClicked) {
+            handleData();
+            setIsButtonDeleteClicked(false);
+        }
+    }, [isButtonDeleteClicked, handleData]);
 
     /******************************************************************
      *                      GESTIÓN DATOS BBDD                        *
