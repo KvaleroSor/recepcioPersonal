@@ -9,19 +9,19 @@
 -   **Interfaz de Usuario Amigable:** Diseñada para que tanto el personal de recepción como los visitantes tengan una experiencia de 10. 
 -   **Seguridad y Privacidad:** Tus datos y los de tus visitas, protegidos como un tesoro. 🔒
 
-## 🛠️ Tecnologías Usadas (¡La Magia Detrás!)
+## 🛠️ Tecnologías Usadas
 
 Este proyecto es una sinfonía de tecnologías modernas, orquestadas para ofrecerte lo mejor:
 
--   **Frontend:** React (con Vite para una velocidad de vértigo ⚡) - La cara bonita y funcional de nuestra aplicación.
+-   **Frontend:** React - La cara bonita y funcional de nuestra aplicación.
 -   **Backend:** Node.js (con Express.js) - El cerebro que maneja toda la lógica y la comunicación. 🧠
 -   **Base de Datos:** Firebase Firestore - Para guardar tus datos de forma segura y escalable en la nube. ☁️
 -   **Contenedores:** Docker & Docker Compose - Para que todo funcione en cualquier lugar, ¡sin complicaciones! 🐳
 -   **Servidor Web/Proxy:** Nginx - El guardián que dirige el tráfico y asegura la comunicación. 🛡️
 
-## 🚀 ¡Manos a la Obra! (Cómo Empezar)
+## 🚀 ¡Cómo Empezar!
 
-Para poner en marcha este cohete en tu máquina local, sigue estos sencillos pasos:
+Para poner en marcha esta App en tu máquina local, sigue estos sencillos pasos:
 
 1.  **Clona el Repositorio:**
     ```bash
@@ -41,26 +41,20 @@ Para poner en marcha este cohete en tu máquina local, sigue estos sencillos pas
     REACT_APP_FIREBASE_APP_ID="TU_APP_ID"
     REACT_APP_FIREBASE_MEASUREMENT_ID="TU_MEASUREMENT_ID"
     ```
-    Y en la carpeta `server`, crea un archivo `.env` para el backend (si es necesario para alguna configuración específica del backend, como claves de API, etc.):
-    ```
-    # server/.env
-    PORT=3001 # O el puerto que uses para tu API
-    # Otras variables de entorno del backend
-    ```
 
-3.  **¡Dockeriza la Diversión!**
-    Con Docker Desktop instalado y funcionando, navega a la raíz del proyecto y ejecuta:
+3.  **¡Dockeriza la App!**
+    Con Docker Desktop instalado y "FUNCIONANDO", navega a la raíz del proyecto y ejecuta:
     ```bash
     docker-compose up -d --build
     ```
-    Esto construirá las imágenes de Docker para tu frontend, backend y Nginx, y las pondrá en marcha en segundo plano. ¡Magia! ✨
+    Esto construirá las imágenes de Docker para tu frontend, backend y Nginx, y las pondrá en marcha en segundo plano. ✨
 
 4.  **Accede a la Aplicación:**
     Una vez que los contenedores estén listos, podrás acceder a la aplicación en tu navegador:
     -   **Frontend:** `http://localhost` (o `http://localhost:8080` si mapeaste a un puerto diferente)
     -   **Backend API:** `http://localhost:3001` (o el puerto que hayas configurado)
 
-## 🌐 Despliegue en Servidor (¡Llevando la Recepción a las Nubes!)
+## 🌐 ¡Despliegue en Servidor!
 
 Para desplegar este proyecto en un servidor de producción, considera lo siguiente:
 
@@ -81,13 +75,9 @@ Para desplegar este proyecto en un servidor de producción, considera lo siguien
 
 4.  **Configuración de Nginx:** Revisa y ajusta tu `nginx.conf` para el entorno de producción, asegurando que las rutas y los dominios sean correctos.
 
-## 🤝 Contribuciones
+## 🤜🏽🤛🏽 Contribuciones
 
-¡Las ideas frescas son siempre bienvenidas! Si quieres contribuir a este proyecto, no dudes en abrir un *issue* o enviar un *pull request*. ¡Juntos podemos hacer la recepción aún más increíble! 💡
-
-## 📝 Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles. (Si tienes uno, si no, puedes omitir esta sección o crear uno).
+Si quieres contribuir a este proyecto, no dudes en abrir un *issue* o enviar un *pull request*. 💡
 
 ---
 
