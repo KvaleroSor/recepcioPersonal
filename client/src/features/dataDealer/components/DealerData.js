@@ -79,14 +79,22 @@ const DealerData = () => {
         }
     }, [isButtonClicked, isInputValue]);
 
+    // Efecto principal para cargar y filtrar los datos.
+    // Se ejecuta cada vez que la función `handleData` cambia.
     useEffect(() => {
         handleData();
-    }, handleData)
+    }, [handleData]);
 
+    // Efecto para limpiar el input cuando se cambia el modo de búsqueda (todos vs. por nombre)
+    useEffect(() => {
+        setIsInputValue("");
+    }, [isButtonClicked]);
+
+    // Efecto para recargar los datos después de que un elemento ha sido borrado.
     useEffect(() => {
         if (isButtonDeleteClicked) {
             handleData();
-            setIsButtonDeleteClicked(false);
+            setIsButtonDeleteClicked(false); // Resetea el estado para evitar ejecuciones múltiples
         }
     }, [isButtonDeleteClicked, handleData]);
 
@@ -151,11 +159,6 @@ const DealerData = () => {
     /******************************************************************
      *                      MOSTRANDO LOS DATOS                       *
      ******************************************************************/
-
-    useEffect(() => {
-        handleData();
-        setIsInputValue("");
-    }, [isButtonClicked, isButtonDeleteClicked]);
 
     return (
         <div className="container-box">
