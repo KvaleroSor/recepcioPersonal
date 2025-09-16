@@ -1,7 +1,7 @@
 import React from "react";
 import "./../../../styles/App.scss";
-import { ReactComponent as IconClose } from "./../../../icons/iconClose.svg";
-import deleteDataBBDDDearlers from "./../../../db/deleteDataBBDDDealers";
+// import { ReactComponent as IconClose } from "./../../../icons/iconClose.svg";
+// import deleteDataBBDDDearlers from "./../../../db/deleteDataBBDDDealers";
 
 const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
     const { nombre, fecha, tipoUsoEmpresa, tipoUsoPersonal } = dealer;
@@ -13,11 +13,11 @@ const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
 
     const nombreUpperedCase = upperingFirstCase();
 
-    const handleClickDeleteButton = async () => {
-        await deleteDataBBDDDearlers(dealer.id);
-        console.log(dealer.id);
-        setIsButtonDeleteClicked(true);
-    };
+    // const handleClickDeleteButton = async () => {
+    //     await deleteDataBBDDDearlers(dealer.id);
+    //     console.log(dealer.id);
+    //     setIsButtonDeleteClicked(true);
+    // };
 
     return (
         <tr>
@@ -39,9 +39,9 @@ const Dealer = ({ dealer, setIsButtonDeleteClicked }) => {
             <td className="dealer-td-th">{tipoUsoEmpresa ? "x" : "-"}</td>
             <td className="dealer-td-th">{tipoUsoPersonal ? "x" : "-"}</td>
             <td>
-                <button onClick={() => handleClickDeleteButton()}>
+                {/* <button onClick={() => handleClickDeleteButton()}>
                     <IconClose className="iconCloseInput" />
-                </button>
+                </button> */}
             </td>
         </tr>
     );
