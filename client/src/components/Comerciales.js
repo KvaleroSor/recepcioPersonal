@@ -50,7 +50,7 @@ const Comerciales = () => {
             const personaImasdEncontrada =
                 personalImasdBBDD[matches.bestMatchIndex];
 
-            if (!personaImasdEncontrada || matches.bestMatch.rating < 0.3) {
+            if (!personaImasdEncontrada || matches.bestMatch.rating < 0.2) {
                 alert(
                     "No se ha encontrado a la persona especificada. Por favor, revisa el nombre."
                 );
