@@ -57,7 +57,7 @@ const Paqueteria = () => {
 
     return (
         <>
-                <div className="container-paqueteria">
+            <div className="container-paqueteria">
                 {!isSetTimeOutFinished ? (
                     <div className="container-box_repartidor">
                         {imagenesPaqueteria.map((repartidor) => (
@@ -71,25 +71,25 @@ const Paqueteria = () => {
                             />
                         ))}
                     </div>
-            ) : (
+                ) : (
                     <div className="container-main_paqueteria">
-                    <div className="container-text_paqueteria">
-                        <div className="container-text_paqueteria--h1">
-                            <h1>¿Para quién es el paquete?</h1>
+                        <div className="container-text_paqueteria">
+                            <div className="container-text_paqueteria--h1">
+                                <h1>¿Para quién es el paquete?</h1>
+                            </div>
+                            <div className="container-text_paqueteria--p">
+                                <p>Para IMASD | PULSAR BOTÓN IMASD!</p>
+                                <p>Para USO PERSONAL | PULSAR BOTÓN PERSONAL!</p>
+                            </div>
                         </div>
-                        <div className="container-text_paqueteria--p">
-                            <p>Para IMASD | PULSAR BOTÓN IMASD!</p>
-                            <p>Para USO PERSONAL | PULSAR BOTÓN PERSONAL!</p>
+                        <div className="container-paqueteria">
+                            <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
+                            <ButtonTipoUsoPersonal setPersonal={setPersonal} />
                         </div>
                     </div>
-                    <div className="container-paqueteria">
-                        <ButtonTipoUsoEmpresa setEmpresa={setEmpresa} />
-                        <ButtonTipoUsoPersonal setPersonal={setPersonal} />
-                    </div>
-                    </div>
-            )}
-        </div>
-        </>    );
+                )}
+            </div>
+        </>);
 };
 
 export default Paqueteria;
