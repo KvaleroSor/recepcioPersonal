@@ -9,11 +9,11 @@ import setDataBBDDComercial from "../db/setDataBBDDComercial";
 import { useNavigate } from "react-router-dom";
 import { getDataBBDDPersonalImasd } from "../db/getDataBBDDPersonalImasd";
 import stringSimilarity from "string-similarity";
-// import { HugeiconsIcon } from '@hugeicons/react';
-// import { AddTeamIcon } from '@hugeicons-pro/core-stroke-rounded';
 
 const Comerciales = () => {
     const navigate = useNavigate();
+
+    const REGEX_NAMES = /^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+)*$/;
 
     const getInitialState = () => ({
         nombre: "",
@@ -32,6 +32,12 @@ const Comerciales = () => {
             alert("Por favor, rellena todos los campos");
             return;
         }
+
+        /**
+         * REVISAR PARTE DE LA VALIDACIÓN DE LOS NOMBRES DEL PERSONAL DE IMASD.
+         * 
+         * 🗒️ Utilizar expresión regular.
+         */
 
         try {
             const personalImasdBBDD = await getDataBBDDPersonalImasd();
