@@ -30,6 +30,7 @@ const imagenesPaqueteria = [
     { id: 29, nombre: 'tipsa', src: '/assets/tipsa.png'},
     { id: 30, nombre: 'metalco', src: '/assets/metalco.jpg'},
     { id: 31, nombre: 'transaher', src: '/assets/transaher.avif'},
+    { id: 32, nombre: 'mestrans', src: '/assets/mestrans.png'},
 ];
 
 export default imagenesPaqueteria;
