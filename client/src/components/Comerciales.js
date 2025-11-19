@@ -13,7 +13,7 @@ import stringSimilarity from "string-similarity";
 const Comerciales = () => {
     const navigate = useNavigate();
 
-    const REGEX_NAMES = /^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+)*$/;
+   const REGEX_NAMES = /^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+(?:\s[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+)*$/;
 
     const getInitialState = () => ({
         nombre: "",
