@@ -5,7 +5,7 @@
 const personalImasd = [
     { id: 1, nombre: "Sergi", telefono: 2001 },
     { id: 2, nombre: "Jose Perona", telefono: 2002 },
-    { id: 3, nombre: "Polonia Simón", telefono: 2003 },
+    //{ id: 3, nombre: "Polonia Simón", telefono: 2003 },
     { id: 4, nombre: "Vicent Gandia", telefono: 2004 },
     { id: 5, nombre: "Fran Villarraso", telefono: 2005 },
     { id: 6, nombre: "Óscar Sanz", telefono: 2006 },
