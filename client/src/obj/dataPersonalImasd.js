@@ -26,7 +26,7 @@ const personalImasd = [
     { id: 21, nombre: "Cristian Soler", telefono: 2021 },
     { id: 22, nombre: "Jordi Armengol", telefono: 2022 },
     { id: 23, nombre: "Javi Navarro", telefono: 2023 },
-    { id: 24, nombre: "Polonia Fijo", telefono: 3001 },
+    { id: 24, nombre: "Polonia Simón", telefono: 3001 },
 ];
 
 
