@@ -44,13 +44,13 @@ const ComercialData = () => {
         if (isButtonTypePushed === "comercial") {
             currentDealersByName = isDataByName.slice(
                 firstDealerShow,
-                lastDealerShow
+                lastDealerShow,
             );
             totalPages = Math.ceil(isDataByName.length / numElemPage);
         } else {
             currentDealersByCompany = isDataByCompany.slice(
                 firstDealerShow,
-                lastDealerShow
+                lastDealerShow,
             );
             totalPages = Math.ceil(isDataByCompany.length / numElemPage);
         }
@@ -65,7 +65,7 @@ const ComercialData = () => {
      ******************************************************************/
 
     const handleData = useCallback(async () => {
-        const data = await getDataBBDDComerciales();      
+        const data = await getDataBBDDComerciales();
 
         try {
             if (!isButtonClicked) {
@@ -76,7 +76,7 @@ const ComercialData = () => {
                     const dataByName = data.filter((element) =>
                         element.nombre
                             .toLowerCase()
-                            .includes(isInputValue.toLowerCase())
+                            .includes(isInputValue.toLowerCase()),
                     );
 
                     if (dataByName.length > 0) {
@@ -88,7 +88,7 @@ const ComercialData = () => {
                     const dataByCompany = data.filter((element) =>
                         element.empresa
                             .toLowerCase()
-                            .includes(isInputValue.toLowerCase())
+                            .includes(isInputValue.toLowerCase()),
                     );
 
                     if (dataByCompany.length > 0) {
@@ -102,11 +102,7 @@ const ComercialData = () => {
             console.log(error);
             setIsDataSetted(false);
         }
-    }, [
-        isButtonClicked,
-        isButtonTypePushed,
-        isInputValue
-    ]);
+    }, [isButtonClicked, isButtonTypePushed, isInputValue]);
 
     /*****************************************************************
      *                      GESTIÓN DATOS BBDD                       *
@@ -221,7 +217,6 @@ const ComercialData = () => {
                 customClass="custom-width"
                 className="input_comercialData"
             />
-
             {isDataSetted || isDataByName ? (
                 <table className="width-table_comercials">
                     <thead>
@@ -243,7 +238,9 @@ const ComercialData = () => {
                     <h1>ERROR - NO HAY DATA QUE MOSTRAR!</h1>
                 </div>
             )}
-
+            {/* /******************************************************************
+                                    * PAGINACIÓN *
+            ******************************************************************/}
             <div className="controles-pagination">
                 <button
                     className="button-pagination"

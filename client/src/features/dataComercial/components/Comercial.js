@@ -18,6 +18,8 @@ const Comercial = ({ comercial, setIsButtonDeleteClicked }) => {
         console.log(comercial);
         console.log(comercial.id);
         setIsButtonDeleteClicked(true);
+        // Recargar la página para reflejar los cambios
+        window.location.reload();
     };
 
     return (
