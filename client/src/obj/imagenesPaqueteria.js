@@ -32,7 +32,7 @@ const imagenesPaqueteria = [
     { id: 31, nombre: 'transaher', src: '/assets/transaher.avif'},
     { id: 32, nombre: 'mestrans', src: '/assets/mestrans.png'},
     { id: 33, nombre: 'transports_calabuig', src: '/assets/transports_calabuig.jpg'},
-    { id: 34, nombre: 'dexis_iberica', src: '/assets/dexis_iberica.jpg'},
+    { id: 34, nombre: 'dexis_iberica', src: '/assets/dexis_iberica.png'},
 
 ];
 
